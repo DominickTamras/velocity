@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraLook : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] WallRunning wr;
+
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
 
@@ -29,7 +32,7 @@ public class CameraLook : MonoBehaviour
     {
         PlayerInput();
 
-        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, wr.tilt);
         orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 

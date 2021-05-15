@@ -7,16 +7,23 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     [SerializeField] Transform orientation;
 
+    //Wall Running Drag
+    public bool isWallRunning;
+
     //Gravity
     [SerializeField] float gravityScale = 1f;
-    bool useGravity = true;
+    public bool useGravity;
 
     [Header("Movement")]
-    public float moveSpeed = 6f;
+    public float minSpeed = 6f;
+    public float maxSpeed = 10f;
+    public float acceleration = 1f;
     public float movementMultiplier = 10f;
     public float airMultiplier = 0.4f;
     public float groundDrag = 6f;
     public float airDrag = 2f;
+    float moveSpeed;
+    bool isMoving;
 
     float horizontalMovement;
     float verticalMovement;
@@ -60,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        useGravity = true;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -73,8 +81,10 @@ public class PlayerMovement : MonoBehaviour
         PlayerInput();
         ControlDrag();
 
+        Accelerate();
+
         //Jumping
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             Jump();
         }
@@ -97,6 +107,14 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMovement = Input.GetAxisRaw("Horizontal");
         verticalMovement = Input.GetAxisRaw("Vertical");
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
 
         moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
     }
@@ -104,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
     //Handles moving the player.
     void MovePlayer()
     {
-        if(isGrounded && !OnSlope())
+        if(isGrounded || isWallRunning && !OnSlope())
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
         }
@@ -122,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
     //Handles the drag of the player.
     void ControlDrag()
     {
-        if(isGrounded)
+        if(isGrounded || isWallRunning)
         {
             rb.drag = groundDrag;
         }
@@ -164,6 +182,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 isGrounded = false;
             }
+        }
+    }
+
+    void Accelerate()
+    {
+        if(isMoving)
+        {
+            moveSpeed = Mathf.Lerp(moveSpeed, maxSpeed, acceleration * Time.deltaTime);
+        }
+        else
+        {
+            moveSpeed = minSpeed;
         }
     }
 
