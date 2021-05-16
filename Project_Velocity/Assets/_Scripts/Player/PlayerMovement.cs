@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     RaycastHit slopeHit;
     private bool OnSlope()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight / 2 + 0.5f))
+        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight / 2 + 1))
         {
             if(slopeHit.normal != Vector3.up)
             {
@@ -311,7 +311,7 @@ public class PlayerMovement : MonoBehaviour
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, slideFov, slideFovTime * Time.deltaTime);
             transform.localScale = new Vector3(transform.localScale.x, crouchingHeight, transform.localScale.z);
-            if(!OnSlope())
+            if(!OnSlope() || (rb.velocity.y > 0))
             {
                 slideSpeed = Mathf.Lerp(slideSpeed, 0, slideDecay * Time.deltaTime);
             }

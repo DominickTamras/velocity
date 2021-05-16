@@ -1718,13 +1718,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707241463}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 56.1, y: 15.57, z: 57.49}
-  m_LocalScale: {x: 29.138546, y: 58.76115, z: 10.45479}
+  m_LocalRotation: {x: 0.49999982, y: -0, z: -0, w: 0.8660255}
+  m_LocalPosition: {x: 56.1, y: 10.3, z: 33.8}
+  m_LocalScale: {x: 29.138546, y: 101.35711, z: 10.45479}
   m_Children: []
   m_Father: {fileID: 1685353859}
   m_RootOrder: 19
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!65 &1707241465
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2269,6 +2269,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
+      propertyPath: slideCD
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
+      propertyPath: slideFov
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
+      propertyPath: gravityScale
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
+      propertyPath: slideFovTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
+      propertyPath: slideThreshold
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6736943444268695994, guid: 9d229d838e353304492692e414bd9b72, type: 3}
       propertyPath: m_RootOrder
       value: 1
