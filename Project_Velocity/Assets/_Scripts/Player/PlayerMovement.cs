@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Transform pt;
     Rigidbody rb;
     [SerializeField] Transform orientation;
+
+    //Current Speed
+    public float currentSpeed;
 
     //Wall Running Drag
     public bool isWallRunning;
@@ -21,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public float movementMultiplier = 10f;
     public float airMultiplier = 0.4f;
     public float groundDrag = 6f;
-    public float airDrag = 2f;
+    public float slideDrag = 0.5f;
+    public float airDrag = 1f;
     float moveSpeed;
     bool isMoving;
 
@@ -35,7 +40,19 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 15f;
     [SerializeField] float coyoteTime;
     float coyoteTimer;
+
+    [Header("Crouching and Sliding")]
+    [SerializeField] float slideThreshold;
+    [SerializeField] float slideSpeed;
+    [SerializeField] float crouchSpeed;
+
+    [SerializeField] float standingHeight = 1f;
+    [SerializeField] float crouchingHeight = 0.5f;
     float playerHeight = 2f;
+
+
+    public bool isCrouching = false;
+    public bool isSliding = false;
 
     [Header("Ground Detection")]
     [SerializeField] LayerMask groundLayer;
@@ -68,6 +85,9 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         useGravity = true;
+
+        pt = GetComponent<Transform>();
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -76,6 +96,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        currentSpeed = rb.velocity.magnitude;
+        CrouchAndSlideManager();
+        Crouching();
+        Sliding();
+        StandUp();
+
         GroundCheck();
 
         PlayerInput();
@@ -122,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
     //Handles moving the player.
     void MovePlayer()
     {
-        if(isGrounded || isWallRunning && !OnSlope())
+        if((isGrounded && !OnSlope()) || (isWallRunning && !OnSlope()))
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
         }
@@ -140,11 +166,15 @@ public class PlayerMovement : MonoBehaviour
     //Handles the drag of the player.
     void ControlDrag()
     {
-        if(isGrounded || isWallRunning)
+        if((isGrounded && !isSliding) || (isWallRunning && !isSliding))
         {
             rb.drag = groundDrag;
         }
-        else
+        else if(isSliding)
+        {
+            rb.drag = slideDrag;
+        }
+        else if(!isGrounded || !isWallRunning)
         {
             rb.drag = airDrag;
         }
@@ -197,8 +227,60 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void CrouchAndSlideManager()
+    {
+        //Start Crouching
+        if(isGrounded && !isWallRunning && currentSpeed < slideThreshold && Input.GetKey(KeyCode.LeftShift))
+        {
+            isCrouching = true;
+        }
+        else if(isGrounded && !isWallRunning && currentSpeed >= slideThreshold && Input.GetKey(KeyCode.LeftShift))
+        {
+            isSliding = true;
+        }
+        else if(!isGrounded || Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isCrouching = false;
+            isSliding = false;
+        }
+    }
+
+    void Crouching()
+    {
+        if(isCrouching)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, crouchingHeight, transform.localScale.z);
+            //Movement change
+        }
+    }
+
+    void Sliding()
+    {
+        if(isSliding)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, crouchingHeight, transform.localScale.z);
+            //Movement change
+        }
+    }
+
+    void StandUp()
+    {
+        if(!isCrouching && !isSliding)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, standingHeight, transform.localScale.z);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+    }
+
+    public Vector3 CalcFuturePost(float timeinSeconds)
+    {
+        Vector3 pos = transform.position;
+        pos += rb.velocity * timeinSeconds;
+
+        return pos;
     }
 }
