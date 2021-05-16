@@ -52,8 +52,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float startSlideSpeed;
     [SerializeField] float slideDecay;
     [SerializeField] float slideCD;
-    [SerializeField] float slideCDTimer;
     [SerializeField] float crouchSpeed;
+    float slideCDTimer;
     float slideSpeed;
 
     Vector3 slideDirection;
@@ -64,8 +64,8 @@ public class PlayerMovement : MonoBehaviour
     float playerHeight = 2f;
 
 
-    public bool isCrouching = false;
-    public bool isSliding = false;
+    bool isCrouching = false;
+    bool isSliding = false;
 
     [Header("Ground Detection")]
     [SerializeField] LayerMask groundLayer;
