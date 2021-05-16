@@ -883,11 +883,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733367748}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &886444091 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 6736943442840712894, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-  m_PrefabInstance: {fileID: 6736943444028265174}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &940362872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,74 +2269,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6736943442840712894, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 119
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 886444091}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: fov
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: slideCD
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: slideFov
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: slideDrag
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: slideDecay
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: slideSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: crouchSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: slideFovTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: slideThreshold
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: standingHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: crouchingHeight
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: startSlideSpeed
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: universalMaxVelocity
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943443932193506, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: slopeSlideOffThreshold
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6736943444232185853, guid: 9d229d838e353304492692e414bd9b72, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 6736943444268695994, guid: 9d229d838e353304492692e414bd9b72, type: 3}
       propertyPath: m_RootOrder
       value: 1

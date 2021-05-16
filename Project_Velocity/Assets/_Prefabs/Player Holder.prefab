@@ -64,7 +64,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -272,19 +272,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60dee992d2004946add1fdd4ddb995e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 6736943442840712894}
   orientation: {fileID: 6736943442968761228}
+  currentSpeed: 0
   isWallRunning: 0
   gravityScale: 2.8
   useGravity: 1
+  fov: 80
+  slideFov: 120
+  slideFovTime: 5
+  universalMaxVelocity: 60
   minSpeed: 6
   maxSpeed: 10
   acceleration: 1
   movementMultiplier: 10
   airMultiplier: 0.4
   groundDrag: 6
+  slideDrag: 2
   airDrag: 1
   jumpForce: 16
   coyoteTime: 0.2
+  slideThreshold: 10
+  startSlideSpeed: 0.4
+  slideDecay: 5
+  slideCD: 0.5
+  slideCDTimer: 0
+  crouchSpeed: 3
+  standingHeight: 1
+  crouchingHeight: 0.5
+  isCrouching: 0
+  isSliding: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -345,7 +362,7 @@ GameObject:
   - component: {fileID: 6736943444232185850}
   - component: {fileID: 6736943444232185848}
   - component: {fileID: 6736943444232185851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
