@@ -6,6 +6,7 @@ public class WallRunning : MonoBehaviour
 {
     private Rigidbody rb;
     private PlayerMovement pm;
+    private Mantling m;
 
     [Header("Movement")]
     [SerializeField] Transform orientation;
@@ -39,6 +40,7 @@ public class WallRunning : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
+        m = GetComponent<Mantling>();
     }
 
     private void Update()
@@ -85,6 +87,7 @@ public class WallRunning : MonoBehaviour
         //PlayerMovement interactions
         pm.useGravity = false;
         pm.isWallRunning = true;
+        m.isWallRunning = true;
 
         //Camera fov
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, wallRunFov, wallRunFovTime * Time.deltaTime);
@@ -116,6 +119,7 @@ public class WallRunning : MonoBehaviour
     {
         pm.useGravity = true;
         pm.isWallRunning = false;
+        m.isWallRunning = false;
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, wallRunFovTime * Time.deltaTime);
         tilt = Mathf.Lerp(tilt, 0, cameraTiltTime * Time.deltaTime);
     }

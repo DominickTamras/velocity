@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class Mantling : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] MantlingCollisionDetection obstruction;
+    [SerializeField] MantlingCollisionDetection wall;
+    [SerializeField] Transform wallClimbPosition;
+    [SerializeField] float climbSpeed;
 
-    // Update is called once per frame
+    bool canMantle = false;
+    public bool isWallRunning;
+
     void Update()
     {
-        
+        mantleCheck();
+        mantleController();
     }
+
+    void mantleCheck()
+    {
+        if (wall.isColliding && !obstruction.isColliding && !isWallRunning)
+        {
+            canMantle = true;
+        }
+        else
+        {
+            canMantle = false;
+        }
+    }
+
+    void mantleController()
+    {
+        if(canMantle && Input.GetKey(KeyCode.W))
+        {
+            transform.position = Vector3.Lerp(transform.position, wallClimbPosition.position, climbSpeed * Time.deltaTime);
+        }
+        if(!canMantle)
+        {
+        }
+    }
+
 }

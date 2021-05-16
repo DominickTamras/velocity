@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Detection")]
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform groundCheck;
-    float groundCheckRadius = 0.4f;
+    [SerializeField] float groundCheckRadius = 0.4f;
     float groundCheckDelay = 0.1f;
     float groundCheckTimer;
 
