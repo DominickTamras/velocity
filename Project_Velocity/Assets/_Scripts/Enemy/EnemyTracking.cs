@@ -10,9 +10,11 @@ public class EnemyTracking : MonoBehaviour
 
     public float finalTime;
 
-    public Transform target; // Replace with event system. (Or turn into scriptable object.)
+    public GameObject target; // Replace with event system. (Or turn into scriptable object.)
 
     public bool isIn;
+
+    public float rotateSpeed;
 
     public bool isOut;
 
@@ -20,29 +22,53 @@ public class EnemyTracking : MonoBehaviour
 
     private float enemyPos;
 
+    private Rigidbody rigid;
+
+    PlayerMovement instance;
+
+    PlayerMovement currentSpeedz;
+
+    private Vector3 predictPosition;
+
     private Quaternion ogRotation;
 
 
-    void Awake()
-    {
-        // isIn = true;
 
+
+
+    void Awake()
+    {   
+        // isIn = true;
+        rigid = target.GetComponent<Rigidbody>();
         ogRotation = gameObject.transform.rotation;
+        instance = FindObjectOfType<PlayerMovement>();
+        currentSpeedz = FindObjectOfType<PlayerMovement>();
 
     }
 
     // Update is called once per frame
     void Update() // Add all this shit in numerator
     {
+      
+
       enemyPos = transform.position.x;
       
-      dist = Vector3.Distance(target.position, gameObject.transform.position);
+      dist = Vector3.Distance(target.transform.position, gameObject.transform.position);
       
       Debug.Log(dist);
         if(isIn)
         {
-            StartCoroutine(LookAtCor());
-            StartCoroutine(LookAtCor2());
+            if (currentSpeedz.currentSpeed < 12)
+            {
+                LookAt2();
+            }
+
+            else
+            {
+                StartCoroutine(LookAtCor());
+                StartCoroutine(LookAtCor2());
+            }
+
         }
 
         if(isOut)
@@ -51,15 +77,26 @@ public class EnemyTracking : MonoBehaviour
         }
 
 
+
     }
-
-
 
     void LookAt()
     {
-        Vector3 direction = target.position - gameObject.transform.position;
-
+       
+        Vector3 direction = target.transform.position - gameObject.transform.position;
+   
         Quaternion rotation = Quaternion.LookRotation(direction);
+
+        gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, finalTime * Time.deltaTime);
+    }
+
+    void LookAt2()
+    {
+
+        //Vector3 direction = target.transform.position - gameObject.transform.position;
+        Vector3 predictPosition = instance.CalcFuturePost(Vector3.Distance(transform.position, instance.transform.position));
+        
+        Quaternion rotation = Quaternion.LookRotation(predictPosition);
 
         gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, finalTime * Time.deltaTime);
     }
@@ -70,12 +107,15 @@ public class EnemyTracking : MonoBehaviour
     }
 
 
+
     private void OnTriggerEnter(Collider other)
     {
+        
         if(other.tag == "Player")
         {
             isOut = false;
             isIn = true;
+            
             Debug.Log("Working");
         }
     }
@@ -93,11 +133,11 @@ public class EnemyTracking : MonoBehaviour
 
     private IEnumerator LookAtCor()
     {   
-         float lerpTime = 0;
+        float lerpTime = 0;
         float currentTime = finalTime;
         LookAt();
 
-        while (dist > 5)
+        while (dist > 9)
         {
 
             //lerpTime += Time.deltaTime;
@@ -114,7 +154,7 @@ public class EnemyTracking : MonoBehaviour
         float currentTime = finalTime;
         LookAt();
 
-        while (dist < 5)
+        while (dist < 9)
         {
 
             //lerpTime += Time.deltaTime;
@@ -123,10 +163,19 @@ public class EnemyTracking : MonoBehaviour
 
         }
 
-
-
-
     }
+
+ 
+
+   /* private IEnumerator StartOthers()
+    {
+        while (currentSpeedz.currentSpeed > 12f)
+        {
+            StartCoroutine(LookAtCor());
+            StartCoroutine(LookAtCor2());
+            yield return null;
+        }
+    }*/
 
     //Speed calc down here, wait for David.
 
