@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Transform pt;
     Rigidbody rb;
+    [SerializeField] Camera cam;
     [SerializeField] Transform orientation;
 
     //Current Speed
@@ -18,7 +18,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gravityScale = 1f;
     public bool useGravity;
 
+    [Header("Camera Effects")]
+    [SerializeField] float fov;
+    [SerializeField] float slideFov;
+    [SerializeField] float slideFovTime;
+
     [Header("Movement")]
+    [SerializeField] float universalMaxVelocity;
     public float minSpeed = 6f;
     public float maxSpeed = 10f;
     public float acceleration = 1f;
@@ -43,8 +49,15 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Crouching and Sliding")]
     [SerializeField] float slideThreshold;
-    [SerializeField] float slideSpeed;
+    [SerializeField] float startSlideSpeed;
+    [SerializeField] float slideDecay;
+    [SerializeField] float slideCD;
+    [SerializeField] float slideCDTimer;
     [SerializeField] float crouchSpeed;
+    float slideSpeed;
+
+    Vector3 slideDirection;
+    Vector3 slopeSlideDirection;
 
     [SerializeField] float standingHeight = 1f;
     [SerializeField] float crouchingHeight = 0.5f;
@@ -86,12 +99,11 @@ public class PlayerMovement : MonoBehaviour
     {
         useGravity = true;
 
-        pt = GetComponent<Transform>();
-
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
         coyoteTimer = coyoteTime;
+        slideSpeed = startSlideSpeed;
     }
 
     private void Update()
@@ -148,19 +160,47 @@ public class PlayerMovement : MonoBehaviour
     //Handles moving the player.
     void MovePlayer()
     {
-        if((isGrounded && !OnSlope()) || (isWallRunning && !OnSlope()))
+        //if below max speed
+        if(currentSpeed < universalMaxVelocity)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+            //On ground or wall running and not on slope
+            if ((isGrounded && !OnSlope()) || (isWallRunning && !OnSlope()))
+            {
+                if (isCrouching)
+                {
+                    rb.AddForce(moveDirection.normalized * crouchSpeed * movementMultiplier, ForceMode.Acceleration);
+                }
+                else if (isSliding)
+                {
+                    rb.AddForce(slideDirection.normalized * slideSpeed * movementMultiplier, ForceMode.VelocityChange);
+                }
+                else if (!isCrouching && !isSliding)
+                {
+                    rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+                }
+            }
+            //On ground and on slope and not wall running
+            else if (isGrounded && OnSlope())
+            {
+                if (isCrouching)
+                {
+                    rb.AddForce(slopeMoveDirection.normalized * crouchSpeed * movementMultiplier, ForceMode.Acceleration);
+                }
+                else if (isSliding)
+                {
+                    rb.AddForce(slopeSlideDirection.normalized * slideSpeed * movementMultiplier, ForceMode.VelocityChange);
+                }
+                else if (!isCrouching && !isSliding)
+                {
+                    rb.AddForce(slopeMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+                }
+            }
+            //not on ground
+            else if (!isGrounded)
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
+            }
         }
-        else if(isGrounded && OnSlope())
-        {
-            rb.AddForce(slopeMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
-        }
-        else if(!isGrounded)
-        {
-            rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
-        }
-
     }
 
     //Handles the drag of the player.
@@ -230,14 +270,26 @@ public class PlayerMovement : MonoBehaviour
     void CrouchAndSlideManager()
     {
         //Start Crouching
-        if(isGrounded && !isWallRunning && currentSpeed < slideThreshold && Input.GetKey(KeyCode.LeftShift))
+        if(isGrounded && !isWallRunning && currentSpeed < slideThreshold && Input.GetKeyDown(KeyCode.LeftShift) && !isSliding)
         {
-            isCrouching = true;
+            if (slideCDTimer <= 0)
+            {
+                isCrouching = true;
+                slideCDTimer = slideCD;
+            }
         }
-        else if(isGrounded && !isWallRunning && currentSpeed >= slideThreshold && Input.GetKey(KeyCode.LeftShift))
+        //Start Sliding
+        else if(isGrounded && !isWallRunning && currentSpeed >= slideThreshold && Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
         {
-            isSliding = true;
+            if(slideCDTimer <= 0)
+            {
+                isSliding = true;
+                slideDirection = moveDirection;
+                slopeSlideDirection = slopeMoveDirection;
+                slideCDTimer = slideCD;
+            }
         }
+        //Stand up
         else if(!isGrounded || Input.GetKeyUp(KeyCode.LeftShift))
         {
             isCrouching = false;
@@ -250,7 +302,6 @@ public class PlayerMovement : MonoBehaviour
         if(isCrouching)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchingHeight, transform.localScale.z);
-            //Movement change
         }
     }
 
@@ -258,8 +309,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isSliding)
         {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, slideFov, slideFovTime * Time.deltaTime);
             transform.localScale = new Vector3(transform.localScale.x, crouchingHeight, transform.localScale.z);
-            //Movement change
+            if(!OnSlope())
+            {
+                slideSpeed = Mathf.Lerp(slideSpeed, 0, slideDecay * Time.deltaTime);
+            }
         }
     }
 
@@ -267,7 +322,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!isCrouching && !isSliding)
         {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, slideFovTime * Time.deltaTime);
             transform.localScale = new Vector3(transform.localScale.x, standingHeight, transform.localScale.z);
+            slideSpeed = startSlideSpeed;
+            if(slideCDTimer > -1)
+            {
+                slideCDTimer -= Time.deltaTime;
+            }
         }
     }
 
