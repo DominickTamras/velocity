@@ -8,6 +8,8 @@ public class WallRunning : MonoBehaviour
     private PlayerMovement pm;
     private Mantling m;
 
+    public bool isMantling;
+
     [Header("Movement")]
     [SerializeField] Transform orientation;
 
@@ -36,6 +38,9 @@ public class WallRunning : MonoBehaviour
     RaycastHit leftWallHit;
     RaycastHit rightWallHit;
 
+    GameObject previousWall;
+    GameObject currentWall;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -45,15 +50,20 @@ public class WallRunning : MonoBehaviour
 
     private void Update()
     {
+        if(pm.isGrounded)
+        {
+            previousWall = null;
+        }
+
         CheckWall();
 
         if(CanWallRun())
         {
-            if(wallLeft)
+            if(wallLeft && !isMantling && (currentWall != previousWall))
             {
                 StartWallRun();
             }
-            else if (wallRight)
+            else if (wallRight && !isMantling && (currentWall != previousWall))
             {
                 StartWallRun();
             }
@@ -76,7 +86,15 @@ public class WallRunning : MonoBehaviour
     void CheckWall()
     {
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallDistance, wallRunable);
+        if(wallLeft)
+        {
+            currentWall = leftWallHit.collider.gameObject;
+        }
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallDistance, wallRunable);
+        if(wallRight)
+        {
+            currentWall = rightWallHit.collider.gameObject;
+        }
     }
 
     void StartWallRun()
@@ -102,12 +120,20 @@ public class WallRunning : MonoBehaviour
         {
             if(wallLeft)
             {
+                //store previous wall
+                previousWall = leftWallHit.collider.gameObject;
+
+                //jump off wall
                 Vector3 wallrunJumpDirection = transform.up + leftWallHit.normal;
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(wallrunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);
             }
             else if(wallRight)
             {
+                //store previous wall
+                previousWall = rightWallHit.collider.gameObject;
+
+                //jump off wall
                 Vector3 wallrunJumpDirection = transform.up + rightWallHit.normal;
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(wallrunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);

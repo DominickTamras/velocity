@@ -9,8 +9,15 @@ public class Mantling : MonoBehaviour
     [SerializeField] Transform wallClimbPosition;
     [SerializeField] float climbSpeed;
 
+    private WallRunning wr;
+
     bool canMantle = false;
     public bool isWallRunning;
+
+    private void Start()
+    {
+        wr = GetComponent<WallRunning>();
+    }
 
     void Update()
     {
@@ -34,10 +41,12 @@ public class Mantling : MonoBehaviour
     {
         if(canMantle && Input.GetKey(KeyCode.W))
         {
+            wr.isMantling = true;
             transform.position = Vector3.Lerp(transform.position, wallClimbPosition.position, climbSpeed * Time.deltaTime);
         }
         if(!canMantle)
         {
+            wr.isMantling = false;
         }
     }
 
