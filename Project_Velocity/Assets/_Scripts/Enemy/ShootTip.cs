@@ -8,9 +8,12 @@ public class ShootTip : MonoBehaviour
 
     public float startTimeBetweenShots;
 
+    private Transform enemyTransform;
+
     public GameObject projectile;
     void Start()
     {
+        enemyTransform = GetComponentInParent<Transform>();
         timeBetweenShots = startTimeBetweenShots;
     }
 
@@ -19,8 +22,9 @@ public class ShootTip : MonoBehaviour
     {
         if (timeBetweenShots <= 0)
         {
+         
 
-            Instantiate(projectile, gameObject.transform.position, Quaternion.identity);
+            Instantiate(projectile, gameObject.transform.position, enemyTransform.rotation);
             timeBetweenShots = startTimeBetweenShots;
         }
         else

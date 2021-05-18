@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
-{ // Update tomorrow. See why ball doesn't go forward.
+{ // Update tomorrow. See why ball doesn't go forward. Turn into rigidbody transform.rotation * Vector3.forward
     public float speed;
 
  
@@ -20,12 +20,11 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = Vector3.forward * speed * Time.deltaTime;
+        transform.position += transform.rotation * Vector3.forward * speed * Time.deltaTime;
+        
 
-        if (gameObject.transform.position.x == target.x && gameObject.transform.position.y == target.y && gameObject.transform.position.y == target.z)
-        {
-            DestroyShot();
-        }
+        StartCoroutine(JustDie());
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,10 +35,17 @@ public class Shoot : MonoBehaviour
         }
     }
 
-    void DestroyShot()
+    public void DestroyShot()
 
     {
         Destroy(gameObject);
+    }
+
+    IEnumerator JustDie()
+    {
+        yield return new WaitForSeconds(2);
+
+        DestroyShot();
     }
         
 }
