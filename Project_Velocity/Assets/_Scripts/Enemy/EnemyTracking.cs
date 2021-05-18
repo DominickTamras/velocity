@@ -87,7 +87,7 @@ public class EnemyTracking : MonoBehaviour
    
         Quaternion rotation = Quaternion.LookRotation(direction);
 
-        gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, finalTime * Time.deltaTime);
+        gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, finalTime * Time.deltaTime * rotateSpeed);
     }
 
     void LookAt2()
@@ -98,7 +98,7 @@ public class EnemyTracking : MonoBehaviour
         
         Quaternion rotation = Quaternion.LookRotation(predictPosition);
 
-        gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, finalTime * Time.deltaTime);
+        gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, finalTime * Time.deltaTime * rotateSpeed);
     }
 
     void ReturnPos()
