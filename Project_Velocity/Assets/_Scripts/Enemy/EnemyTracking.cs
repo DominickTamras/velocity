@@ -14,10 +14,12 @@ public class EnemyTracking : MonoBehaviour
 
     public GameObject target; // Replace with event system. (Or turn into scriptable object.)
 
+    [HideInInspector]
     public bool isIn;
 
     public float rotateSpeed;
 
+    [HideInInspector]
     public bool isOut;
 
     private float dist;
