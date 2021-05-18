@@ -6,6 +6,7 @@ public class CameraLook : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] WallRunning wr;
+    Shooting s;
 
     [SerializeField] private float sensX;
     [SerializeField] private float sensY;
@@ -21,9 +22,11 @@ public class CameraLook : MonoBehaviour
 
     float xRotation;
     float yRotation;
+    public float zRotation;
 
     private void Start()
     {
+        s = GetComponent<Shooting>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -32,8 +35,8 @@ public class CameraLook : MonoBehaviour
     {
         PlayerInput();
 
-        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, wr.tilt);
-        orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation + wr.tilt);
+        orientation.transform.rotation = Quaternion.Euler(0, yRotation, zRotation);
     }
 
     void PlayerInput()
@@ -41,8 +44,16 @@ public class CameraLook : MonoBehaviour
         mouseX = Input.GetAxisRaw("Mouse X");
         mouseY = Input.GetAxisRaw("Mouse Y");
 
-        yRotation += mouseX * sensX * multiplier * Time.fixedDeltaTime;
-        xRotation -= mouseY * sensY * multiplier * Time.fixedDeltaTime;
+        if(s.reverseGravity)
+        {
+            yRotation += -mouseX * sensX * multiplier * Time.fixedDeltaTime;
+            xRotation -= -mouseY * sensY * multiplier * Time.fixedDeltaTime;
+        }
+        else if(!s.reverseGravity)
+        {
+            yRotation += mouseX * sensX * multiplier * Time.fixedDeltaTime;
+            xRotation -= mouseY * sensY * multiplier * Time.fixedDeltaTime;
+        }
 
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
     }

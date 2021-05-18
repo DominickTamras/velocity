@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
+    Shooting shooting;
     [SerializeField] Camera cam;
     [SerializeField] Transform orientation;
 
@@ -79,19 +80,42 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
 
     RaycastHit slopeHit;
+    public bool onSlope;
     private bool OnSlope()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight / 2 + 1))
+        if(!shooting.reverseGravity)
         {
-            if(slopeHit.normal != Vector3.up)
+            if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight / 2 + 1))
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                if (slopeHit.normal != Vector3.up)
+                {
+                    onSlope = true;
+                    return true;
+                }
+                else
+                {
+                    onSlope = false;
+                    return false;
+                }
             }
         }
+        else if(shooting.reverseGravity)
+        {
+            if (Physics.Raycast(transform.position, Vector3.up, out slopeHit, playerHeight / 2 + 1))
+            {
+                if (slopeHit.normal != Vector3.down)
+                {
+                    onSlope = true;
+                    return true;
+                }
+                else
+                {
+                    onSlope = false;
+                    return false;
+                }
+            }
+        }
+        onSlope = false;
         return false;
     }
 
@@ -101,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        shooting = GetComponent<Shooting>();
 
         coyoteTimer = coyoteTime;
         slideSpeed = startSlideSpeed;
@@ -137,7 +162,14 @@ public class PlayerMovement : MonoBehaviour
 
         //gravity
         rb.useGravity = false;
-        if (useGravity) rb.AddForce(Physics.gravity * (rb.mass * rb.mass) * gravityScale);
+        if(shooting.reverseGravity)
+        {
+            if (useGravity) rb.AddForce(Physics.gravity * (rb.mass * rb.mass) * -gravityScale);
+        }
+        else if(!shooting.reverseGravity)
+        {
+            if (useGravity) rb.AddForce(Physics.gravity * (rb.mass * rb.mass) * gravityScale);
+        }
     }
 
     //Gets the inputs from the player and populates moveDirection.
@@ -311,9 +343,21 @@ public class PlayerMovement : MonoBehaviour
         {
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, slideFov, slideFovTime * Time.deltaTime);
             transform.localScale = new Vector3(transform.localScale.x, crouchingHeight, transform.localScale.z);
-            if(!OnSlope() || (rb.velocity.y > 0))
+            if(!shooting.reverseGravity)
             {
-                slideSpeed = Mathf.Lerp(slideSpeed, 0, slideDecay * Time.deltaTime);
+                //Normal grav
+                if (!OnSlope() || (rb.velocity.y > 0))
+                {
+                    slideSpeed = Mathf.Lerp(slideSpeed, 0, slideDecay * Time.deltaTime);
+                }
+            }
+            else if(shooting.reverseGravity)
+            {
+                //rev grav
+                if (!OnSlope() || (rb.velocity.y < 0))
+                {
+                    slideSpeed = Mathf.Lerp(slideSpeed, 0, slideDecay * Time.deltaTime);
+                }
             }
         }
     }

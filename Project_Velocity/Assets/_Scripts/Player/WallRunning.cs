@@ -7,6 +7,7 @@ public class WallRunning : MonoBehaviour
     private Rigidbody rb;
     private PlayerMovement pm;
     private Mantling m;
+    private Shooting s;
 
     public bool isMantling;
 
@@ -41,11 +42,14 @@ public class WallRunning : MonoBehaviour
     GameObject previousWall;
     GameObject currentWall;
 
+    public bool canWallRun;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
         m = GetComponent<Mantling>();
+        s = GetComponent<Shooting>();
     }
 
     private void Update()
@@ -80,7 +84,17 @@ public class WallRunning : MonoBehaviour
 
     bool CanWallRun()
     {
-        return !Physics.Raycast(transform.position, Vector3.down, minJumpHeight);
+        if (!s.reverseGravity)
+        {
+            canWallRun = !Physics.Raycast(transform.position, Vector3.down, minJumpHeight);
+            return !Physics.Raycast(transform.position, Vector3.down, minJumpHeight);
+        }
+        else if(s.reverseGravity)
+        {
+            canWallRun = !Physics.Raycast(transform.position, Vector3.up, minJumpHeight);
+            return !Physics.Raycast(transform.position, Vector3.up, minJumpHeight);
+        }
+        return false;
     }
 
     void CheckWall()

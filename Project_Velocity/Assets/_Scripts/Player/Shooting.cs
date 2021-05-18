@@ -12,8 +12,22 @@ public class Shooting : MonoBehaviour
     [SerializeField] ParticleSystem muzzelFlash;
     [SerializeField] GameObject hitEffect;
 
+    [Header("Reverse Gravity")]
+    [SerializeField] float flipCamSpeed;
+    public bool reverseGravity = false;
+
+    CameraLook cl;
+    PlayerMovement pm;
+
+    private void Start()
+    {
+        cl = GetComponent<CameraLook>();
+        pm = GetComponent<PlayerMovement>();
+    }
+
     private void Update()
     {
+        FlipView();
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -32,6 +46,36 @@ public class Shooting : MonoBehaviour
             Debug.Log(hit.transform.name);
             GameObject impactVFX = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactVFX, 1);
+
+            if(hit.collider.CompareTag("ReverseGravity"))
+            {
+                if(!reverseGravity)
+                {
+                    reverseGravity = true;
+                }
+                else
+                {
+                    reverseGravity = false;
+                }
+            }
+        }
+    }
+
+    void FlipView()
+    {
+        if (reverseGravity)
+        {
+            Vector3 currentRotation = transform.eulerAngles;
+            currentRotation.z = Mathf.Lerp(currentRotation.z, 180, Time.deltaTime * flipCamSpeed);
+            cl.zRotation = currentRotation.z;
+            transform.eulerAngles = currentRotation;
+        }
+        else
+        {
+            Vector3 currentRotation = transform.eulerAngles;
+            currentRotation.z = Mathf.Lerp(currentRotation.z, 0, Time.deltaTime * flipCamSpeed);
+            cl.zRotation = currentRotation.z;
+            transform.eulerAngles = currentRotation;
         }
     }
 }

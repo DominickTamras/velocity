@@ -362,7 +362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5441492533764030524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5441492534547113543}
@@ -10445,7 +10445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5441492534853457000}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5441492535556166006}
@@ -10528,9 +10528,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 5441492535117008381}
-  groundCheckRadius: 0.4
+  groundCheckRadius: 0.3
   onGround: 0
   isGrounded: 0
+  onSlope: 0
 --- !u!114 &5441492534853457007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10548,6 +10549,7 @@ MonoBehaviour:
   sensY: 100
   cam: {fileID: 5441492534330451383}
   orientation: {fileID: 5441492533623661824}
+  zRotation: 0
 --- !u!114 &5441492534853456994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10563,7 +10565,7 @@ MonoBehaviour:
   isMantling: 0
   orientation: {fileID: 5441492533623661824}
   wallDistance: 1.2
-  minJumpHeight: 1
+  minJumpHeight: 1.5
   wallRunGravity: 0
   wallRunJumpForce: 10
   wallRunable:
@@ -10575,6 +10577,7 @@ MonoBehaviour:
   wallRunFovTime: 20
   cameraTilt: 5
   cameraTiltTime: 20
+  canWallRun: 0
 --- !u!114 &1655775448184097302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10609,6 +10612,8 @@ MonoBehaviour:
   bulletTrail: {fileID: 5441492534526512612}
   muzzelFlash: {fileID: 5441492533873223761}
   hitEffect: {fileID: 8701753882568702763, guid: 2f35872c39a541e448f81ebcd403ffa2, type: 3}
+  flipCamSpeed: 5
+  reverseGravity: 0
 --- !u!1 &5441492535016556818
 GameObject:
   m_ObjectHideFlags: 0
@@ -11200,7 +11205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5441492535577982769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5441492534330451383}
