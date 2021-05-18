@@ -10,6 +10,8 @@ public class EnemyTracking : MonoBehaviour
 
     public float finalTime;
 
+    public float thresholdCompare;
+
     public GameObject target; // Replace with event system. (Or turn into scriptable object.)
 
     public bool isIn;
@@ -137,7 +139,7 @@ public class EnemyTracking : MonoBehaviour
         float currentTime = finalTime;
         LookAt();
 
-        while (dist > 9)
+        while (dist > thresholdCompare)
         {
 
             //lerpTime += Time.deltaTime;
@@ -154,7 +156,7 @@ public class EnemyTracking : MonoBehaviour
         float currentTime = finalTime;
         LookAt();
 
-        while (dist < 9)
+        while (dist < thresholdCompare)
         {
 
             //lerpTime += Time.deltaTime;
