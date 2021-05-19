@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class MeleeAttack : MonoBehaviour
 {
@@ -8,8 +9,13 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] Shooting s;
     [SerializeField] float attackCD;
     float attackCDTimer;
-
     public bool isAttacking;
+
+    [Header("Camera Shake")]
+    [SerializeField] float magnitude = 4f;
+    [SerializeField] float roughness = 4f;
+    [SerializeField] float fadeInTime = 0.1f;
+    [SerializeField] float fadeOutTime = 0.5f;
 
     Collider col;
 
@@ -28,7 +34,7 @@ public class MeleeAttack : MonoBehaviour
     {
         if(attackCDTimer < 0)
         {
-            if (Input.GetKeyDown(KeyCode.V))
+            if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 attackStart();
             }
@@ -62,6 +68,7 @@ public class MeleeAttack : MonoBehaviour
         if(enemy != null)
         {
             enemy.Die();
+            CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             s.hasBullet = true;
         }
         if(other.CompareTag("ReverseGravity"))

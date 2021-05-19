@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class Shooting : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class Shooting : MonoBehaviour
     [Header("Reverse Gravity")]
     [SerializeField] float flipCamSpeed;
     public bool reverseGravity = false;
+
+    [Header("Camera Shake")]
+    [SerializeField] float magnitude = 4f;
+    [SerializeField] float roughness = 4f;
+    [SerializeField] float fadeInTime = 0.1f;
+    [SerializeField] float fadeOutTime = 0.5f;
 
     CameraLook cl;
     PlayerMovement pm;
@@ -61,6 +68,7 @@ public class Shooting : MonoBehaviour
             {
                 enemy.Die();
                 hasBullet = true;
+                CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             }
 
             //Reverse Gravity

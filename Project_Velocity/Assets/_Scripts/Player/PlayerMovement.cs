@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     //Gravity
     [SerializeField] float gravityScale = 1f;
     public bool useGravity;
+
+    [Header("World Boundaries")]
+    [SerializeField] float upperBound;
+    [SerializeField] float lowerBound;
 
     [Header("Camera Effects")]
     [SerializeField] float fov;
@@ -134,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         currentSpeed = rb.velocity.magnitude;
+        WorldBoundaries();
         CrouchAndSlideManager();
         Crouching();
         Sliding();
@@ -379,6 +385,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 slideCDTimer -= Time.deltaTime;
             }
+        }
+    }
+
+    void WorldBoundaries()
+    {
+        if(transform.position.y > upperBound || transform.position.y < lowerBound)
+        {
+            SceneManager.LoadScene("Davids_Lab");
         }
     }
 
