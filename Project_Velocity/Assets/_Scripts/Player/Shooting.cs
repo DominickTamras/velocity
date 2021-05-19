@@ -5,7 +5,10 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] Camera cam;
+    [SerializeField] MeleeAttack ma;
+    [SerializeField] GameObject bulletIndicator;
     [SerializeField] float range = 100;
+    public bool hasBullet = true;
 
     [Header("Particles")]
     [SerializeField] ParticleSystem bulletTrail;
@@ -28,10 +31,14 @@ public class Shooting : MonoBehaviour
     private void Update()
     {
         FlipView();
+        BulletIndicator();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !ma.isAttacking)
         {
-            Shoot();
+            if(hasBullet)
+            {
+                Shoot();
+            }
         }
     }
 
@@ -39,25 +46,53 @@ public class Shooting : MonoBehaviour
     {
         bulletTrail.Play();
         muzzelFlash.Play();
+        hasBullet = false;
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
+            //VFX
             GameObject impactVFX = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactVFX, 1);
 
+            //Shooting Enemy
+            EnemyDeath enemy = hit.transform.GetComponent<EnemyDeath>();
+            if(enemy != null)
+            {
+                enemy.Die();
+                hasBullet = true;
+            }
+
+            //Reverse Gravity
             if(hit.collider.CompareTag("ReverseGravity"))
             {
-                if(!reverseGravity)
-                {
-                    reverseGravity = true;
-                }
-                else
-                {
-                    reverseGravity = false;
-                }
+                ReverseGravity();
+                hasBullet = true;
             }
+        }
+    }
+    
+    void BulletIndicator()
+    {
+        if(hasBullet)
+        {
+            bulletIndicator.SetActive(true);
+        }
+        else if (!hasBullet)
+        {
+            bulletIndicator.SetActive(false);
+        }
+    }
+
+    public void ReverseGravity()
+    {
+        if (!reverseGravity)
+        {
+            reverseGravity = true;
+        }
+        else
+        {
+            reverseGravity = false;
         }
     }
 

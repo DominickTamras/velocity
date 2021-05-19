@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
     Shooting shooting;
-    [SerializeField] Camera cam;
+    [SerializeField] private List<Camera> camList = new List<Camera>();
     [SerializeField] Transform orientation;
 
     //Current Speed
@@ -341,7 +341,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isSliding)
         {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, slideFov, slideFovTime * Time.deltaTime);
+            foreach(Camera cam in camList)
+            {
+                cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, slideFov, slideFovTime * Time.deltaTime);
+            }
             transform.localScale = new Vector3(transform.localScale.x, crouchingHeight, transform.localScale.z);
             if(!shooting.reverseGravity)
             {
@@ -366,7 +369,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!isCrouching && !isSliding)
         {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, slideFovTime * Time.deltaTime);
+            foreach(Camera cam in camList)
+            {
+                cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, slideFovTime * Time.deltaTime);
+            }
             transform.localScale = new Vector3(transform.localScale.x, standingHeight, transform.localScale.z);
             slideSpeed = startSlideSpeed;
             if(slideCDTimer > -1)

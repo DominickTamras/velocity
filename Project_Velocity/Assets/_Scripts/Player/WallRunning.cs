@@ -24,7 +24,7 @@ public class WallRunning : MonoBehaviour
     [SerializeField] LayerMask wallRunable;
 
     [Header("Camera")]
-    [SerializeField] private Camera cam;
+    [SerializeField] private List<Camera> camList = new List<Camera>();
     [SerializeField] private float fov;
     [SerializeField] private float wallRunFov;
     [SerializeField] private float wallRunFovTime;
@@ -122,7 +122,10 @@ public class WallRunning : MonoBehaviour
         m.isWallRunning = true;
 
         //Camera fov
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, wallRunFov, wallRunFovTime * Time.deltaTime);
+        foreach(Camera cam in camList)
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, wallRunFov, wallRunFovTime * Time.deltaTime);
+        }
 
         //Camera tilt
         if (wallLeft)
@@ -160,7 +163,10 @@ public class WallRunning : MonoBehaviour
         pm.useGravity = true;
         pm.isWallRunning = false;
         m.isWallRunning = false;
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, wallRunFovTime * Time.deltaTime);
+        foreach (Camera cam in camList)
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, wallRunFovTime * Time.deltaTime);
+        }
         tilt = Mathf.Lerp(tilt, 0, cameraTiltTime * Time.deltaTime);
     }
 }
