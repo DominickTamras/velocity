@@ -12,12 +12,23 @@ public class ObstacleManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public event Action onObstacleTrigger;
-    public void ObstacleTriggerEnter()
+    public event Action<int> onObstacleTriggerEnter;
+    public void ObstacleTriggerEnter(int id)
     {
-        if(onObstacleTrigger != null)
+        if(onObstacleTriggerEnter != null)
         {
-            onObstacleTrigger();
+            onObstacleTriggerEnter(id);
         }
     }
+
+    public event Action<int> onObstacleTriggerExit;
+    public void ObstacleTriggerExit(int id)
+    {
+        if(onObstacleTriggerExit != null)
+        {
+            onObstacleTriggerExit(id);
+        }
+    }
+
+  
 }

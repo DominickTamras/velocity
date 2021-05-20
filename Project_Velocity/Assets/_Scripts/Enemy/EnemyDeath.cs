@@ -8,4 +8,6 @@ public class EnemyDeath : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+   
 }
