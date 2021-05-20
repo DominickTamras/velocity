@@ -94,11 +94,11 @@ public class EnemyTracking : MonoBehaviour
     void LookAt()
     {
        
-        Vector3 directionMain = target.transform.position - gameObject.transform.position;
+        Vector3 directionMain = target.transform.position - transform.position;
 
         Quaternion rotation = Quaternion.LookRotation(directionMain);
 
-        gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, finalTime * Time.deltaTime * rotateSpeed);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, finalTime * Time.deltaTime * rotateSpeed);
     }
 
     void LookAt2()
@@ -107,9 +107,9 @@ public class EnemyTracking : MonoBehaviour
         //Vector3 direction = target.transform.position - gameObject.transform.position;
         Vector3 predictPosition = instance.CalcFuturePost(Vector3.Distance(transform.position, instance.transform.position) * predictBuffer);
         
-        Quaternion rotation = Quaternion.LookRotation(predictPosition);
+        Quaternion rotation = Quaternion.LookRotation(predictPosition); // Or this please fix when awake again
 
-        gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, finalTime * Time.deltaTime * rotateSpeed);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, finalTime * Time.deltaTime * rotateSpeed); // If I pass out this is the issue
     }
 
     void ReturnPos()

@@ -409,22 +409,10 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 CalcFuturePost(float timeinSeconds)
     {
-        Vector3 pos = transform.localPosition;
+        Vector3 pos = transform.position;
 
         pos += rb.velocity * timeinSeconds;
 
-        float xValue = pos.x;
-        float yValue = pos.y;
-        float zValue = pos.z;
-
-        Mathf.Abs(xValue);
-
-        Mathf.Abs(yValue);
-
-        Mathf.Abs(zValue);
-
-        Vector3 finalPos = new Vector3(xValue, yValue, zValue);
-
-        return finalPos;
+        return pos;
     }
 }
