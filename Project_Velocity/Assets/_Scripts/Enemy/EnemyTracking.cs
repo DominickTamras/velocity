@@ -105,11 +105,13 @@ public class EnemyTracking : MonoBehaviour
     {
 
         //Vector3 direction = target.transform.position - gameObject.transform.position;
-        Vector3 predictPosition = instance.CalcFuturePost(Vector3.Distance(transform.position, instance.transform.position) * predictBuffer);
+        Vector3 predictPosition = instance.CalcFuturePost(Vector3.Distance(transform.position , instance.transform.position) * predictBuffer);
         
-        Quaternion rotation = Quaternion.LookRotation(predictPosition); // Or this please fix when awake again
+        Quaternion rotation = Quaternion.LookRotation(predictPosition - transform.position); // Or this please fix when awake again Dom
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, finalTime * Time.deltaTime * rotateSpeed); // If I pass out this is the issue
+       // transform.LookAt(predictPosition); // This works, it seems that converting the predict position to a rotation is not a good thing. Alternative solution: Rotate toward position, NOT rotation.
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation , rotation, finalTime * Time.deltaTime * rotateSpeed); // If I pass out this is the issue
     }
 
     void ReturnPos()
