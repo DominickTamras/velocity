@@ -62,11 +62,11 @@ public class EnemyTracking : MonoBehaviour
     {
       
 
-      enemyPos = transform.position.x;
+     // enemyPos = transform.position.x;
       
       dist = Vector3.Distance(target.transform.position, gameObject.transform.position);
       
-     // Debug.Log(dist);
+      Debug.Log(dist);
         if(isIn)
         {
             if (currentSpeedz.currentSpeed < speedThreshold && dist > thresholdCompare)
@@ -94,9 +94,9 @@ public class EnemyTracking : MonoBehaviour
     void LookAt()
     {
        
-        Vector3 direction = target.transform.position - gameObject.transform.position;
-   
-        Quaternion rotation = Quaternion.LookRotation(direction);
+        Vector3 directionMain = target.transform.position - gameObject.transform.position;
+
+        Quaternion rotation = Quaternion.LookRotation(directionMain);
 
         gameObject.transform.rotation = Quaternion.RotateTowards(gameObject.transform.rotation, rotation, finalTime * Time.deltaTime * rotateSpeed);
     }
