@@ -398,7 +398,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(transform.position.y > upperBound || transform.position.y < lowerBound)
         {
-            SceneManager.LoadScene("Davids_Lab");
+            SceneManager.LoadScene("Movement_Playtest_Map");
         }
     }
 

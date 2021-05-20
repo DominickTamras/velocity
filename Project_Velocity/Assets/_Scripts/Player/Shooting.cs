@@ -37,14 +37,17 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
-        FlipView();
-        BulletIndicator();
-
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !ma.isAttacking)
+        if(!MenuManager.GameIsPaused)
         {
-            if(hasBullet)
+            FlipView();
+            BulletIndicator();
+
+            if (Input.GetKeyDown(KeyCode.Mouse0) && !ma.isAttacking)
             {
-                Shoot();
+                if (hasBullet)
+                {
+                    Shoot();
+                }
             }
         }
     }

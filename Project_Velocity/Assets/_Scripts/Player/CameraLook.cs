@@ -27,16 +27,17 @@ public class CameraLook : MonoBehaviour
     private void Start()
     {
         s = GetComponent<Shooting>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     private void Update()
     {
-        PlayerInput();
+        if(!MenuManager.GameIsPaused)
+        {
+            PlayerInput();
 
-        cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation + wr.tilt);
-        orientation.transform.rotation = Quaternion.Euler(0, yRotation, zRotation);
+            cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation + wr.tilt);
+            orientation.transform.rotation = Quaternion.Euler(0, yRotation, zRotation);
+        }
     }
 
     void PlayerInput()
