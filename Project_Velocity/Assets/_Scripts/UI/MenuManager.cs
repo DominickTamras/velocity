@@ -18,7 +18,7 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(GameIsPaused)
             {
