@@ -86,6 +86,9 @@ public class PlayerMovement : MonoBehaviour
 
     RaycastHit slopeHit;
     public bool onSlope;
+
+    [HideInInspector]
+    public int pressedTimes;
     private bool OnSlope()
     {
         if(!shooting.reverseGravity)
@@ -186,10 +189,13 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             isMoving = true;
+       
+            
         }
         else
         {
             isMoving = false;
+ 
         }
 
         moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;

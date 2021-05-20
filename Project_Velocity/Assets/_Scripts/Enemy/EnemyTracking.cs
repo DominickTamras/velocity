@@ -12,12 +12,16 @@ public class EnemyTracking : MonoBehaviour
 
     public float thresholdCompare;
 
+    public float speedThreshold;
+
     public GameObject target; // Replace with event system. (Or turn into scriptable object.)
 
     [HideInInspector]
     public bool isIn;
 
     public float rotateSpeed;
+
+    public float predictBuffer;
 
     [HideInInspector]
     public bool isOut;
@@ -27,6 +31,8 @@ public class EnemyTracking : MonoBehaviour
     private float enemyPos;
 
     private Rigidbody rigid;
+
+    Shoot shootSpeed;
 
     PlayerMovement instance;
 
@@ -47,6 +53,7 @@ public class EnemyTracking : MonoBehaviour
         ogRotation = gameObject.transform.rotation;
         instance = FindObjectOfType<PlayerMovement>();
         currentSpeedz = FindObjectOfType<PlayerMovement>();
+        shootSpeed = FindObjectOfType<Shoot>();
 
     }
 
@@ -62,7 +69,7 @@ public class EnemyTracking : MonoBehaviour
      // Debug.Log(dist);
         if(isIn)
         {
-            if (currentSpeedz.currentSpeed < 12)
+            if (currentSpeedz.currentSpeed < speedThreshold && dist > thresholdCompare)
             {
                 LookAt2();
             }
@@ -98,7 +105,7 @@ public class EnemyTracking : MonoBehaviour
     {
 
         //Vector3 direction = target.transform.position - gameObject.transform.position;
-        Vector3 predictPosition = instance.CalcFuturePost(Vector3.Distance(transform.position, instance.transform.position));
+        Vector3 predictPosition = instance.CalcFuturePost(Vector3.Distance(transform.position, instance.transform.position) * predictBuffer);
         
         Quaternion rotation = Quaternion.LookRotation(predictPosition);
 
@@ -110,30 +117,6 @@ public class EnemyTracking : MonoBehaviour
         gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, ogRotation, Time.deltaTime * 4.0f);
     }
 
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        if(other.tag == "Player")
-        {
-            isOut = false;
-            isIn = true;
-            
-            Debug.Log("Working");
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            finalTime = 0;
-            isIn = false;
-            isOut = true;
-            Debug.Log("Working");
-        }
-    }
 
     private IEnumerator LookAtCor()
     {   
