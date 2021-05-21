@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 { // Update tomorrow. See why ball doesn't go forward. Turn into rigidbody transform.rotation * Vector3.forward
+    [SerializeField] LayerMask Player;
     public float speed;
 
  
-   private Transform player;
+    private Transform player;
 
 
     private Vector3 target;
@@ -29,7 +30,7 @@ public class Shoot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(!other.CompareTag("Enemy") && !other.CompareTag("IgnoreBullet"))
         {
             DestroyShot();
         }

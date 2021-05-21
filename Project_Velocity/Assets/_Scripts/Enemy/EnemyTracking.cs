@@ -66,7 +66,6 @@ public class EnemyTracking : MonoBehaviour
       
       dist = Vector3.Distance(target.transform.position, gameObject.transform.position);
       
-      Debug.Log(dist);
         if(isIn)
         {
             if (currentSpeedz.currentSpeed < speedThreshold && dist > thresholdCompare)
