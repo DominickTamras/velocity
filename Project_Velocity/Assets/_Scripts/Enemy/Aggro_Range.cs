@@ -16,7 +16,7 @@ public class Aggro_Range : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            //check.target = other.gameObject;
+           // check.target = other.transform;
             check.isOut = false;
             check.isIn = true;
 
@@ -28,7 +28,7 @@ public class Aggro_Range : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            //check.target = null;
+           // check.target = null;
             check.finalTime = 0;
             check.isIn = false;
             check.isOut = true;

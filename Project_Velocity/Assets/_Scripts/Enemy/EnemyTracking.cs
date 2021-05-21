@@ -14,7 +14,9 @@ public class EnemyTracking : MonoBehaviour
 
     public float speedThreshold;
 
-    public GameObject target; // Replace with event system. (Or turn into scriptable object.)
+    public float aggroThreshold;
+
+    public Transform target; // Replace with event system. (Or turn into scriptable object.)
 
     [HideInInspector]
     public bool isIn;
@@ -32,11 +34,11 @@ public class EnemyTracking : MonoBehaviour
 
     private Rigidbody rigid;
 
-    Shoot shootSpeed;
+    private Shoot shootSpeed;
 
-    PlayerMovement instance;
+    private PlayerMovement instance;
 
-    PlayerMovement currentSpeedz;
+    private PlayerMovement currentSpeedz;
 
     private Vector3 predictPosition;
 
@@ -50,10 +52,11 @@ public class EnemyTracking : MonoBehaviour
     {   
         // isIn = true;
         rigid = target.GetComponent<Rigidbody>();
-        ogRotation = gameObject.transform.rotation;
+        ogRotation = transform.rotation;
         instance = FindObjectOfType<PlayerMovement>();
         currentSpeedz = FindObjectOfType<PlayerMovement>();
         shootSpeed = FindObjectOfType<Shoot>();
+        
 
     }
 
@@ -64,9 +67,12 @@ public class EnemyTracking : MonoBehaviour
 
      // enemyPos = transform.position.x;
       
-      dist = Vector3.Distance(target.transform.position, gameObject.transform.position);
-      
-        if(isIn)
+      dist = Vector3.Distance(target.position, transform.position);
+
+      float seperation = Vector3.Distance(this.transform.position, target.transform.position);
+
+
+        if (seperation <= aggroThreshold)
         {
             if (currentSpeedz.currentSpeed < speedThreshold && dist > thresholdCompare)
             {
@@ -81,7 +87,7 @@ public class EnemyTracking : MonoBehaviour
 
         }
 
-        if(isOut)
+        if(seperation >= aggroThreshold)
         {
             ReturnPos();
         }
@@ -93,7 +99,7 @@ public class EnemyTracking : MonoBehaviour
     void LookAt()
     {
        
-        Vector3 directionMain = target.transform.position - transform.position;
+        Vector3 directionMain = target.position - transform.position;
 
         Quaternion rotation = Quaternion.LookRotation(directionMain);
 
@@ -115,7 +121,7 @@ public class EnemyTracking : MonoBehaviour
 
     void ReturnPos()
     {
-        gameObject.transform.rotation = Quaternion.Lerp(gameObject.transform.rotation, ogRotation, Time.deltaTime * 4.0f);
+        transform.rotation = Quaternion.Lerp(transform.rotation, ogRotation, Time.deltaTime * 4.0f);
     }
 
 
