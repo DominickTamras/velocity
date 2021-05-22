@@ -128,10 +128,20 @@ public class WallRunning : MonoBehaviour
         }
 
         //Camera tilt
-        if (wallLeft)
-            tilt = Mathf.Lerp(tilt, -cameraTilt, cameraTiltTime * Time.deltaTime);
-        else if (wallRight)
-            tilt = Mathf.Lerp(tilt, cameraTilt, cameraTiltTime * Time.deltaTime);
+        if(!s.reverseGravity)
+        {
+            if (wallLeft)
+                tilt = Mathf.Lerp(tilt, -cameraTilt, cameraTiltTime * Time.deltaTime);
+            else if (wallRight)
+                tilt = Mathf.Lerp(tilt, cameraTilt, cameraTiltTime * Time.deltaTime);
+        }
+        else
+        {
+            if (wallLeft)
+                tilt = Mathf.Lerp(tilt, cameraTilt, cameraTiltTime * Time.deltaTime);
+            else if (wallRight)
+                tilt = Mathf.Lerp(tilt, -cameraTilt, cameraTiltTime * Time.deltaTime);
+        }
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
