@@ -2219,8 +2219,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655775447710549247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.827, z: 1.025}
-  m_LocalScale: {x: 0.34, y: 0.3, z: 1.9225719}
+  m_LocalPosition: {x: 0, y: 1.61, z: 1.025}
+  m_LocalScale: {x: 0.34, y: 0.42076272, z: 1.9225719}
   m_Children: []
   m_Father: {fileID: 1655775448604224293}
   m_RootOrder: 0
@@ -2277,8 +2277,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655775447952254436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.679}
-  m_LocalScale: {x: 0.34, y: 1.8, z: 0.70166224}
+  m_LocalPosition: {x: 0, y: 0.67, z: 0.679}
+  m_LocalScale: {x: 0.34, y: 1.5315509, z: 0.70166224}
   m_Children: []
   m_Father: {fileID: 1655775448604224293}
   m_RootOrder: 1
@@ -12739,7 +12739,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!114 &5441492534853457006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12779,7 +12779,7 @@ MonoBehaviour:
   slideThreshold: 2
   startSlideSpeed: 0.4
   slideDecay: 5
-  slideCD: 0.3
+  slideCD: 0.2
   crouchSpeed: 3
   standingHeight: 1
   crouchingHeight: 0.5
@@ -12855,7 +12855,7 @@ MonoBehaviour:
   obstruction: {fileID: 1655775447710549241}
   wall: {fileID: 1655775447952254438}
   wallClimbPosition: {fileID: 1655775448421266133}
-  climbSpeed: 5
+  climbTime: 0.17
   isWallRunning: 0
 --- !u!114 &5441492534048430354
 MonoBehaviour:
