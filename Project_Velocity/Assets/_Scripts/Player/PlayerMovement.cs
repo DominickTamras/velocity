@@ -198,7 +198,15 @@ public class PlayerMovement : MonoBehaviour
  
         }
 
-        moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
+        //change this when gravity flipping instead
+        if(shooting.reverseGravity)
+        {
+            moveDirection = orientation.forward * verticalMovement - orientation.right * horizontalMovement;
+        }
+        else if(!shooting.reverseGravity)
+        {
+            moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
+        }
     }
 
     //Handles moving the player.

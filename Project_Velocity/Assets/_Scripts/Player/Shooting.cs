@@ -19,6 +19,7 @@ public class Shooting : MonoBehaviour
     [Header("Reverse Gravity")]
     [SerializeField] float flipCamSpeed;
     public bool reverseGravity = false;
+    float zVel;
 
     [Header("Camera Shake")]
     [SerializeField] float magnitude = 4f;
@@ -37,9 +38,10 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
-        if(!MenuManager.GameIsPaused)
+        FlipView();
+
+        if (!MenuManager.GameIsPaused)
         {
-            FlipView();
             BulletIndicator();
 
             if (Input.GetKeyDown(KeyCode.Mouse0) && !ma.isAttacking)
@@ -112,14 +114,32 @@ public class Shooting : MonoBehaviour
         if (reverseGravity)
         {
             Vector3 currentRotation = transform.eulerAngles;
-            currentRotation.z = Mathf.Lerp(currentRotation.z, 180, Time.deltaTime * flipCamSpeed);
+            if (currentRotation.z < 179.9f)
+            {
+                //currentRotation.z = Mathf.Lerp(currentRotation.z, 180f, flipCamSpeed);
+                currentRotation.z = Mathf.SmoothDampAngle(currentRotation.z, 180f, ref zVel, flipCamSpeed);
+            }
+            else
+            {
+                currentRotation.z = 180f;
+                zVel = 0f;
+            }
             cl.zRotation = currentRotation.z;
             transform.eulerAngles = currentRotation;
         }
-        else
+        else if(!reverseGravity)
         {
             Vector3 currentRotation = transform.eulerAngles;
-            currentRotation.z = Mathf.Lerp(currentRotation.z, 0, Time.deltaTime * flipCamSpeed);
+            if(currentRotation.z > 0.1f)
+            {
+                //currentRotation.z = Mathf.Lerp(currentRotation.z, 0f, flipCamSpeed);
+                currentRotation.z = Mathf.SmoothDampAngle(currentRotation.z, 0f, ref zVel, flipCamSpeed);
+            }
+            else
+            {
+                currentRotation.z = 0f;
+                zVel = 0f;
+            }
             cl.zRotation = currentRotation.z;
             transform.eulerAngles = currentRotation;
         }
