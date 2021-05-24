@@ -12774,7 +12774,7 @@ MonoBehaviour:
   airMultiplier: 0.4
   wallStickForce: 15
   groundDrag: 6
-  wallDrag: 4
+  wallDrag: 5
   slideDrag: 2
   airDrag: 1
   jumpForce: 16
@@ -12784,6 +12784,8 @@ MonoBehaviour:
   slideDecay: 5
   slideCD: 0.2
   crouchSpeed: 3
+  standUpCheckDistance: 0
+  canStandUp: 1
   standingHeight: 1
   crouchingHeight: 0.5
   groundLayer:
@@ -12830,7 +12832,7 @@ MonoBehaviour:
   wallDistance: 0.8
   minJumpHeight: 1.5
   wallRunGravity: 0
-  wallRunJumpForce: 10
+  wallRunJumpForce: 8
   wallRunable:
     serializedVersion: 2
     m_Bits: 64

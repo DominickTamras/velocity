@@ -64,8 +64,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float slideDecay;
     [SerializeField] float slideCD;
     [SerializeField] float crouchSpeed;
+    [SerializeField] float standUpCheckDistance;
     float slideCDTimer;
     float slideSpeed;
+    public bool canStandUp = true;
 
     Vector3 slideDirection;
     Vector3 slopeSlideDirection;
@@ -150,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        StandUpCheck();
         currentSpeed = rb.velocity.magnitude;
         WorldBoundaries();
         CrouchAndSlideManager();
@@ -165,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
         Accelerate();
 
         //Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && !wr.isMantling)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && !wr.isMantling && canStandUp)
         {
             Jump();
         }
@@ -339,7 +342,7 @@ public class PlayerMovement : MonoBehaviour
     void CrouchAndSlideManager()
     {
         //Start Crouching
-        if(isGrounded && !isWallRunning && currentSpeed < slideThreshold && Input.GetKeyDown(KeyCode.LeftShift) && !isSliding && !wr.isMantling)
+        if(isGrounded && !isWallRunning && currentSpeed < slideThreshold && Input.GetKey(KeyCode.LeftShift) && !isSliding && !wr.isMantling)
         {
             if (slideCDTimer <= 0)
             {
@@ -359,7 +362,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         //Stand up
-        else if(!isGrounded || Input.GetKeyUp(KeyCode.LeftShift))
+        else if(!isGrounded && canStandUp || !Input.GetKey(KeyCode.LeftShift) && canStandUp)
         {
             isCrouching = false;
             isSliding = false;
@@ -383,7 +386,8 @@ public class PlayerMovement : MonoBehaviour
                 cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, slideFov, slideFovTime * Time.deltaTime);
             }
             transform.localScale = new Vector3(transform.localScale.x, crouchingHeight, transform.localScale.z);
-            if(!shooting.reverseGravity)
+
+            if (!shooting.reverseGravity)
             {
                 //Normal grav
                 if (!OnSlope() || (rb.velocity.y > 0))
@@ -399,24 +403,46 @@ public class PlayerMovement : MonoBehaviour
                     slideSpeed = Mathf.Lerp(slideSpeed, 0, slideDecay * Time.deltaTime);
                 }
             }
+
+            if(currentSpeed <= slideThreshold)
+            {
+                isCrouching = true;
+                isSliding = false;
+            }
         }
     }
 
     void StandUp()
     {
-        if(!isCrouching && !isSliding)
+        if(!isCrouching && !isSliding && canStandUp)
         {
             foreach(Camera cam in camList)
             {
                 cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, slideFovTime * Time.deltaTime);
             }
+
             transform.localScale = new Vector3(transform.localScale.x, standingHeight, transform.localScale.z);
+
             slideSpeed = startSlideSpeed;
+
             if(slideCDTimer > -1)
             {
                 slideCDTimer -= Time.deltaTime;
             }
         }
+    }
+
+    void StandUpCheck()
+    {
+        if(shooting.reverseGravity)
+        {
+            canStandUp = !Physics.Raycast(transform.position, -orientation.up, playerHeight / 2 + 1);
+        }
+        else if(!shooting.reverseGravity)
+        {
+            canStandUp = !Physics.Raycast(transform.position, orientation.up, playerHeight / 2 + 1);
+        }
+
     }
 
     void WorldBoundaries()
