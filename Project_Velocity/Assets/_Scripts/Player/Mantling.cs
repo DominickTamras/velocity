@@ -36,7 +36,7 @@ public class Mantling : MonoBehaviour
 
     void mantleCheck()
     {
-        if (wall.isColliding && !obstruction.isColliding && !isWallRunning && !canMantle && !mantleNow)
+        if (wall.isColliding && !obstruction.isColliding && !isWallRunning && !canMantle && !mantleNow && Input.GetKey(KeyCode.W))
         {
             canMantle = true;
         }
@@ -44,14 +44,17 @@ public class Mantling : MonoBehaviour
 
     void getValues()
     {
-        if(canMantle && Input.GetKey(KeyCode.W))
+        if(canMantle)
         {
             canMantle = false;
-            rb.isKinematic = true;
+            //rb.isKinematic = true;
             startPos = transform.position;
             endPos = wallClimbPosition.position;
             mantleNow = true;
             localClimbTime = climbTime;
+
+            //vel reset
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         }
     }
 
@@ -68,7 +71,7 @@ public class Mantling : MonoBehaviour
                 mantleNow = false;
                 t_mantle = 0f;
                 wr.isMantling = false;
-                rb.isKinematic = false;
+                //rb.isKinematic = false;
             }
         }
     }

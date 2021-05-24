@@ -22,6 +22,7 @@ public class WallRunning : MonoBehaviour
     [SerializeField] float wallRunGravity = 0f;
     [SerializeField] float wallRunJumpForce;
     [SerializeField] LayerMask wallRunable;
+    bool velReset = true;
 
     [Header("Camera")]
     [SerializeField] private List<Camera> camList = new List<Camera>();
@@ -100,19 +101,42 @@ public class WallRunning : MonoBehaviour
     void CheckWall()
     {
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallDistance, wallRunable);
+        Debug.DrawRay(transform.position, -orientation.right, Color.red, wallDistance);
         if(wallLeft)
         {
+            pm.wallHit = leftWallHit;
             currentWall = leftWallHit.collider.gameObject;
         }
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallDistance, wallRunable);
-        if(wallRight)
+        Debug.DrawRay(transform.position, orientation.right, Color.red, wallDistance);
+        if (wallRight)
         {
+            pm.wallHit = rightWallHit;
             currentWall = rightWallHit.collider.gameObject;
         }
     }
 
     void StartWallRun()
     {
+        //vel reset
+        if(!s.reverseGravity)
+        {
+            if (rb.velocity.y < 0 && velReset == true)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+                velReset = false;
+            }
+        }
+        else if(s.reverseGravity)
+        {
+            if (rb.velocity.y > 0 && velReset == true)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+                velReset = false;
+            }
+        }
+
+
         //Wall run gravity
         rb.AddForce(Vector3.down * wallRunGravity, ForceMode.Force);
 
@@ -128,22 +152,12 @@ public class WallRunning : MonoBehaviour
         }
 
         //Camera tilt
-        if(!s.reverseGravity)
-        {
-            if (wallLeft)
-                tilt = Mathf.Lerp(tilt, -cameraTilt, cameraTiltTime * Time.deltaTime);
-            else if (wallRight)
-                tilt = Mathf.Lerp(tilt, cameraTilt, cameraTiltTime * Time.deltaTime);
-        }
-        else
-        {
-            if (wallLeft)
-                tilt = Mathf.Lerp(tilt, cameraTilt, cameraTiltTime * Time.deltaTime);
-            else if (wallRight)
-                tilt = Mathf.Lerp(tilt, -cameraTilt, cameraTiltTime * Time.deltaTime);
-        }
+        if (wallLeft)
+            tilt = Mathf.Lerp(tilt, -cameraTilt, cameraTiltTime * Time.deltaTime);
+        else if (wallRight)
+            tilt = Mathf.Lerp(tilt, cameraTilt, cameraTiltTime * Time.deltaTime);
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if(wallLeft)
             {
@@ -170,6 +184,7 @@ public class WallRunning : MonoBehaviour
 
     void StopWallRun()
     {
+        velReset = true;
         pm.useGravity = true;
         pm.isWallRunning = false;
         m.isWallRunning = false;

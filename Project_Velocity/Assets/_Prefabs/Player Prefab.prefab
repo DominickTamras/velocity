@@ -2220,7 +2220,7 @@ Transform:
   m_GameObject: {fileID: 1655775447710549247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.61, z: 1.025}
-  m_LocalScale: {x: 0.34, y: 0.42076272, z: 1.9225719}
+  m_LocalScale: {x: 0.444516, y: 0.42076272, z: 1.9225719}
   m_Children: []
   m_Father: {fileID: 1655775448604224293}
   m_RootOrder: 0
@@ -2277,8 +2277,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655775447952254436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.67, z: 0.679}
-  m_LocalScale: {x: 0.34, y: 1.5315509, z: 0.70166224}
+  m_LocalPosition: {x: 0, y: 0.44, z: 0.579}
+  m_LocalScale: {x: 0.34, y: 1.4978504, z: 0.49536654}
   m_Children: []
   m_Father: {fileID: 1655775448604224293}
   m_RootOrder: 1
@@ -12739,7 +12739,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 3
+  m_CollisionDetection: 1
 --- !u!114 &5441492534853457006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12766,12 +12766,15 @@ MonoBehaviour:
   slideFov: 150
   slideFovTime: 5
   universalMaxVelocity: 60
-  minSpeed: 6
-  maxSpeed: 10
+  minSpeed: 4
+  maxSpeed: 12
   acceleration: 1
+  deceleration: 3
   movementMultiplier: 10
   airMultiplier: 0.4
+  wallStickForce: 15
   groundDrag: 6
+  wallDrag: 4
   slideDrag: 2
   airDrag: 1
   jumpForce: 16
@@ -12824,7 +12827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMantling: 0
   orientation: {fileID: 5441492533623661824}
-  wallDistance: 1.2
+  wallDistance: 0.8
   minJumpHeight: 1.5
   wallRunGravity: 0
   wallRunJumpForce: 10
@@ -12838,7 +12841,7 @@ MonoBehaviour:
   wallRunFov: 90
   wallRunFovTime: 20
   cameraTilt: 10
-  cameraTiltTime: 20
+  cameraTiltTime: 10
   canWallRun: 0
 --- !u!114 &1655775448184097302
 MonoBehaviour:

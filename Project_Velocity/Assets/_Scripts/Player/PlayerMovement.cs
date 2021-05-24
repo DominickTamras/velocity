@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    WallRunning wr;
     Rigidbody rb;
     Shooting shooting;
     [SerializeField] private List<Camera> camList = new List<Camera>();
@@ -34,9 +35,12 @@ public class PlayerMovement : MonoBehaviour
     public float minSpeed = 6f;
     public float maxSpeed = 10f;
     public float acceleration = 1f;
+    public float deceleration = 1f;
     public float movementMultiplier = 10f;
     public float airMultiplier = 0.4f;
+    [SerializeField] float wallStickForce = 20f;
     public float groundDrag = 6f;
+    public float wallDrag = 4f;
     public float slideDrag = 0.5f;
     public float airDrag = 1f;
     float moveSpeed;
@@ -47,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 moveDirection;
     Vector3 slopeMoveDirection;
+    Vector3 wallMoveDirection;
 
     [Header("Jumping")]
     public float jumpForce = 15f;
@@ -86,6 +91,9 @@ public class PlayerMovement : MonoBehaviour
 
     RaycastHit slopeHit;
     public bool onSlope;
+
+    //wall running stick
+    public RaycastHit wallHit;
 
     [HideInInspector]
     public int pressedTimes;
@@ -131,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
     {
         useGravity = true;
 
+        wr = GetComponent<WallRunning>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         shooting = GetComponent<Shooting>();
@@ -156,13 +165,15 @@ public class PlayerMovement : MonoBehaviour
         Accelerate();
 
         //Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && !wr.isMantling)
         {
             Jump();
         }
 
         //Populates slopeMoveDirection with ProjectOnPlane which projects moveDirection onto a surface (in this case: slopeHit).
         slopeMoveDirection = Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);
+
+        wallMoveDirection = Vector3.ProjectOnPlane(moveDirection, wallHit.normal);
     }
 
     private void FixedUpdate()
@@ -184,29 +195,26 @@ public class PlayerMovement : MonoBehaviour
     //Gets the inputs from the player and populates moveDirection.
     void PlayerInput()
     {
-        horizontalMovement = Input.GetAxisRaw("Horizontal");
-        verticalMovement = Input.GetAxisRaw("Vertical");
+        if(!isWallRunning)
+        {
+            horizontalMovement = Input.GetAxisRaw("Horizontal");
+            verticalMovement = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            horizontalMovement = 0f;
+            verticalMovement = Input.GetAxisRaw("Vertical");
+        }
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             isMoving = true;
-       
-            
         }
         else
         {
             isMoving = false;
- 
         }
 
-        //change this when gravity flipping instead
-        if(shooting.reverseGravity)
-        {
-            moveDirection = orientation.forward * verticalMovement - orientation.right * horizontalMovement;
-        }
-        else if(!shooting.reverseGravity)
-        {
-            moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
-        }
+        moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
     }
 
     //Handles moving the player.
@@ -216,7 +224,7 @@ public class PlayerMovement : MonoBehaviour
         if(currentSpeed < universalMaxVelocity)
         {
             //On ground or wall running and not on slope
-            if ((isGrounded && !OnSlope()) || (isWallRunning && !OnSlope()))
+            if (isGrounded && !OnSlope() && !isWallRunning)
             {
                 if (isCrouching)
                 {
@@ -230,6 +238,11 @@ public class PlayerMovement : MonoBehaviour
                 {
                     rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
                 }
+            }
+            else if (isWallRunning && !OnSlope())
+            {
+                rb.AddForce(wallMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+                rb.AddForce(-wallHit.normal * wallStickForce * movementMultiplier, ForceMode.Force);
             }
             //On ground and on slope and not wall running
             else if (isGrounded && OnSlope())
@@ -258,9 +271,13 @@ public class PlayerMovement : MonoBehaviour
     //Handles the drag of the player.
     void ControlDrag()
     {
-        if((isGrounded && !isSliding) || (isWallRunning && !isSliding))
+        if(isGrounded && !isSliding && !isWallRunning)
         {
             rb.drag = groundDrag;
+        }
+        else if(isWallRunning && !isSliding)
+        {
+            rb.drag = wallDrag;
         }
         else if(isSliding)
         {
@@ -315,14 +332,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            moveSpeed = minSpeed;
+            moveSpeed = Mathf.Lerp(moveSpeed, minSpeed, deceleration * Time.deltaTime);
         }
     }
 
     void CrouchAndSlideManager()
     {
         //Start Crouching
-        if(isGrounded && !isWallRunning && currentSpeed < slideThreshold && Input.GetKeyDown(KeyCode.LeftShift) && !isSliding)
+        if(isGrounded && !isWallRunning && currentSpeed < slideThreshold && Input.GetKeyDown(KeyCode.LeftShift) && !isSliding && !wr.isMantling)
         {
             if (slideCDTimer <= 0)
             {
@@ -331,7 +348,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         //Start Sliding
-        else if(isGrounded && !isWallRunning && currentSpeed >= slideThreshold && Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching)
+        else if(isGrounded && !isWallRunning && currentSpeed >= slideThreshold && Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching && !wr.isMantling)
         {
             if(slideCDTimer <= 0)
             {
