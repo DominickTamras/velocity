@@ -101,14 +101,12 @@ public class WallRunning : MonoBehaviour
     void CheckWall()
     {
         wallLeft = Physics.Raycast(transform.position, -orientation.right, out leftWallHit, wallDistance, wallRunable);
-        Debug.DrawRay(transform.position, -orientation.right, Color.red, wallDistance);
         if(wallLeft)
         {
             pm.wallHit = leftWallHit;
             currentWall = leftWallHit.collider.gameObject;
         }
         wallRight = Physics.Raycast(transform.position, orientation.right, out rightWallHit, wallDistance, wallRunable);
-        Debug.DrawRay(transform.position, orientation.right, Color.red, wallDistance);
         if (wallRight)
         {
             pm.wallHit = rightWallHit;

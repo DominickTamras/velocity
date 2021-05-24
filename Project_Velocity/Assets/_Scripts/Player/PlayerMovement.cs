@@ -434,15 +434,7 @@ public class PlayerMovement : MonoBehaviour
 
     void StandUpCheck()
     {
-        if(shooting.reverseGravity)
-        {
-            canStandUp = !Physics.Raycast(transform.position, -orientation.up, playerHeight / 2 + 1);
-        }
-        else if(!shooting.reverseGravity)
-        {
-            canStandUp = !Physics.Raycast(transform.position, orientation.up, playerHeight / 2 + 1);
-        }
-
+        canStandUp = !Physics.Raycast(transform.position, orientation.up, playerHeight / 2 + 1);
     }
 
     void WorldBoundaries()
