@@ -2219,8 +2219,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655775447710549247}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.827, z: 1.025}
-  m_LocalScale: {x: 0.34, y: 0.3, z: 1.9225719}
+  m_LocalPosition: {x: 0, y: 1.61, z: 1.025}
+  m_LocalScale: {x: 0.444516, y: 0.42076272, z: 1.9225719}
   m_Children: []
   m_Father: {fileID: 1655775448604224293}
   m_RootOrder: 0
@@ -2277,8 +2277,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655775447952254436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.679}
-  m_LocalScale: {x: 0.34, y: 1.8, z: 0.70166224}
+  m_LocalPosition: {x: 0, y: 0.44, z: 0.579}
+  m_LocalScale: {x: 0.34, y: 1.4978504, z: 0.49536654}
   m_Children: []
   m_Father: {fileID: 1655775448604224293}
   m_RootOrder: 1
@@ -12766,12 +12766,15 @@ MonoBehaviour:
   slideFov: 150
   slideFovTime: 5
   universalMaxVelocity: 60
-  minSpeed: 6
-  maxSpeed: 10
+  minSpeed: 4
+  maxSpeed: 12
   acceleration: 1
+  deceleration: 3
   movementMultiplier: 10
   airMultiplier: 0.4
+  wallStickForce: 15
   groundDrag: 6
+  wallDrag: 5
   slideDrag: 2
   airDrag: 1
   jumpForce: 16
@@ -12779,8 +12782,10 @@ MonoBehaviour:
   slideThreshold: 2
   startSlideSpeed: 0.4
   slideDecay: 5
-  slideCD: 0.3
+  slideCD: 0.2
   crouchSpeed: 3
+  standUpCheckDistance: 0
+  canStandUp: 1
   standingHeight: 1
   crouchingHeight: 0.5
   groundLayer:
@@ -12824,10 +12829,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMantling: 0
   orientation: {fileID: 5441492533623661824}
-  wallDistance: 1.2
+  wallDistance: 0.8
   minJumpHeight: 1.5
   wallRunGravity: 0
-  wallRunJumpForce: 10
+  wallRunJumpForce: 8
   wallRunable:
     serializedVersion: 2
     m_Bits: 64
@@ -12837,8 +12842,8 @@ MonoBehaviour:
   fov: 80
   wallRunFov: 90
   wallRunFovTime: 20
-  cameraTilt: 5
-  cameraTiltTime: 20
+  cameraTilt: 10
+  cameraTiltTime: 10
   canWallRun: 0
 --- !u!114 &1655775448184097302
 MonoBehaviour:
@@ -12855,7 +12860,7 @@ MonoBehaviour:
   obstruction: {fileID: 1655775447710549241}
   wall: {fileID: 1655775447952254438}
   wallClimbPosition: {fileID: 1655775448421266133}
-  climbSpeed: 5
+  climbTime: 0.17
   isWallRunning: 0
 --- !u!114 &5441492534048430354
 MonoBehaviour:

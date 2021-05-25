@@ -116,7 +116,6 @@ public class Shooting : MonoBehaviour
             Vector3 currentRotation = transform.eulerAngles;
             if (currentRotation.z < 179.9f)
             {
-                //currentRotation.z = Mathf.Lerp(currentRotation.z, 180f, flipCamSpeed);
                 currentRotation.z = Mathf.SmoothDampAngle(currentRotation.z, 180f, ref zVel, flipCamSpeed);
             }
             else
@@ -132,7 +131,6 @@ public class Shooting : MonoBehaviour
             Vector3 currentRotation = transform.eulerAngles;
             if(currentRotation.z > 0.1f)
             {
-                //currentRotation.z = Mathf.Lerp(currentRotation.z, 0f, flipCamSpeed);
                 currentRotation.z = Mathf.SmoothDampAngle(currentRotation.z, 0f, ref zVel, flipCamSpeed);
             }
             else
