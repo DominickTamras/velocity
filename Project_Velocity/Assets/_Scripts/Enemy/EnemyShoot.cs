@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot : MonoBehaviour
+public class EnemyShoot : MonoBehaviour
 { // Update tomorrow. See why ball doesn't go forward. Turn into rigidbody transform.rotation * Vector3.forward
     [SerializeField] LayerMask Player;
     public float speed;
-
  
     private Transform player;
 
+    public bool isLockedOn;
 
     private Vector3 target;
     void Start()
-    {   
+    {
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = new Vector3(player.position.x, player.position.y, player.position.z);
     }
@@ -23,6 +24,11 @@ public class Shoot : MonoBehaviour
     {
         transform.position += transform.rotation * Vector3.forward * speed * Time.deltaTime;
         
+        if(isLockedOn) // work on better to follow. Taper off eventually
+        {
+            transform.position = Vector3.MoveTowards( transform.position, player.position, speed * Time.deltaTime);
+
+        }
 
         StartCoroutine(JustDie());
         
@@ -46,7 +52,11 @@ public class Shoot : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        DestroyShot();
+        if (isLockedOn == false)
+
+        {
+            DestroyShot();
+        }
     }
         
 }

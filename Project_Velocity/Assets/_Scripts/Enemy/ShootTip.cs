@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class ShootTip : MonoBehaviour
 {
-    private float timeBetweenShots;
+    public EnemyShoot_Settings settingFeature;
 
-    public float startTimeBetweenShots;
+    /* private float timeBetweenShots;
+
+     public float startTimeBetweenShots;
+
+    //re-add if you remove scriptable object
+
+     public GameObject projectile;*/
 
     private Transform enemyTransform;
-
-    public GameObject projectile;
+    private float timeBetweenShots;
     void Start()
     {
         enemyTransform = GetComponentInParent<Transform>();
-        timeBetweenShots = startTimeBetweenShots;
+        timeBetweenShots = settingFeature.startTimeBetweenShots;
     }
 
     // Update is called once per frame
@@ -24,8 +29,8 @@ public class ShootTip : MonoBehaviour
         {
          
 
-            Instantiate(projectile, gameObject.transform.position, enemyTransform.rotation);
-            timeBetweenShots = startTimeBetweenShots;
+            Instantiate(settingFeature.projectile, gameObject.transform.position, enemyTransform.rotation);
+            timeBetweenShots = settingFeature.startTimeBetweenShots;
         }
         else
         {

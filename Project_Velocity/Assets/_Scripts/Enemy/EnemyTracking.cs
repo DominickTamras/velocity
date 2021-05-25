@@ -34,7 +34,7 @@ public class EnemyTracking : MonoBehaviour
 
     private Rigidbody rigid;
 
-    private Shoot shootSpeed;
+    private EnemyShoot shootSpeed;
 
     private PlayerMovement instance;
 
@@ -55,7 +55,7 @@ public class EnemyTracking : MonoBehaviour
         ogRotation = transform.rotation;
         instance = FindObjectOfType<PlayerMovement>();
         currentSpeedz = FindObjectOfType<PlayerMovement>();
-        shootSpeed = FindObjectOfType<Shoot>();
+        shootSpeed = FindObjectOfType<EnemyShoot>();
         
 
     }
