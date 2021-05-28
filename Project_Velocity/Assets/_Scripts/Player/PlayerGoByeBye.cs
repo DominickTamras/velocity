@@ -10,7 +10,7 @@ public class PlayerGoByeBye : MonoBehaviour
         if (other.CompareTag("DamagePlayer"))
         {
             Debug.Log("fuck");
-            SceneManager.LoadScene("Movement_Playtest_Map");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

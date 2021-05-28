@@ -441,7 +441,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(transform.position.y > upperBound || transform.position.y < lowerBound)
         {
-            SceneManager.LoadScene("Movement_Playtest_Map");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
