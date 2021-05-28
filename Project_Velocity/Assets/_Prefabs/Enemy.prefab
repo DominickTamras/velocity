@@ -43,8 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf1fadc5fc0dd0478f34b14d39d8724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBetweenShots: 1.5
-  projectile: {fileID: 2282801553185631044, guid: 9500990471d15904c9ccd8bd3a190c61, type: 3}
+  settingFeature: {fileID: 0}
 --- !u!1 &6272623244307671026
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,12 +157,12 @@ MonoBehaviour:
   maxSpeed: 180
   minSpeed: 40
   finalTime: 40
-  thresholdCompare: 9
-  speedThreshold: 13
-  aggroThreshold: 50
+  thresholdCompare: 12
+  speedThreshold: 16
+  aggroThreshold: 60
   target: {fileID: 0}
   isIn: 0
-  rotateSpeed: 1.35
+  rotateSpeed: 1.39
   predictBuffer: 0.065
   isOut: 0
 --- !u!114 &486046547
