@@ -62,4 +62,10 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void OpenTerminal(TerminalLog log)
+    {
+        //open terminal menu with the correct log
+        Debug.Log(log.title);
+    }
 }
