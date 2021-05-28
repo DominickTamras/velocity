@@ -135,7 +135,7 @@ public class EnemyTracking : MonoBehaviour
         {
 
             //lerpTime += Time.deltaTime;
-            finalTime = Mathf.Lerp(currentTime, minSpeed, lerpTime += Time.deltaTime * 0.2f);
+            finalTime = Mathf.Lerp(currentTime, minSpeed, lerpTime += Time.deltaTime * 0.5f);
             yield return null;
 
         }
@@ -152,7 +152,7 @@ public class EnemyTracking : MonoBehaviour
         {
 
             //lerpTime += Time.deltaTime;
-            finalTime = Mathf.Lerp(currentTime, maxSpeed, lerpTime += Time.deltaTime * 0.2f);
+            finalTime = Mathf.Lerp(currentTime, maxSpeed, lerpTime += Time.deltaTime * 0.5f);
             yield return null;
 
         }
