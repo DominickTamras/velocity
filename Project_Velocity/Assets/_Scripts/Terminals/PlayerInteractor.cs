@@ -6,15 +6,12 @@ public class PlayerInteractor : MonoBehaviour
 {
     [SerializeField] Camera cam;
     [SerializeField] float interactRange;
-
-    void Start()
-    {
-
-    }
-
     void Update()
     {
-        InteractFinder();
+        if(!MenuManager.GameIsPaused)
+        {
+            InteractFinder();
+        }
     }
 
     void InteractFinder()

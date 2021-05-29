@@ -155,9 +155,10 @@ public class WallRunning : MonoBehaviour
         else if (wallRight)
             tilt = Mathf.Lerp(tilt, cameraTilt, cameraTiltTime * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        //Leave Wall
+        if (wallLeft)
         {
-            if(wallLeft)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 //store previous wall
                 previousWall = leftWallHit.collider.gameObject;
@@ -167,7 +168,17 @@ public class WallRunning : MonoBehaviour
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(wallrunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);
             }
-            else if(wallRight)
+            if(Input.GetKeyDown(KeyCode.D))
+            {
+                //store previous wall
+                previousWall = leftWallHit.collider.gameObject;
+
+                rb.AddForce(leftWallHit.normal * 5, ForceMode.Impulse);
+            }
+        }
+        else if (wallRight)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 //store previous wall
                 previousWall = rightWallHit.collider.gameObject;
@@ -176,6 +187,13 @@ public class WallRunning : MonoBehaviour
                 Vector3 wallrunJumpDirection = transform.up + rightWallHit.normal;
                 rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
                 rb.AddForce(wallrunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                //store previous wall
+                previousWall = rightWallHit.collider.gameObject;
+
+                rb.AddForce(rightWallHit.normal * 5, ForceMode.Impulse);
             }
         }
     }

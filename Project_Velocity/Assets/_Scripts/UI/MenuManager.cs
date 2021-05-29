@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+
+    public GameObject terminalUI;
+    public TextMeshProUGUI logTitle;
+    public TextMeshProUGUI logBody;
 
     void Start()
     {
@@ -26,6 +32,7 @@ public class MenuManager : MonoBehaviour
             }
             else
             {
+                OpenPauseMenu();
                 Pause();
             }
         }
@@ -33,7 +40,6 @@ public class MenuManager : MonoBehaviour
 
     void Pause()
     {
-        pauseMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -41,9 +47,8 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public void Resume()
+    void EndPause()
     {
-        pauseMenuUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -51,10 +56,21 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    void OpenPauseMenu()
+    {
+        pauseMenuUI.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        terminalUI.SetActive(false);
+        EndPause();
+    }
+
     public void Restart()
     {
-        Time.timeScale = 1f;
-        GameIsPaused = false;
+        EndPause();
         SceneManager.LoadScene("Movement_Playtest_Map");
     }
 
@@ -65,7 +81,12 @@ public class MenuManager : MonoBehaviour
 
     public void OpenTerminal(TerminalLog log)
     {
-        //open terminal menu with the correct log
-        Debug.Log(log.title);
+        //Game paused
+        terminalUI.SetActive(true);
+        Pause();
+
+        //Open termal menu
+        logTitle.text = log.title;
+        logBody.text = log.log;
     }
 }
