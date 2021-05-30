@@ -47,7 +47,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    void EndPause()
+    public void EndPause()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
