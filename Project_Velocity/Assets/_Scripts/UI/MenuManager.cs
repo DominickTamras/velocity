@@ -7,24 +7,47 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
+    [Header("Pause")]
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
+    [Header("Terminal")]
     public GameObject terminalUI;
     public TextMeshProUGUI logTitle;
     public TextMeshProUGUI logBody;
+
+    [Header("Flashing Words")]
+    public GameObject flashingWords;
+    public int showWordsAmount = 3;
+    public float showWordsTime = 1f;
+    public float closeWordsTime = 0.5f;
+
+    int wordsCount = 0;
+    bool addCount = false;
+
+    float timerShow = 0f;
+    float timerClose = 0f;
+    bool shown = false;
+    bool closed = false;
+
 
     void Start()
     {
         //Disables cursor
         pauseMenuUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
+
+        //show flashing words
+        timerShow = showWordsTime;
     }
 
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        FlashingWordsManager();
+
+        //Pause
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(GameIsPaused)
             {
@@ -89,4 +112,57 @@ public class MenuManager : MonoBehaviour
         logTitle.text = log.title;
         logBody.text = log.log;
     }
+
+    void ShowWords()
+    {
+        addCount = false;
+        flashingWords.SetActive(true);
+    }
+
+    void CloseWords()
+    {
+        if (!addCount)
+        {
+            wordsCount++;
+            addCount = true;
+        }
+        flashingWords.SetActive(false);
+    }
+
+    void FlashingWordsManager()
+    {
+        if (wordsCount < showWordsAmount)
+        {
+            if (timerShow > 0)
+            {
+                ShowWords();
+                timerShow -= Time.deltaTime;
+                closed = false;
+            }
+            else
+            {
+                if (!closed)
+                {
+                    timerClose = closeWordsTime;
+                    closed = true;
+                }
+            }
+
+            if (timerClose > 0)
+            {
+                CloseWords();
+                timerClose -= Time.deltaTime;
+                shown = false;
+            }
+            else
+            {
+                if (!shown)
+                {
+                    timerShow = showWordsTime;
+                    shown = true;
+                }
+            }
+        }
+    }
+
 }

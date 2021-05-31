@@ -168,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
         Accelerate();
 
         //Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && !wr.isMantling && canStandUp)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && !wr.isMantling && canStandUp && !isWallRunning)
         {
             Jump();
         }

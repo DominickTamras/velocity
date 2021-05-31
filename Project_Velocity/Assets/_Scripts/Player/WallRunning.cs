@@ -165,10 +165,9 @@ public class WallRunning : MonoBehaviour
 
                 //jump off wall
                 Vector3 wallrunJumpDirection = transform.up + leftWallHit.normal;
-                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-                rb.AddForce(wallrunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);
+                rb.AddForce(wallrunJumpDirection * wallRunJumpForce, ForceMode.Impulse);
             }
-            if(Input.GetKeyDown(KeyCode.D))
+            else if(Input.GetKeyDown(KeyCode.D))
             {
                 //store previous wall
                 previousWall = leftWallHit.collider.gameObject;
@@ -185,10 +184,9 @@ public class WallRunning : MonoBehaviour
 
                 //jump off wall
                 Vector3 wallrunJumpDirection = transform.up + rightWallHit.normal;
-                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-                rb.AddForce(wallrunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);
+                rb.AddForce(wallrunJumpDirection * wallRunJumpForce, ForceMode.Impulse);
             }
-            if (Input.GetKeyDown(KeyCode.A))
+            else if (Input.GetKeyDown(KeyCode.A))
             {
                 //store previous wall
                 previousWall = rightWallHit.collider.gameObject;

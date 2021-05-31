@@ -35,7 +35,7 @@ public class CameraLook : MonoBehaviour
         {
             PlayerInput();
 
-            orientation.transform.rotation = Quaternion.Euler(0, yRotation, zRotation);
+            orientation.transform.localRotation = Quaternion.Euler(0, yRotation, zRotation);
             cam.transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation + wr.tilt);
         }
     }
