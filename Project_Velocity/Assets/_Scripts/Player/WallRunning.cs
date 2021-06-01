@@ -165,7 +165,7 @@ public class WallRunning : MonoBehaviour
 
                 //jump off wall
                 Vector3 wallrunJumpDirection = transform.up + leftWallHit.normal;
-                rb.AddForce(wallrunJumpDirection * wallRunJumpForce, ForceMode.Impulse);
+                rb.AddForce(wallrunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);
             }
             else if(Input.GetKeyDown(KeyCode.D))
             {
@@ -184,7 +184,7 @@ public class WallRunning : MonoBehaviour
 
                 //jump off wall
                 Vector3 wallrunJumpDirection = transform.up + rightWallHit.normal;
-                rb.AddForce(wallrunJumpDirection * wallRunJumpForce, ForceMode.Impulse);
+                rb.AddForce(wallrunJumpDirection * wallRunJumpForce * 100, ForceMode.Force);
             }
             else if (Input.GetKeyDown(KeyCode.A))
             {
