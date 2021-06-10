@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI logTitle;
     public TextMeshProUGUI logBody;
 
+
     [Header("Flashing Words")]
     public GameObject flashingWords;
     public int showWordsAmount = 3;
@@ -30,9 +31,13 @@ public class MenuManager : MonoBehaviour
     bool shown = false;
     bool closed = false;
 
+    private TypeWriterEffect checkEnd;
+
 
     void Start()
     {
+        checkEnd = FindObjectOfType<TypeWriterEffect>();
+
         //Disables cursor
         pauseMenuUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
@@ -44,7 +49,11 @@ public class MenuManager : MonoBehaviour
 
     void Update()
     {
-        FlashingWordsManager();
+        if(checkEnd.isEnded == false)
+        {
+            FlashingWordsManager();
+        }
+       
 
         //Pause
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -129,6 +138,8 @@ public class MenuManager : MonoBehaviour
         flashingWords.SetActive(false);
     }
 
+
+
     void FlashingWordsManager()
     {
         if (wordsCount < showWordsAmount)
@@ -164,5 +175,7 @@ public class MenuManager : MonoBehaviour
             }
         }
     }
+
+
 
 }
