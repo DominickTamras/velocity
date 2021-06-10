@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObstacleSetter : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class ObstacleSetter : MonoBehaviour
         {
             if (laser == true)
             {
-                // Add simply as damage
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
 
             if (movingPlatform == true)
