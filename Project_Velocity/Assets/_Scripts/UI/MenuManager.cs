@@ -103,7 +103,7 @@ public class MenuManager : MonoBehaviour
     public void Restart()
     {
         EndPause();
-        SceneManager.LoadScene("Movement_Playtest_Map");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Quit()
