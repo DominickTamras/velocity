@@ -482,49 +482,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &745983451
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 745983453}
-  - component: {fileID: 745983452}
-  m_Layer: 0
-  m_Name: GameEvents_Obstacles
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &745983452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745983451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a058abe8872ea97469999ce4fc2560ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &745983453
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 745983451}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.9575586, y: -2.943707, z: 8.823722}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &862772397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1200,8 @@ MonoBehaviour:
   delay: 0.1
   fullText: Connecting....
   timeChange: 0
+  imageBg: {fileID: 0}
+  isEnded: 0
 --- !u!222 &1185759123
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1579,6 +1538,8 @@ MonoBehaviour:
     want?><I want revenge.><Then our interests are the same. I am unlocking your
     chain code.> "
   timeChange: 15
+  imageBg: {fileID: 0}
+  isEnded: 0
 --- !u!222 &1348362780
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1923,6 +1884,8 @@ MonoBehaviour:
   delay: 0.1
   fullText: 'Host connected. ID: [REDACTED]'
   timeChange: 5
+  imageBg: {fileID: 0}
+  isEnded: 0
 --- !u!222 &1913608743
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2073,6 +2036,8 @@ MonoBehaviour:
   delay: 0.1
   fullText: 'Connected Servitor: Janitorial 02810'
   timeChange: 10
+  imageBg: {fileID: 0}
+  isEnded: 0
 --- !u!222 &2000879592
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2143,6 +2108,63 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 678471532283533121, guid: 440812e2a607db6498a1cfd8a298b81f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 440812e2a607db6498a1cfd8a298b81f, type: 3}
+--- !u!1001 &2123365540871388924
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.9575586
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.943707
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.823722
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123365541468402471, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
+      propertyPath: m_Name
+      value: GameEvents_Obstacles
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
 --- !u!1001 &5596831756230053372
 PrefabInstance:
   m_ObjectHideFlags: 0
