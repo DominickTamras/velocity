@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3573630894868224171}
   - component: {fileID: 5839653050290447549}
   - component: {fileID: 5246334729548687207}
-  m_Layer: 0
+  - component: {fileID: 7952692045639333570}
+  m_Layer: 6
   m_Name: pCube1
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7952692045639333570
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7699328885768948565}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.121048, y: 2.452405, z: 2.452405}
+  m_Center: {x: 4.5038767, y: 2.2053895, z: 0}
 --- !u!1 &8053235041514902359
 GameObject:
   m_ObjectHideFlags: 0
