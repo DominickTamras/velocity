@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] GameObject bulletIndicator;
     [SerializeField] float range = 100;
     public bool hasBullet = true;
+    public BlackHoleGunSway kickback;
 
     [Header("Particles")]
     [SerializeField] ParticleSystem bulletTrail;
@@ -49,6 +50,7 @@ public class Shooting : MonoBehaviour
                 if (hasBullet)
                 {
                     Shoot();
+                    kickback.GunKickBack();
                 }
             }
         }
