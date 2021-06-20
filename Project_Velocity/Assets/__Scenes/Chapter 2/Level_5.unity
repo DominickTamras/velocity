@@ -1096,6 +1096,18 @@ PrefabInstance:
       propertyPath: fullText
       value: Test my asshole
       objectReference: {fileID: 0}
+    - target: {fileID: 3710355005496485332, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: amount_2
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710355005496485332, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: maxAmount_2
+      value: 0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710355005496485332, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: smoothing_2
+      value: 0.86
+      objectReference: {fileID: 0}
     - target: {fileID: 4020910497172431955, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: delay
       value: 0.05
@@ -1156,6 +1168,10 @@ PrefabInstance:
       propertyPath: m_RenderPostProcessing
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5441492534048430354, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: kickback
+      value: 
+      objectReference: {fileID: 1170270625}
     - target: {fileID: 5441492534853457006, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: lowerBound
       value: -150
@@ -7721,6 +7737,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1382404489570517595, guid: 94feba02d57541547ae07a92c947816c, type: 3}
+--- !u!114 &1170270625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3710355005496485332, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 106277959}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86776891e981ed4bbf49141caa3a68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1171574039
 GameObject:
   m_ObjectHideFlags: 0

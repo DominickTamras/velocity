@@ -3592,6 +3592,7 @@ MonoBehaviour:
   bulletIndicator: {fileID: 8846339390239929499}
   range: 100
   hasBullet: 1
+  kickback: {fileID: 3710355005496485332}
   bulletTrail: {fileID: 4953907988426835941}
   muzzelFlash: {fileID: 4953907988426835941}
   hitEffect: {fileID: 8947749168885971377, guid: 2f35872c39a541e448f81ebcd403ffa2, type: 3}
@@ -3971,11 +3972,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 0.03
   maxAmount: 0.1
-  amount_2: 0.04
-  maxAmount_2: 0.15
+  amount_2: 0.47
+  maxAmount_2: 0.86
   smoothing: 7
-  smoothing_2: 0.13
-  bhg: {fileID: 5520117033937594567}
+  smoothing_2: 0.86
+  bhg: {fileID: 0}
 --- !u!1 &5951320022160817178
 GameObject:
   m_ObjectHideFlags: 0
