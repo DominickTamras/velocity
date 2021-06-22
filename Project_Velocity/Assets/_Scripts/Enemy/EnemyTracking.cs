@@ -28,6 +28,8 @@ public class EnemyTracking : MonoBehaviour
     [HideInInspector]
     public bool isOut;
 
+    public ShootTip startShoot;
+
     private float dist;
 
     private float enemyPos;
@@ -49,7 +51,8 @@ public class EnemyTracking : MonoBehaviour
 
 
     void Awake()
-    {   
+    {
+        startShoot.enabled = false;
         // isIn = true;
         rigid = target.GetComponent<Rigidbody>();
         ogRotation = transform.rotation;
@@ -74,6 +77,8 @@ public class EnemyTracking : MonoBehaviour
 
         if (seperation <= aggroThreshold)
         {
+            startShoot.enabled = true;
+
             if (currentSpeedz.currentSpeed < speedThreshold && dist > thresholdCompare)
             {
                 LookAt2();
