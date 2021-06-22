@@ -18,6 +18,14 @@ public class ObstacleSetter : MonoBehaviour
 
     private bool doorActivate;
 
+
+    [Header("Enemy # Death")]
+    public List<GameObject> enemyInArea = new List<GameObject>();
+    
+    public bool killEnemyToProceed;
+
+    public Vector3 endPosOfLocked;
+
     [Header("Trigger Toggle")]
     public bool turnOnTrigger;
 
@@ -68,6 +76,22 @@ public class ObstacleSetter : MonoBehaviour
                 StartCoroutine(OpenDoor());
           
 
+            }
+
+            if(killEnemyToProceed == true)
+            {   
+                foreach(GameObject missing in enemyInArea)
+                {
+                    if(missing == null)
+                    {
+                        enemyInArea.Remove(missing);
+                    }
+                }
+
+                if(enemyInArea.Count == 0)
+                {
+                    transform.localPosition = Vector3.Lerp(transform.localPosition, endPosOfLocked, 4 * Time.deltaTime);
+                }
             }
 
         }
