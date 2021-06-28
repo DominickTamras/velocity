@@ -242,6 +242,9 @@ MonoBehaviour:
   movingPlatform: 0
   spinOfDeath: 0
   doorOpen: 1
+  enemyInArea: []
+  killEnemyToProceed: 0
+  endPosOfLocked: {x: 0, y: 0, z: 0}
   turnOnTrigger: 1
 --- !u!65 &230419955
 BoxCollider:
@@ -1257,7 +1260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6272623244199206956, guid: 769ee0e56c3f2724384585c6c48bfa5b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6272623244307670990, guid: 769ee0e56c3f2724384585c6c48bfa5b, type: 3}
       propertyPath: m_RootOrder
@@ -1558,6 +1561,10 @@ PrefabInstance:
     - target: {fileID: 2127813482, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241397028921845103, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5441492533596226016, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: m_Name
@@ -2247,7 +2254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6272623244199206956, guid: 769ee0e56c3f2724384585c6c48bfa5b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6272623244307670990, guid: 769ee0e56c3f2724384585c6c48bfa5b, type: 3}
       propertyPath: m_RootOrder
@@ -2298,8 +2305,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1883611615}
     - target: {fileID: 6272623244307670991, guid: 769ee0e56c3f2724384585c6c48bfa5b, type: 3}
+      propertyPath: predictBuffer
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272623244307670991, guid: 769ee0e56c3f2724384585c6c48bfa5b, type: 3}
       propertyPath: aggroThreshold
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272623244307670991, guid: 769ee0e56c3f2724384585c6c48bfa5b, type: 3}
+      propertyPath: speedThreshold
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6272623244307670991, guid: 769ee0e56c3f2724384585c6c48bfa5b, type: 3}
+      propertyPath: thresholdCompare
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6272623244307671026, guid: 769ee0e56c3f2724384585c6c48bfa5b, type: 3}
       propertyPath: m_Name
