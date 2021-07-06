@@ -12,6 +12,12 @@ public class ObstacleSetter : MonoBehaviour
 
     public bool movingPlatform;
 
+    public float moveSpeed;
+
+    public Vector3 startPong;
+
+    public Vector3 endPong;
+
     public bool spinOfDeath;
 
     public float spinSpeed;
@@ -62,7 +68,7 @@ public class ObstacleSetter : MonoBehaviour
 
             if (movingPlatform == true)
             {
-                transform.position = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(0, 0, 4), Mathf.PingPong(Time.time * 2, 1.0f));
+                transform.position = Vector3.Lerp(startPong, endPong, Mathf.PingPong(Time.time * moveSpeed, 1.0f));
             }
 
             if (spinOfDeath == true)
