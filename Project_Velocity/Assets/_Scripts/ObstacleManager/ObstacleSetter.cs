@@ -14,6 +14,8 @@ public class ObstacleSetter : MonoBehaviour
 
     public bool spinOfDeath;
 
+    public float spinSpeed;
+
     public bool doorOpen;
 
     private bool doorActivate;
@@ -65,7 +67,7 @@ public class ObstacleSetter : MonoBehaviour
 
             if (spinOfDeath == true)
             {
-                transform.Rotate(Vector3.forward * 50 * Time.deltaTime);
+                transform.Rotate(Vector3.up * spinSpeed * Time.deltaTime);
                 //Add damage eventually
             }
 
