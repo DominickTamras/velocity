@@ -70,7 +70,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    void Pause()
+    public void Pause()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
