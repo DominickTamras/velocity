@@ -68,7 +68,7 @@ public class ObstacleSetter : MonoBehaviour
 
             if (movingPlatform == true)
             {
-                transform.position = Vector3.Lerp(startPong, endPong, Mathf.PingPong(Time.time * moveSpeed, 1.0f));
+                transform.localPosition = Vector3.Lerp(startPong, endPong, Mathf.PingPong(Time.time * moveSpeed, 1.0f));
             }
 
             if (spinOfDeath == true)

@@ -10,6 +10,8 @@ public class TypeWriterEffect : MonoBehaviour {
 	private string currentText = "";
 	public float timeChange;
 	public GameObject imageBg;
+
+	private MenuManager pause;
 	
 	[HideInInspector]
 	public bool isEnded;
@@ -20,6 +22,7 @@ public class TypeWriterEffect : MonoBehaviour {
 	{
 		isEnded = true;
 		StartCoroutine(ShowText());
+
 	}
 
     private void Update()
