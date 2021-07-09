@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8952677482086329896}
   - component: {fileID: 6814783413436778133}
   - component: {fileID: 1938798932658377493}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube1_polySurface3_polySurface8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2256639884554219384}
   - component: {fileID: 254745297388582200}
   - component: {fileID: 1631506407967456857}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube1_polySurface3_polySurface6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 8861575951866206156}
   - component: {fileID: 5242076410947956546}
   - component: {fileID: 3217412911359895297}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube1_polySurface3_polySurface7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,9 +252,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4270329681470609860}
-  m_Layer: 0
+  - component: {fileID: 1872227140932482488}
+  m_Layer: 6
   m_Name: Container_GEO_1
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,6 +281,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1872227140932482488
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3461177481265709950}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.092037, y: 3.332077, z: 11.047437}
+  m_Center: {x: -0.013737559, y: 3.7176971, z: 0.029294968}
 --- !u!1 &3854123887477770938
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +305,7 @@ GameObject:
   - component: {fileID: 2057980443079074098}
   - component: {fileID: 3846640185503431761}
   - component: {fileID: 3199049932355696812}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: polySurface1_pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +386,7 @@ GameObject:
   - component: {fileID: 4735372222743464146}
   - component: {fileID: 4197893367333173687}
   - component: {fileID: 2053237996336231379}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube1_polySurface3_polySurface5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +467,7 @@ GameObject:
   - component: {fileID: 2470807114261676841}
   - component: {fileID: 6881709973494243894}
   - component: {fileID: 9121546438476183782}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube1_polySurface2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +548,7 @@ GameObject:
   - component: {fileID: 6708489391097060022}
   - component: {fileID: 3456363867242129116}
   - component: {fileID: 4331375785906795745}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: pCube1_polySurface4_polySurface3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

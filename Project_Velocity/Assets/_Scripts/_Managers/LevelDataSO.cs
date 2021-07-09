@@ -14,4 +14,6 @@ public class LevelDataSO : ScriptableObject
     //Enemy Score
     public int totalEnemies;
     public int enemiesKilled;
+
+ 
 }

@@ -98,7 +98,10 @@ public class ObstacleSetter : MonoBehaviour
 
                 if(enemyInArea.Count == 0)
                 {
-                    transform.localPosition = Vector3.Lerp(transform.localPosition, endPosOfLocked, 4 * Time.deltaTime);
+
+                    this.gameObject.SetActive(false);
+                    
+                    //transform.localPosition = Vector3.Lerp(transform.localPosition, endPosOfLocked, 4 * Time.deltaTime);
                 }
             }
 
