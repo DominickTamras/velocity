@@ -441,6 +441,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(transform.position.y > upperBound || transform.position.y < lowerBound)
         {
+            EnemyDeath.enemyCount = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

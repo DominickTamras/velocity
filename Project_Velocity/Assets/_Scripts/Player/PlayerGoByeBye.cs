@@ -9,6 +9,7 @@ public class PlayerGoByeBye : MonoBehaviour
     {
         if (other.CompareTag("DamagePlayer"))
         {
+            EnemyDeath.enemyCount = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

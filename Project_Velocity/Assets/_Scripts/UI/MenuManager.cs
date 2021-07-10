@@ -103,6 +103,7 @@ public class MenuManager : MonoBehaviour
     public void Restart()
     {
         EndPause();
+        EnemyDeath.enemyCount = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
