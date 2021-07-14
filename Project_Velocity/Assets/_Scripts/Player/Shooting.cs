@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 using EZCameraShake;
 
 public class Shooting : MonoBehaviour
@@ -28,6 +29,17 @@ public class Shooting : MonoBehaviour
     [SerializeField] float fadeInTime = 0.1f;
     [SerializeField] float fadeOutTime = 0.5f;
 
+    [Header("VFX")]
+
+    public GameObject gunEffectCharge;
+    public GameObject gunEffectFlash;
+    public GameObject gunEffectCircle;
+
+    private VisualEffect bulletCharge;
+    private VisualEffect bulletFlash;
+    private VisualEffect gunCircle;
+
+
     CameraLook cl;
     PlayerMovement pm;
 
@@ -35,6 +47,10 @@ public class Shooting : MonoBehaviour
     {
         cl = GetComponent<CameraLook>();
         pm = GetComponent<PlayerMovement>();
+
+        bulletCharge = gunEffectCharge.GetComponent<VisualEffect>();
+        bulletFlash = gunEffectFlash.GetComponent<VisualEffect>();
+        gunCircle = gunEffectCircle.GetComponent<VisualEffect>(); 
     }
 
     private void Update()
@@ -58,8 +74,11 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        bulletTrail.Play();
-        muzzelFlash.Play();
+        bulletCharge.Play();
+        gunCircle.Play();
+        bulletFlash.Play();
+       // bulletTrail.Play();
+      //  muzzelFlash.Play();
         hasBullet = false;
 
         RaycastHit hit;
