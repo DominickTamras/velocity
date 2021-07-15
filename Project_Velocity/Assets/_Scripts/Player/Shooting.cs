@@ -34,10 +34,12 @@ public class Shooting : MonoBehaviour
     public GameObject gunEffectCharge;
     public GameObject gunEffectFlash;
     public GameObject gunEffectCircle;
+    public GameObject gunImpactEffect;
 
     private VisualEffect bulletCharge;
     private VisualEffect bulletFlash;
     private VisualEffect gunCircle;
+
 
 
     CameraLook cl;
@@ -51,6 +53,9 @@ public class Shooting : MonoBehaviour
         bulletCharge = gunEffectCharge.GetComponent<VisualEffect>();
         bulletFlash = gunEffectFlash.GetComponent<VisualEffect>();
         gunCircle = gunEffectCircle.GetComponent<VisualEffect>(); 
+       
+
+
     }
 
     private void Update()
@@ -78,14 +83,13 @@ public class Shooting : MonoBehaviour
         gunCircle.Play();
         bulletFlash.Play();
        // bulletTrail.Play();
-      //  muzzelFlash.Play();
         hasBullet = false;
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
             //VFX
-            GameObject impactVFX = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            GameObject impactVFX = Instantiate(gunImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactVFX, 1);
 
             //Shooting Enemy
