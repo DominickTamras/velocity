@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class EnemyShoot : MonoBehaviour
 { // Update tomorrow. See why ball doesn't go forward. Turn into rigidbody transform.rotation * Vector3.forward
@@ -12,9 +13,18 @@ public class EnemyShoot : MonoBehaviour
     public bool isLockedOn;
 
     private Vector3 target;
-    void Start()
-    {
 
+    public GameObject enemyBulletEffect;
+
+    public GameObject enemyBulletEnd;
+
+    private VisualEffect explodeEffect;
+
+    private VisualEffect explodeEffectStart;
+    void Start()
+    {   
+        explodeEffect = enemyBulletEnd.GetComponent<VisualEffect>();
+        explodeEffectStart = enemyBulletEffect.GetComponent<VisualEffect>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = new Vector3(player.position.x, player.position.y, player.position.z);
     }
@@ -45,7 +55,10 @@ public class EnemyShoot : MonoBehaviour
     public void DestroyShot()
 
     {
-        Destroy(gameObject);
+        this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        explodeEffectStart.Stop();
+        explodeEffect.Play();
+        Destroy(gameObject, 0.5f);
     }
 
     IEnumerator JustDie()

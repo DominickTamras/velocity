@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3089337823222688217
+--- !u!114 &-8555444007420803546
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Outershell
-  m_Shader: {fileID: -6465566751694194690, guid: b95c61c37876c19418e51ef21ae6de23, type: 3}
+  m_Name: Enemy_Bullet_Pistol
+  m_Shader: {fileID: -6465566751694194690, guid: cbcdfd6988a7b6b449c3b6cc9bbb6b3b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,10 +32,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_35bf2fab5a9d4ede8e7beb42613bf702:
-        m_Texture: {fileID: 2800000, guid: 7c0896f47bd04424dadb5ca776179dc6, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -76,10 +72,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_71965ceeb83d4bff8d626722ac3e3d88_Texture_1:
-        m_Texture: {fileID: 2800000, guid: f1d51ed493a42ad4789ff2be401e8b43, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -97,10 +89,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_043fe73564494d08992b65ba53f6cec6: 0.1
-    - Vector1_05552c02172d4e4cb61aff7e1e5f7276: 3.12
-    - Vector1_1d098d9451494ed7abc409a70317262b: 0.14
-    - Vector1_649b510beaff40d8934f87c0e80e9a62: 0.005
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -128,9 +116,6 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_351070205d4e48529379652a08c84481: {r: 176.0502, g: 49.773354, b: 0, a: 0}
-    - Color_960f05a3086849caa3273ec7998acd1b: {r: 32, g: 0, b: 0, a: 0}
-    - Color_d8b754df65504a329b866bebd4f69357: {r: 179.39633, g: 52.597874, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
