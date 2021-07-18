@@ -55,10 +55,11 @@ public class EnemyShoot : MonoBehaviour
     public void DestroyShot()
 
     {
+        this.gameObject.GetComponent<Collider>().enabled = false;
         this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-        explodeEffectStart.Stop();
-        explodeEffect.Play();
-        Destroy(gameObject, 0.5f);
+        explodeEffectStart.Stop(); // Initial particle
+        explodeEffect.Play(); //Explode on death
+        Destroy(gameObject, 1f);
     }
 
     IEnumerator JustDie()
