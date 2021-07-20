@@ -105,6 +105,15 @@ public class MenuManager : MonoBehaviour
 
     public void DeathScreen()
     {
+        StartCoroutine(StartDeathScreen());
+      /*  Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        deathMenu.SetActive(true);*/
+    }
+
+    IEnumerator StartDeathScreen()
+    {
+        yield return new WaitForSeconds(0.6f);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         deathMenu.SetActive(true);

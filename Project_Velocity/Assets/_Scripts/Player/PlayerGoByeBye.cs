@@ -8,6 +8,10 @@ public class PlayerGoByeBye : MonoBehaviour
     public Animator playAnim;
 
     public MenuManager deathScreenStart;
+
+    public GameObject playerHolder;
+
+    public GameObject main_Camera;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("DamagePlayer"))
@@ -17,7 +21,13 @@ public class PlayerGoByeBye : MonoBehaviour
 
             playAnim.Play("GlitchEffect");
 
+            playerHolder.SetActive(false);
+
+            main_Camera.SetActive(false);
+
             deathScreenStart.DeathScreen();
+
+            
 
             //StartCoroutine(ActivateDeathScreen());
         }
@@ -25,7 +35,7 @@ public class PlayerGoByeBye : MonoBehaviour
 
     IEnumerator ActivateDeathScreen()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(2f);
 
         deathScreenStart.DeathScreen();
 
