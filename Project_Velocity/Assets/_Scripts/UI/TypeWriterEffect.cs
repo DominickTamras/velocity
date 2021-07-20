@@ -11,7 +11,9 @@ public class TypeWriterEffect : MonoBehaviour {
 	public float timeChange;
 	public GameObject imageBg;
 
-	private MenuManager pause;
+	public MenuManager pause;
+
+	public GameObject player;
 	
 	[HideInInspector]
 	public bool isEnded;
@@ -22,6 +24,8 @@ public class TypeWriterEffect : MonoBehaviour {
 	{
 		isEnded = true;
 		StartCoroutine(ShowText());
+		player.SetActive(false);
+	
 
 	}
 
@@ -45,10 +49,14 @@ public class TypeWriterEffect : MonoBehaviour {
 
 		yield return new WaitForSeconds(timeChange);
 
-		imageBg.SetActive(false);
+		player.SetActive(true);
+
+		pause.TalkLog();
+		/*imageBg.SetActive(false);
 		this.GetComponent<TextMeshProUGUI>().enabled = false;
-		isEnded = false;
+		isEnded = false;*/
 		//Destroy(this.gameObject);
+		
 
 	}
 }

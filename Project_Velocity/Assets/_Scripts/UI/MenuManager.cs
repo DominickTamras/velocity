@@ -23,6 +23,14 @@ public class MenuManager : MonoBehaviour
     public float showWordsTime = 1f;
     public float closeWordsTime = 0.5f;
 
+    [Header("Death menu")]
+    public GameObject deathMenu;
+
+    [Header("Talking Log")]
+    public GameObject talkinglog;
+
+
+
     int wordsCount = 0;
     bool addCount = false;
 
@@ -36,24 +44,26 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        checkEnd = FindObjectOfType<TypeWriterEffect>();
+        //checkEnd = FindObjectOfType<TypeWriterEffect>();
 
         //Disables cursor
         pauseMenuUI.SetActive(false);
+        deathMenu.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
 
         //show flashing words
         timerShow = showWordsTime;
+        talkinglog.SetActive(false);
     }
 
 
     void Update()
     {
-        if(checkEnd.isEnded == false)
+        /*if(checkEnd.isEnded == false)
         {
             FlashingWordsManager();
-        }
-       
+        }*/
+        FlashingWordsManager();
 
         //Pause
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -93,6 +103,13 @@ public class MenuManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
     }
 
+    public void DeathScreen()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        deathMenu.SetActive(true);
+    }
+
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
@@ -107,6 +124,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void TalkLog()
+    {
+       /* Time.timeScale = 1f;*/
+        talkinglog.SetActive(false);
+    }
     public void Quit()
     {
         Application.Quit();
