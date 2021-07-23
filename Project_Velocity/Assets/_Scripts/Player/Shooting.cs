@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] float range = 100;
     public bool hasBullet = true;
     public BlackHoleGunSway kickback;
+    public BlackHoleGunSway armKickBack;
 
     [Header("Particles")]
     [SerializeField] ParticleSystem bulletTrail;
@@ -72,6 +73,7 @@ public class Shooting : MonoBehaviour
                 {
                     Shoot();
                     kickback.GunKickBack();
+                    armKickBack.GunKickBack();
                 }
             }
         }

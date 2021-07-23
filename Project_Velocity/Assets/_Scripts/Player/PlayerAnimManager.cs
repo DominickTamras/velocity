@@ -5,9 +5,16 @@ using UnityEngine;
 public class PlayerAnimManager : MonoBehaviour
 {
     [SerializeField] Animator anim;
+    [SerializeField] Animator punchAnim;
 
     public void playPunch()
     {
         anim.SetTrigger("MeleeAttack");
+    }
+
+    public void playOfficalPunch()
+    {
+        //punchAnim.SetTrigger("MeleeAttacker");
+        punchAnim.SetTrigger("MeleeAttack2");
     }
 }

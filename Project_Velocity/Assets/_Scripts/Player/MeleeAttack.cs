@@ -49,7 +49,8 @@ public class MeleeAttack : MonoBehaviour
 
     void attackStart()
     {
-        anim.playPunch();
+        //anim.playPunch();
+        anim.playOfficalPunch();
         col.enabled = true;
         isAttacking = true;
         attackCDTimer = attackCD;
