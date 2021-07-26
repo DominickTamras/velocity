@@ -40,6 +40,12 @@ public class ObstacleSetter : MonoBehaviour
     private Vector3 ogPos;
     private Vector3 endPos;
 
+    [Header("Misc.")]
+
+    public bool breakPod;
+
+
+
     void Start()
     {
         endPos = new Vector3(transform.position.x, 3, transform.position.z);
@@ -85,6 +91,7 @@ public class ObstacleSetter : MonoBehaviour
           
 
             }
+
 
             if(killEnemyToProceed == true)
             {   

@@ -14,10 +14,7 @@ public class Shooting : MonoBehaviour
     public BlackHoleGunSway kickback;
     public BlackHoleGunSway armKickBack;
 
-    [Header("Particles")]
-    [SerializeField] ParticleSystem bulletTrail;
-    [SerializeField] ParticleSystem muzzelFlash;
-    [SerializeField] GameObject hitEffect;
+   
 
     [Header("Reverse Gravity")]
     [SerializeField] float flipCamSpeed;
@@ -36,10 +33,12 @@ public class Shooting : MonoBehaviour
     public GameObject gunEffectFlash;
     public GameObject gunEffectCircle;
     public GameObject gunImpactEffect;
+    public GameObject gunBurstAmmoEffect;
 
     private VisualEffect bulletCharge;
     private VisualEffect bulletFlash;
     private VisualEffect gunCircle;
+    private VisualEffect gunBurstAmmo;
 
 
 
@@ -53,7 +52,8 @@ public class Shooting : MonoBehaviour
 
         bulletCharge = gunEffectCharge.GetComponent<VisualEffect>();
         bulletFlash = gunEffectFlash.GetComponent<VisualEffect>();
-        gunCircle = gunEffectCircle.GetComponent<VisualEffect>(); 
+        gunCircle = gunEffectCircle.GetComponent<VisualEffect>();
+        gunBurstAmmo = gunBurstAmmoEffect.GetComponent<VisualEffect>();
        
 
 
@@ -84,6 +84,7 @@ public class Shooting : MonoBehaviour
         bulletCharge.Play();
         gunCircle.Play();
         bulletFlash.Play();
+        gunBurstAmmo.Play();
        // bulletTrail.Play();
         hasBullet = false;
 

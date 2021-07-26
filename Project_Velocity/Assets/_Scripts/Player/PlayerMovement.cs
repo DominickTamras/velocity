@@ -87,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
     float groundCheckDelay = 0.1f;
     float groundCheckTimer;
 
+
     //turn back to private after debug
     public bool onGround = true;
     public bool isGrounded;
@@ -211,6 +212,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             isMoving = true;
+
         }
         else
         {

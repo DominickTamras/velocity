@@ -23,11 +23,16 @@ public class MenuManager : MonoBehaviour
     public float showWordsTime = 1f;
     public float closeWordsTime = 0.5f;
 
+    [Header("Log Chat")]
+    public GameObject chatUI;
+    public TextMeshProUGUI chatBody;
+    
     [Header("Death menu")]
     public GameObject deathMenu;
 
-    [Header("Talking Log")]
-    public GameObject talkinglog;
+/*    [Header("Talking Log")]
+    public GameObject talkinglog;*/
+ 
 
 
 
@@ -53,7 +58,7 @@ public class MenuManager : MonoBehaviour
 
         //show flashing words
         timerShow = showWordsTime;
-        talkinglog.SetActive(false);
+        //talkinglog.SetActive(false);
     }
 
 
@@ -133,11 +138,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void TalkLog()
-    {
-       /* Time.timeScale = 1f;*/
-        talkinglog.SetActive(false);
-    }
+  
     public void Quit()
     {
         Application.Quit();
@@ -152,6 +153,20 @@ public class MenuManager : MonoBehaviour
         //Open termal menu
         logTitle.text = log.title;
         logBody.text = log.log;
+    }
+
+    public void StartChat(ChatLog chatLog)
+    {
+        chatUI.SetActive(true);
+        //Pause();
+        //chatBody.text = chatLog.chatLog;
+    }
+
+    public void EndChat()
+    {
+        chatUI.SetActive(false);
+        
+
     }
 
     void ShowWords()

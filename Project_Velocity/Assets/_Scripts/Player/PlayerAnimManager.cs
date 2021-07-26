@@ -6,6 +6,7 @@ public class PlayerAnimManager : MonoBehaviour
 {
     [SerializeField] Animator anim;
     [SerializeField] Animator punchAnim;
+    [SerializeField] Animator headBob;
 
     public void playPunch()
     {
@@ -17,4 +18,5 @@ public class PlayerAnimManager : MonoBehaviour
         //punchAnim.SetTrigger("MeleeAttacker");
         punchAnim.SetTrigger("MeleeAttack2");
     }
+
 }

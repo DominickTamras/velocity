@@ -4,29 +4,30 @@ using UnityEngine.UI;
 using TMPro;
 public class TypeWriterEffect : MonoBehaviour {
 
-	public float delay = 0.1f;
-	[TextArea]
-	public string fullText;
+	public float delay;
+
 	private string currentText = "";
+	
 	public float timeChange;
-	public GameObject imageBg;
+
+	public GameObject playerHolder;
 
 	public MenuManager pause;
 
-	public GameObject player;
+	public ChatLog currentText2;
 	
 	[HideInInspector]
 	public bool isEnded;
 
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
 	{
+		playerHolder.SetActive(false);
 		isEnded = true;
 		StartCoroutine(ShowText());
-		player.SetActive(false);
-	
 
+		//fullText = currentText2.chatLog;
 	}
 
     private void Update()
@@ -39,9 +40,9 @@ public class TypeWriterEffect : MonoBehaviour {
 	{
 			
 
-		for (int i = 0; i < fullText.Length; i++) 
+		for (int i = 0; i < currentText2.chatLog.Length; i++) 
 			{
-				currentText = fullText.Substring(0, i);
+				currentText = currentText2.chatLog.Substring(0, i);
 				this.GetComponent<TextMeshProUGUI>().text = currentText;
 				yield return new WaitForSeconds(delay);
 
@@ -49,9 +50,8 @@ public class TypeWriterEffect : MonoBehaviour {
 
 		yield return new WaitForSeconds(timeChange);
 
-		player.SetActive(true);
-
-		pause.TalkLog();
+		playerHolder.SetActive(true);
+		pause.EndChat();
 		/*imageBg.SetActive(false);
 		this.GetComponent<TextMeshProUGUI>().enabled = false;
 		isEnded = false;*/
