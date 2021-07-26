@@ -4833,7 +4833,6 @@ MonoBehaviour:
   chatUI: {fileID: 5241397028921845103}
   chatBody: {fileID: 2715160541998119306}
   deathMenu: {fileID: 3562865694508096441}
-  talkinglog: {fileID: 5241397028921845103}
 --- !u!1 &5441492535556166001
 GameObject:
   m_ObjectHideFlags: 0
@@ -4940,7 +4939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5441492535577982769}
   m_LocalRotation: {x: -0, y: 0.000000014901159, z: -0, w: 1}
-  m_LocalPosition: {x: -113, y: 5, z: 128}
+  m_LocalPosition: {x: -113, y: 5, z: 139.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5441492534330451383}
@@ -5044,12 +5043,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af42acf2c392ad47addd22613706518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0
-  fullText: 
-  timeChange: 1
-  imageBg: {fileID: 7163765671337008493}
+  delay: 0.1
+  timeChange: 3
+  playerHolder: {fileID: 5441492534853457000}
   pause: {fileID: 151870117}
-  player: {fileID: 5441492534853457000}
+  currentText2: {fileID: 0}
   isEnded: 0
 --- !u!114 &2715160541998119306
 MonoBehaviour:
