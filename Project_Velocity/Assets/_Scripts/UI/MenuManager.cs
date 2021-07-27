@@ -18,7 +18,8 @@ public class MenuManager : MonoBehaviour
 
 
     [Header("Flashing Words")]
-    public GameObject flashingWords;
+    public GameObject flashingWordsObject;
+    public TextMeshProUGUI flashingWordText;
     public int showWordsAmount = 3;
     public float showWordsTime = 1f;
     public float closeWordsTime = 0.5f;
@@ -30,19 +31,20 @@ public class MenuManager : MonoBehaviour
     [Header("Death menu")]
     public GameObject deathMenu;
 
-/*    [Header("Talking Log")]
-    public GameObject talkinglog;*/
- 
+    /*    [Header("Talking Log")]
+        public GameObject talkinglog;*/
 
 
 
-    int wordsCount = 0;
+    [HideInInspector]
+    public int wordsCount = 0;
     bool addCount = false;
 
-    float timerShow = 0f;
-    float timerClose = 0f;
-    bool shown = false;
-    bool closed = false;
+ 
+     float timerShow = 0f;
+     float timerClose = 0f;
+     bool shown = false;
+     bool closed = false;
 
     private TypeWriterEffect checkEnd;
 
@@ -68,7 +70,7 @@ public class MenuManager : MonoBehaviour
         {
             FlashingWordsManager();
         }*/
-        FlashingWordsManager();
+        //FlashingWordsManager();
 
         //Pause
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -169,10 +171,11 @@ public class MenuManager : MonoBehaviour
 
     }
 
-    void ShowWords()
+    public void ShowWords()
     {
         addCount = false;
-        flashingWords.SetActive(true);
+        flashingWordsObject.SetActive(true);
+
     }
 
     void CloseWords()
@@ -182,13 +185,15 @@ public class MenuManager : MonoBehaviour
             wordsCount++;
             addCount = true;
         }
-        flashingWords.SetActive(false);
+        flashingWordsObject.SetActive(false);
     }
 
 
 
-    void FlashingWordsManager()
+    public void FlashingWordsManager(FlashingWordsInstance flashWords)
     {
+        flashingWordText.text = flashWords.flashWords;
+
         if (wordsCount < showWordsAmount)
         {
             if (timerShow > 0)
@@ -198,12 +203,14 @@ public class MenuManager : MonoBehaviour
                 closed = false;
             }
             else
-            {
+            {   
                 if (!closed)
                 {
                     timerClose = closeWordsTime;
                     closed = true;
+                  
                 }
+
             }
 
             if (timerClose > 0)
@@ -211,15 +218,22 @@ public class MenuManager : MonoBehaviour
                 CloseWords();
                 timerClose -= Time.deltaTime;
                 shown = false;
+
             }
             else
             {
                 if (!shown)
-                {
+                { 
                     timerShow = showWordsTime;
                     shown = true;
+
+                  
                 }
             }
+            
         }
+
+        
+
     }
 }
