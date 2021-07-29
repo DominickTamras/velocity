@@ -21,9 +21,8 @@ public class PlayerGoByeBye : MonoBehaviour
 
             playAnim.Play("GlitchEffect");
 
-            playerHolder.SetActive(false);
-
-            main_Camera.SetActive(false);
+            PlayerHolderTurnOff();
+            OverlayTurnOff();
 
             deathScreenStart.DeathScreen();
 
@@ -32,6 +31,19 @@ public class PlayerGoByeBye : MonoBehaviour
             //StartCoroutine(ActivateDeathScreen());
         }
     }
+
+
+    public void PlayerHolderTurnOff()
+    {
+
+        playerHolder.SetActive(false);
+    }
+
+    public void OverlayTurnOff()
+    {
+        main_Camera.SetActive(false);
+    }
+
 
     IEnumerator ActivateDeathScreen()
     {

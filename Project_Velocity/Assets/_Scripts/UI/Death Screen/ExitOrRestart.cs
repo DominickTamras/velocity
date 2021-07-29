@@ -14,6 +14,6 @@ public class ExitOrRestart : MonoBehaviour
 
    public void OnClickEnd()
     {
-        SceneManager.LoadScene("LevelSelect_Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 }

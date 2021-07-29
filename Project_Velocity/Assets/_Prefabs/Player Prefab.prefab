@@ -2980,7 +2980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: blow up the sun
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4aca42fcbae3ed741a9ef6247a1ff462, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -4826,13 +4826,15 @@ MonoBehaviour:
   terminalUI: {fileID: 1799058009}
   logTitle: {fileID: 756372463}
   logBody: {fileID: 266238752}
-  flashingWords: {fileID: 1502087202398152921}
-  showWordsAmount: 3
+  flashingWordsObject: {fileID: 1502087202398152921}
+  flashingWordText: {fileID: 4240901348923107000}
+  showWordsAmount: 4
   showWordsTime: 1
   closeWordsTime: 0.5
   chatUI: {fileID: 5241397028921845103}
   chatBody: {fileID: 2715160541998119306}
   deathMenu: {fileID: 3562865694508096441}
+  wordsCount: 0
 --- !u!1 &5441492535556166001
 GameObject:
   m_ObjectHideFlags: 0
