@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimManager : MonoBehaviour
-{
+{   
+  
     [SerializeField] Animator anim;
     [SerializeField] Animator punchAnim;
     [SerializeField] Animator headBob;
