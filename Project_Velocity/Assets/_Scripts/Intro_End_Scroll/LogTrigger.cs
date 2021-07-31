@@ -27,6 +27,8 @@ public class LogTrigger: MonoBehaviour
         {
             StartChat();
             gameObject.GetComponent<Collider>().enabled = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1231384636333823673}
   m_Layer: 0
   m_Name: Collider (3)
-  m_TagString: Untagged
+  m_TagString: DamagePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5596831755793661081}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: DamagePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  laser: 1
+  laser: 0
   movingPlatform: 0
   moveSpeed: 0
   startPong: {x: 0, y: 0, z: 0}
@@ -219,6 +219,7 @@ MonoBehaviour:
   killEnemyToProceed: 0
   endPosOfLocked: {x: 0, y: 0, z: 0}
   turnOnTrigger: 1
+  breakPod: 0
 --- !u!1 &5832303702664887822
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ GameObject:
   - component: {fileID: 6280138460863374699}
   m_Layer: 0
   m_Name: Collider_Main
-  m_TagString: Untagged
+  m_TagString: DamagePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,7 +295,7 @@ GameObject:
   - component: {fileID: 3476531870187284211}
   m_Layer: 0
   m_Name: Collider (2)
-  m_TagString: Untagged
+  m_TagString: DamagePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,7 +376,7 @@ GameObject:
   - component: {fileID: 6203871617887990800}
   m_Layer: 0
   m_Name: Collider (1)
-  m_TagString: Untagged
+  m_TagString: DamagePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
