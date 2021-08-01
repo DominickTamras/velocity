@@ -16,4 +16,9 @@ public class ExitOrRestart : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void OnClickNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using MoreMountains.Feedbacks;
 
 public class EndingManager : MonoBehaviour
 {
@@ -13,7 +14,13 @@ public class EndingManager : MonoBehaviour
 
     public GameObject core;
 
+    public Camera cameraDie;
 
+    public GameObject playerDie;
+
+    public GameObject sun;
+
+    public MMFeedbacks feedbackStart;
 
 
 
@@ -48,15 +55,27 @@ public class EndingManager : MonoBehaviour
         float increasedTime = 90;
 
         if (core == null)
-        {   
-            
-            theMadam.Play("Death");
+        {
+      
+            feedbackStart.PlayFeedbacks();
+
+            theMadam.SetTrigger("StartDeathTrigger");
            
             lightIncrease.intensity = Mathf.Lerp(lightIncrease.intensity, 10000000, Time.deltaTime / 10000000 * increasedTime );
+
+            sun.transform.localScale = Vector3.Lerp(sun.transform.localScale, sun.transform.localScale * 10, Time.deltaTime / 90000 * increasedTime);
             
-            yield return new WaitForSeconds(15);
+            yield return new WaitForSeconds(7);
+
+            cameraDie.enabled = false;
+
+            playerDie.SetActive(false);
 
             player.Play("GlitchEffect");
+
+            yield return new WaitForSeconds(3);
+
+            SceneManager.LoadScene("Credits");
         }
 
       

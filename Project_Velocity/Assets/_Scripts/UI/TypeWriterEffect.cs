@@ -50,6 +50,8 @@ public class TypeWriterEffect : MonoBehaviour {
 
 		yield return new WaitForSeconds(timeChange);
 
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 		playerHolder.SetActive(true);
 		pause.EndChat();
 		/*imageBg.SetActive(false);

@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 4567135572962501435}
   - component: {fileID: 4567135572962501434}
   - component: {fileID: 4567135572962501429}
+  - component: {fileID: 1548830732}
   m_Layer: 0
   m_Name: Star_Shader_V2
   m_TagString: Untagged
@@ -164,6 +165,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1548830732
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4567135572962501431}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 55328032174a5134ab761ca8b2285cbc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4567135573172994770
 GameObject:
   m_ObjectHideFlags: 0
