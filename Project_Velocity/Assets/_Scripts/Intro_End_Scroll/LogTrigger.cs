@@ -5,6 +5,7 @@ using UnityEngine;
 public class LogTrigger: MonoBehaviour
 {
     public ChatLog chatLog;
+    public LevelDataSO enteredLevel;
     public MenuManager manager;
 
 
@@ -25,6 +26,7 @@ public class LogTrigger: MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            enteredLevel.isCompleted = true;
             StartChat();
             gameObject.GetComponent<Collider>().enabled = false;
             Cursor.lockState = CursorLockMode.None;

@@ -8,6 +8,7 @@ public class ObstacleTrigger : MonoBehaviour
      private void OnTriggerEnter(Collider other)
     {
         ObstacleManager.current.ObstacleTriggerEnter(id);
+
     }
 
      private void OnTriggerExit(Collider other)

@@ -24,6 +24,8 @@ public class ObstacleSetter : MonoBehaviour
 
     public bool doorOpen;
 
+    private bool updateConstantly = false;
+
     private bool doorActivate;
 
 
@@ -31,8 +33,6 @@ public class ObstacleSetter : MonoBehaviour
     public List<GameObject> enemyInArea = new List<GameObject>();
     
     public bool killEnemyToProceed;
-
-    public Vector3 endPosOfLocked;
 
     [Header("Trigger Toggle")]
     public bool turnOnTrigger;
@@ -61,29 +61,35 @@ public class ObstacleSetter : MonoBehaviour
         {
             OnObstacleActivate(id);
         }
+
+        if (updateConstantly == true)
+
+        {
+            OnObstacleActivate(id);
+        }
     }
 
     private void OnObstacleActivate(int id)
     {
         if (id == this.id) // checks if id matches
         {
-            if (laser == true)
+            if (laser == true) // Laser
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
 
-            if (movingPlatform == true)
+            if (movingPlatform == true) // Moving platform
             {
                 transform.localPosition = Vector3.Lerp(startPong, endPong, Mathf.PingPong(Time.time * moveSpeed, 1.0f));
             }
 
-            if (spinOfDeath == true)
+            if (spinOfDeath == true) //Spinning
             {
                 transform.Rotate(Vector3.up * spinSpeed * Time.deltaTime);
                 //Add damage eventually
             }
 
-            if (doorOpen == true)
+            if (doorOpen == true) // Dpor Open
             {
                 doorActivate = true;
             
@@ -94,7 +100,10 @@ public class ObstacleSetter : MonoBehaviour
 
 
             if(killEnemyToProceed == true)
-            {   
+            {
+                updateConstantly = true;
+                StartCoroutine(SpawnShield());
+
                 foreach(GameObject missing in enemyInArea)
                 {
                     if(missing == null)
@@ -107,7 +116,9 @@ public class ObstacleSetter : MonoBehaviour
                 {
 
                     this.gameObject.SetActive(false);
-                    
+                    this.gameObject.GetComponent<Renderer>().enabled = false;
+                    this.gameObject.GetComponent<Collider>().enabled = false;
+
                     //transform.localPosition = Vector3.Lerp(transform.localPosition, endPosOfLocked, 4 * Time.deltaTime);
                 }
             }
@@ -159,5 +170,15 @@ public class ObstacleSetter : MonoBehaviour
         }
 
 
+    }
+
+    public IEnumerator SpawnShield()
+    {
+        this.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        this.gameObject.GetComponent<Collider>().enabled = true;
+
+        Debug.Log("Working");
+
+        yield return new WaitForSeconds(0);
     }
 }
