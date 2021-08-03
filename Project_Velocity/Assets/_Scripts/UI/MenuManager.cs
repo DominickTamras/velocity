@@ -45,6 +45,7 @@ public class MenuManager : MonoBehaviour
      float timerClose = 0f;
      bool shown = false;
      bool closed = false;
+     bool playerDead = false;
 
     private TypeWriterEffect checkEnd;
 
@@ -74,15 +75,18 @@ public class MenuManager : MonoBehaviour
 
         //Pause
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(GameIsPaused)
+        { if (playerDead != true)
             {
-                Resume();
-            }
-            else
-            {
-                OpenPauseMenu();
-                Pause();
+                if (GameIsPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    OpenPauseMenu();
+                    Pause();
+                }
+
             }
         }
     }
@@ -124,6 +128,7 @@ public class MenuManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         deathMenu.SetActive(true);
+        playerDead = true;
     }
 
     public void Resume()
