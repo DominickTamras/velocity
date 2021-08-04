@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6285955511946773934}
   - component: {fileID: 8382841700569659875}
   - component: {fileID: 711773105237832569}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: polySurface1_LightMed_GRP_001_polySurface4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,6 @@ GameObject:
   - component: {fileID: 4534036202094754451}
   - component: {fileID: 5583070143396251290}
   - component: {fileID: 8043429959866272748}
-  - component: {fileID: 4561818033396482851}
   m_Layer: 6
   m_Name: LightMed_GRP_001_polySurface2
   m_TagString: Climbable
@@ -163,19 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4561818033396482851
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996553376079732988}
-  m_Material: {fileID: 13400000, guid: b41da3be40d5c8a46a18f5161d6e408d, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4.614418, y: 0.049485028, z: 4.614419}
-  m_Center: {x: 0, y: 0.51130354, z: -0.00000047683716}
 --- !u!1 &4836245747207163388
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +173,7 @@ GameObject:
   - component: {fileID: 3268377894366291274}
   - component: {fileID: 4288768253490893386}
   - component: {fileID: 8351009128860602332}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: polySurface1_LightMed_GRP_001_polySurface5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,9 +252,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6828810234735629273}
-  m_Layer: 0
+  - component: {fileID: 1569606173}
+  m_Layer: 6
   m_Name: LightMed_GEO_2
-  m_TagString: Untagged
+  m_TagString: Climbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,7 +267,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6165179498175678819}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 297.62582, y: 33.05815, z: 637.79224}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
@@ -291,6 +278,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1569606173
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165179498175678819}
+  m_Material: {fileID: 13400000, guid: b41da3be40d5c8a46a18f5161d6e408d, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.422135, y: 1.0405794, z: 5.4832463}
+  m_Center: {x: 0.014965931, y: 0.060768127, z: 0.0054172673}
 --- !u!1 &6599586471625501628
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +302,6 @@ GameObject:
   - component: {fileID: 839051172216796618}
   - component: {fileID: 2826787058360885939}
   - component: {fileID: 5512791489568671962}
-  - component: {fileID: 1534336153485851113}
   m_Layer: 6
   m_Name: polySurface3_polySurface1_LightMed_GRP_001
   m_TagString: Climbable
@@ -373,16 +372,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1534336153485851113
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6599586471625501628}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.3947535, y: 1.0024799, z: 5.3730855}
-  m_Center: {x: 0, y: 0.07162099, z: 0}
