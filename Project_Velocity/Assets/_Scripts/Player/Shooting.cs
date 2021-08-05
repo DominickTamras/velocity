@@ -34,6 +34,7 @@ public class Shooting : MonoBehaviour
     public GameObject gunEffectCircle;
     public GameObject gunImpactEffect;
     public GameObject gunBurstAmmoEffect;
+    public Animator gunKickBackAnim;
 
     private VisualEffect bulletCharge;
     private VisualEffect bulletFlash;
@@ -81,6 +82,7 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
+        gunKickBackAnim.Play("GunKickBack", -1, 0f);
         bulletCharge.Play();
         gunCircle.Play();
         bulletFlash.Play();
@@ -170,4 +172,6 @@ public class Shooting : MonoBehaviour
             transform.eulerAngles = currentRotation;
         }
     }
+
+  
 }

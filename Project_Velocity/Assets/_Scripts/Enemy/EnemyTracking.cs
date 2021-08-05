@@ -94,6 +94,7 @@ public class EnemyTracking : MonoBehaviour
 
         if(seperation >= aggroThreshold)
         {
+            startShoot.enabled = false;
             ReturnPos();
         }
 
