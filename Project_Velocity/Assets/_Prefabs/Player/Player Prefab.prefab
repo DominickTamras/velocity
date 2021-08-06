@@ -5009,25 +5009,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &213527529974211761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4600264582169252217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b86776891e981ed4bbf49141caa3a68d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 0.03
-  maxAmount: 0.1
-  amount_2: 4.29
-  maxAmount_2: 16.7
-  smoothing: 7
-  smoothing_2: 1.59
-  bhg: {fileID: 4600264582169252217}
 --- !u!95 &1108423079
 Animator:
   serializedVersion: 3
@@ -5047,6 +5028,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &213527529974211761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4600264582169252217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86776891e981ed4bbf49141caa3a68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.03
+  maxAmount: 0.1
+  amount_2: 4.29
+  maxAmount_2: 16.7
+  smoothing: 7
+  smoothing_2: 1.59
+  bhg: {fileID: 4600264582169252217}
 --- !u!1 &5105197407617231817
 GameObject:
   m_ObjectHideFlags: 0

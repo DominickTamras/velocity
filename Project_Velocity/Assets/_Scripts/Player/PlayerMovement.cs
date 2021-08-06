@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
     public float airDrag = 1f;
     float moveSpeed;
     bool isMoving;
+    public Animator walkAnim;
+    private float walkAnimSpeed;
 
     float horizontalMovement;
     float verticalMovement;
@@ -213,10 +215,16 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = true;
 
+            walkAnim.SetTrigger("IsWalking");
+
         }
         else
         {
             isMoving = false;
+
+            walkAnim.SetTrigger("IsNotWalking");
+
+
         }
 
         moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
@@ -225,8 +233,9 @@ public class PlayerMovement : MonoBehaviour
     //Handles moving the player.
     void MovePlayer()
     {
+        
         //if below max speed
-        if(currentSpeed < universalMaxVelocity)
+        if (currentSpeed < universalMaxVelocity)
         {
             //On ground or wall running and not on slope
             if (isGrounded && !OnSlope() && !isWallRunning)
@@ -269,6 +278,7 @@ public class PlayerMovement : MonoBehaviour
             else if (!isGrounded)
             {
                 rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
+                
             }
         }
     }
@@ -296,6 +306,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        walkAnim.SetTrigger("IsNotWalking");
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         onGround = false;
@@ -318,6 +329,10 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
             coyoteTimer = coyoteTime;
+
+     
+            walkAnim.SetFloat("WalkAnimSpeed", currentSpeed);  // anim speed control
+           
         }
         else
         {
@@ -325,6 +340,8 @@ public class PlayerMovement : MonoBehaviour
             if(coyoteTimer <= 0)
             {
                 isGrounded = false;
+               
+
             }
         }
     }
@@ -339,6 +356,8 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = Mathf.Lerp(moveSpeed, minSpeed, deceleration * Time.deltaTime);
         }
+
+       
     }
 
     void CrouchAndSlideManager()
@@ -361,6 +380,7 @@ public class PlayerMovement : MonoBehaviour
                 slideDirection = moveDirection;
                 slopeSlideDirection = slopeMoveDirection;
                 slideCDTimer = slideCD;
+                
             }
         }
         //Stand up
@@ -383,7 +403,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(isSliding)
         {
-            foreach(Camera cam in camList)
+             // anim speed control
+            foreach (Camera cam in camList)
             {
                 cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, slideFov, slideFovTime * Time.deltaTime);
             }
