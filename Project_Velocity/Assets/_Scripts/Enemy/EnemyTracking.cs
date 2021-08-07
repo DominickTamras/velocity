@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyTracking : MonoBehaviour
 {
+    public Animator shootAnim;
+
     public float maxSpeed;
 
     public float minSpeed;
@@ -77,6 +79,9 @@ public class EnemyTracking : MonoBehaviour
 
         if (seperation <= aggroThreshold)
         {
+            shootAnim.SetFloat("ShootSpeed", startShoot.timeBetweenShots);
+            shootAnim.SetBool("Shooting", true);
+
             startShoot.enabled = true;
 
             if (currentSpeedz.currentSpeed < speedThreshold && dist > thresholdCompare)
@@ -94,6 +99,7 @@ public class EnemyTracking : MonoBehaviour
 
         if(seperation >= aggroThreshold)
         {
+            shootAnim.SetBool("Shooting", false);
             startShoot.enabled = false;
             ReturnPos();
         }

@@ -215,14 +215,18 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = true;
 
-            walkAnim.SetTrigger("IsWalking");
+            //walkAnim.SetTrigger("IsWalking");
+           
+            
 
         }
         else
         {
             isMoving = false;
 
-            walkAnim.SetTrigger("IsNotWalking");
+           
+            walkAnim.SetBool("IsWalking", false);
+            //walkAnim.SetTrigger("IsNotWalking");
 
 
         }
@@ -306,7 +310,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        walkAnim.SetTrigger("IsNotWalking");
+        
+        walkAnim.SetBool("IsWalking", false);
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         onGround = false;
@@ -332,7 +337,8 @@ public class PlayerMovement : MonoBehaviour
 
      
             walkAnim.SetFloat("WalkAnimSpeed", currentSpeed);  // anim speed control
-           
+            walkAnim.SetBool("IsWalking", true);
+
         }
         else
         {
@@ -401,9 +407,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Sliding()
     {
-        if(isSliding)
+        walkAnim.SetBool("IsWalking", false);
+        // anim speed control
+        if (isSliding)
         {
-             // anim speed control
             foreach (Camera cam in camList)
             {
                 cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, slideFov, slideFovTime * Time.deltaTime);

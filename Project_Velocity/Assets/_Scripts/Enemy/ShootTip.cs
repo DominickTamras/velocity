@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootTip : MonoBehaviour
 {
+
     public EnemyShoot_Settings settingFeature;
 
     /* private float timeBetweenShots;
@@ -15,7 +16,8 @@ public class ShootTip : MonoBehaviour
      public GameObject projectile;*/
 
     private Transform enemyTransform;
-    private float timeBetweenShots;
+    [HideInInspector]
+    public float timeBetweenShots;
     void Start()
     {
         enemyTransform = GetComponentInParent<Transform>();
