@@ -1,9 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class EnemyTracking : MonoBehaviour
 {
+    [Header("VFX")]
+
+   // public GameObject enemyEffect1_go;
+
+    //public GameObject enemyEffect2_go;
+
+    private VisualEffect enemyEffect1;
+
+    private VisualEffect enemyEffect2;
+
+
     public Animator shootAnim;
 
     public float maxSpeed;
@@ -53,7 +65,7 @@ public class EnemyTracking : MonoBehaviour
 
 
     void Awake()
-    {
+    {   
         startShoot.enabled = false;
         // isIn = true;
         rigid = target.GetComponent<Rigidbody>();
@@ -61,7 +73,10 @@ public class EnemyTracking : MonoBehaviour
         instance = FindObjectOfType<PlayerMovement>();
         currentSpeedz = FindObjectOfType<PlayerMovement>();
         shootSpeed = FindObjectOfType<EnemyShoot>();
-        
+
+        //enemyEffect1 = enemyEffect1_go.GetComponent<VisualEffect>();
+        //enemyEffect2 = enemyEffect2_go.GetComponent<VisualEffect>();
+
 
     }
 
