@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class ShootTip : MonoBehaviour
 {
 
     public EnemyShoot_Settings settingFeature;
+
+    public GameObject enemyMuzzle_go;
+
+    private VisualEffect enemyMuzzle;
 
     /* private float timeBetweenShots;
 
@@ -20,6 +25,7 @@ public class ShootTip : MonoBehaviour
     public float timeBetweenShots;
     void Start()
     {
+        enemyMuzzle = enemyMuzzle_go.GetComponent<VisualEffect>();
         enemyTransform = GetComponentInParent<Transform>();
         timeBetweenShots = settingFeature.startTimeBetweenShots;
     }
@@ -29,9 +35,12 @@ public class ShootTip : MonoBehaviour
     {
         if (timeBetweenShots <= 0)
         {
-         
+            enemyMuzzle.initialEventName = "OnPlay";
 
             Instantiate(settingFeature.projectile, gameObject.transform.position, enemyTransform.rotation);
+            
+            enemyMuzzle.Play();
+    
             timeBetweenShots = settingFeature.startTimeBetweenShots;
         }
         else

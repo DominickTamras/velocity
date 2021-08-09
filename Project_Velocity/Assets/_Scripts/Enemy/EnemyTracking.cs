@@ -5,19 +5,10 @@ using UnityEngine.VFX;
 
 public class EnemyTracking : MonoBehaviour
 {
-    [Header("VFX")]
-
-   // public GameObject enemyEffect1_go;
-
-    //public GameObject enemyEffect2_go;
-
-    private VisualEffect enemyEffect1;
-
-    private VisualEffect enemyEffect2;
-
 
     public Animator shootAnim;
 
+    [Header("Settings")]
     public float maxSpeed;
 
     public float minSpeed;
@@ -74,9 +65,6 @@ public class EnemyTracking : MonoBehaviour
         currentSpeedz = FindObjectOfType<PlayerMovement>();
         shootSpeed = FindObjectOfType<EnemyShoot>();
 
-        //enemyEffect1 = enemyEffect1_go.GetComponent<VisualEffect>();
-        //enemyEffect2 = enemyEffect2_go.GetComponent<VisualEffect>();
-
 
     }
 
@@ -96,6 +84,8 @@ public class EnemyTracking : MonoBehaviour
         {
             shootAnim.SetFloat("ShootSpeed", startShoot.timeBetweenShots);
             shootAnim.SetBool("Shooting", true);
+
+            
 
             startShoot.enabled = true;
 
