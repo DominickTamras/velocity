@@ -93,6 +93,7 @@ public class Shooting : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
+            
             //VFX
             GameObject impactVFX = Instantiate(gunImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactVFX, 1);
