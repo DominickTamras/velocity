@@ -41,6 +41,9 @@ public class Shooting : MonoBehaviour
     private VisualEffect gunCircle;
     private VisualEffect gunBurstAmmo;
 
+    [Header("SFX")]
+    public AudioSource railgunShoot;
+
 
 
     CameraLook cl;
@@ -82,6 +85,8 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
+        //railgunShoot.Play();
+        FindObjectOfType<AudioManager>().PlaySound("PlayerShoot");
         gunKickBackAnim.Play("GunKickBack", -1, 0f);
         bulletCharge.Play();
         gunCircle.Play();
@@ -104,6 +109,8 @@ public class Shooting : MonoBehaviour
             {
                 enemy.Die();
                 hasBullet = true;
+                FindObjectOfType<AudioManager>().PlaySound("Reload");
+
                 CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             }
 

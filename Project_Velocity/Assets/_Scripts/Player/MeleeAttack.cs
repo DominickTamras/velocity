@@ -37,6 +37,7 @@ public class MeleeAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 attackStart();
+
             }
         }
 
@@ -51,16 +52,19 @@ public class MeleeAttack : MonoBehaviour
     {
         //anim.playPunch();
         anim.playOfficalPunch();
+        FindObjectOfType<AudioManager>().PlaySound("Melee");
         col.enabled = true;
         isAttacking = true;
         attackCDTimer = attackCD;
-        Invoke("attackEnd", 0.2f);
+        Invoke("attackEnd", 0.3f);
     }
 
     void attackEnd()
     {
         col.enabled = false;
         isAttacking = false;
+        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,11 +75,14 @@ public class MeleeAttack : MonoBehaviour
             enemy.Die();
             CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             s.hasBullet = true;
+            FindObjectOfType<AudioManager>().PlaySound("Reload");
+
         }
-        if(other.CompareTag("ReverseGravity"))
+        if (other.CompareTag("ReverseGravity"))
         {
             s.ReverseGravity();
             s.hasBullet = true;
+            FindObjectOfType<AudioManager>().PlaySound("Reload");
         }
     }
 }

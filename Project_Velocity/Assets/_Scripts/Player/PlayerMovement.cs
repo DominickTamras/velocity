@@ -174,6 +174,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && !wr.isMantling && canStandUp && !isWallRunning)
         {
             Jump();
+            FindObjectOfType<AudioManager>().PlaySound("Jump");
         }
 
         //Populates slopeMoveDirection with ProjectOnPlane which projects moveDirection onto a surface (in this case: slopeHit).
@@ -214,17 +215,14 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             isMoving = true;
+            //FindObjectOfType<AudioManager>().PlaySound("Walk");
 
             //walkAnim.SetTrigger("IsWalking");
-           
-            
 
         }
         else
         {
             isMoving = false;
-
-           
             walkAnim.SetBool("IsWalking", false);
             //walkAnim.SetTrigger("IsNotWalking");
 
@@ -259,7 +257,10 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (isWallRunning && !OnSlope())
             {
-                rb.AddForce(wallMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+                walkAnim.SetBool("IsWalking", true);
+                walkAnim.SetFloat("WalkAnimSpeed", currentSpeed / 2);
+
+               rb.AddForce(wallMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
                 rb.AddForce(-wallHit.normal * wallStickForce * movementMultiplier, ForceMode.Force);
             }
             //On ground and on slope and not wall running
@@ -276,13 +277,16 @@ public class PlayerMovement : MonoBehaviour
                 else if (!isCrouching && !isSliding)
                 {
                     rb.AddForce(slopeMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+                    FindObjectOfType<AudioManager>().PlaySound("Jump");
                 }
             }
             //not on ground
             else if (!isGrounded)
             {
                 rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
-                
+                walkAnim.SetBool("IsWalking", false);
+
+
             }
         }
     }
@@ -310,7 +314,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
-        
         walkAnim.SetBool("IsWalking", false);
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
@@ -357,6 +360,8 @@ public class PlayerMovement : MonoBehaviour
         if(isMoving)
         {
             moveSpeed = Mathf.Lerp(moveSpeed, maxSpeed, acceleration * Time.deltaTime);
+        
+
         }
         else
         {
@@ -375,18 +380,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 isCrouching = true;
                 slideCDTimer = slideCD;
+
             }
         }
         //Start Sliding
         else if(isGrounded && !isWallRunning && currentSpeed >= slideThreshold && Input.GetKeyDown(KeyCode.LeftShift) && !isCrouching && !wr.isMantling)
         {
             if(slideCDTimer <= 0)
-            {
+            {   
+
                 isSliding = true;
                 slideDirection = moveDirection;
                 slopeSlideDirection = slopeMoveDirection;
                 slideCDTimer = slideCD;
-                
+                FindObjectOfType<AudioManager>().PlaySound("Slide");
+                FindObjectOfType<AudioManager>().PlaySound("Slide_Engage");
+                walkAnim.SetLayerWeight(1, 0);
+
             }
         }
         //Stand up
@@ -394,6 +404,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isCrouching = false;
             isSliding = false;
+            walkAnim.SetLayerWeight(1, 1);
         }
     }
 
@@ -402,15 +413,16 @@ public class PlayerMovement : MonoBehaviour
         if(isCrouching)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchingHeight, transform.localScale.z);
+            walkAnim.SetLayerWeight(1, 1);
         }
     }
 
     void Sliding()
     {
-        walkAnim.SetBool("IsWalking", false);
-        // anim speed control
+   
         if (isSliding)
         {
+
             foreach (Camera cam in camList)
             {
                 cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, slideFov, slideFovTime * Time.deltaTime);
@@ -436,8 +448,11 @@ public class PlayerMovement : MonoBehaviour
 
             if(currentSpeed <= slideThreshold)
             {
+               
+                FindObjectOfType<AudioManager>().StopSound("Slide");
                 isCrouching = true;
                 isSliding = false;
+
             }
         }
     }
@@ -446,7 +461,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!isCrouching && !isSliding && canStandUp)
         {
-            foreach(Camera cam in camList)
+            FindObjectOfType<AudioManager>().StopSound("Slide");
+            foreach (Camera cam in camList)
             {
                 cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fov, slideFovTime * Time.deltaTime);
             }
@@ -490,4 +506,6 @@ public class PlayerMovement : MonoBehaviour
 
         return pos;
     }
+
+  
 }
