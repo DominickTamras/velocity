@@ -85,8 +85,6 @@ public class EnemyTracking : MonoBehaviour
             shootAnim.SetFloat("ShootSpeed", startShoot.timeBetweenShots);
             shootAnim.SetBool("Shooting", true);
 
-            
-
             startShoot.enabled = true;
 
             if (currentSpeedz.currentSpeed < speedThreshold && dist > thresholdCompare)

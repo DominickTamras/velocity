@@ -162,6 +162,7 @@ public class WallRunning : MonoBehaviour
             {
                 //store previous wall
                 previousWall = leftWallHit.collider.gameObject;
+                FindObjectOfType<AudioManager>().PlaySound("Jump");
 
                 //jump off wall
                 Vector3 wallrunJumpDirection = transform.up + leftWallHit.normal;
@@ -181,6 +182,7 @@ public class WallRunning : MonoBehaviour
             {
                 //store previous wall
                 previousWall = rightWallHit.collider.gameObject;
+                FindObjectOfType<AudioManager>().PlaySound("Jump");
 
                 //jump off wall
                 Vector3 wallrunJumpDirection = transform.up + rightWallHit.normal;

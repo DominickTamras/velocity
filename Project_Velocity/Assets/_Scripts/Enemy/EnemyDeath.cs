@@ -40,6 +40,7 @@ public class EnemyDeath : MonoBehaviour
 
     public void Die()
     {
+        FindObjectOfType<AudioManager2>().PlaySound("Enemy_Death");
         deathExplosion.Play();
         Destroy(gameObject,10.5f);
         enemyCount--;
@@ -51,8 +52,9 @@ public class EnemyDeath : MonoBehaviour
     {
         if(dead)
         {
-            
-            foreach(GameObject go in activateRB) // Loops in each object and activates RB same for VFX below
+           
+
+            foreach (GameObject go in activateRB) // Loops in each object and activates RB same for VFX below
             {
                 go.GetComponent<Rigidbody>().isKinematic = false;
 
@@ -81,7 +83,7 @@ public class EnemyDeath : MonoBehaviour
     }
 
     void Explode() // Creates explosion
-    {
+    {   
         Collider[] explosion = Physics.OverlapSphere(transform.position, radius);
 
         foreach(Collider nearby in explosion)

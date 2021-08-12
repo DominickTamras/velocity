@@ -16,19 +16,23 @@ public class PlayerGoByeBye : MonoBehaviour
     {
         if (other.CompareTag("DamagePlayer"))
         {
+            
+
             EnemyDeath.enemyCount = 0;
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
             playAnim.Play("GlitchEffect");
+
+            FindObjectOfType<AudioManager>().PlaySound("Player_Death1");
+            FindObjectOfType<AudioManager>().PlaySound("Player_Death2");
+            FindObjectOfType<AudioManager>().StopSound("Walk");
 
             PlayerHolderTurnOff();
             OverlayTurnOff();
 
             deathScreenStart.DeathScreen();
 
-            
-
-            //StartCoroutine(ActivateDeathScreen());
+            StartCoroutine(ActivateDeathScreen());
         }
     }
 
@@ -49,7 +53,6 @@ public class PlayerGoByeBye : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
-        deathScreenStart.DeathScreen();
 
     }
 }

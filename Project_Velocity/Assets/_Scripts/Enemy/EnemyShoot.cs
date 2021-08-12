@@ -21,8 +21,11 @@ public class EnemyShoot : MonoBehaviour
     private VisualEffect explodeEffect;
 
     private VisualEffect explodeEffectStart;
-    void Start()
-    {   
+
+    public AudioSource firedShot;
+    void Awake()
+    {
+        firedShot.Play();
         explodeEffect = enemyBulletEnd.GetComponent<VisualEffect>();
         explodeEffectStart = enemyBulletEffect.GetComponent<VisualEffect>();
         player = GameObject.FindGameObjectWithTag("Player").transform;

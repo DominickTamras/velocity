@@ -174,7 +174,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true && !wr.isMantling && canStandUp && !isWallRunning)
         {
             Jump();
-            FindObjectOfType<AudioManager>().PlaySound("Jump");
+          
+
         }
 
         //Populates slopeMoveDirection with ProjectOnPlane which projects moveDirection onto a surface (in this case: slopeHit).
@@ -235,7 +236,6 @@ public class PlayerMovement : MonoBehaviour
     //Handles moving the player.
     void MovePlayer()
     {
-        
         //if below max speed
         if (currentSpeed < universalMaxVelocity)
         {
@@ -253,19 +253,22 @@ public class PlayerMovement : MonoBehaviour
                 else if (!isCrouching && !isSliding)
                 {
                     rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+
                 }
             }
             else if (isWallRunning && !OnSlope())
             {
+                
                 walkAnim.SetBool("IsWalking", true);
                 walkAnim.SetFloat("WalkAnimSpeed", currentSpeed / 2);
 
-               rb.AddForce(wallMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
+                rb.AddForce(wallMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
                 rb.AddForce(-wallHit.normal * wallStickForce * movementMultiplier, ForceMode.Force);
             }
             //On ground and on slope and not wall running
             else if (isGrounded && OnSlope())
             {
+               
                 if (isCrouching)
                 {
                     rb.AddForce(slopeMoveDirection.normalized * crouchSpeed * movementMultiplier, ForceMode.Acceleration);
@@ -277,7 +280,7 @@ public class PlayerMovement : MonoBehaviour
                 else if (!isCrouching && !isSliding)
                 {
                     rb.AddForce(slopeMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
-                    FindObjectOfType<AudioManager>().PlaySound("Jump");
+                    
                 }
             }
             //not on ground
@@ -314,6 +317,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+
+        FindObjectOfType<AudioManager>().PlaySound("Jump");
         walkAnim.SetBool("IsWalking", false);
         rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
@@ -341,6 +346,8 @@ public class PlayerMovement : MonoBehaviour
      
             walkAnim.SetFloat("WalkAnimSpeed", currentSpeed);  // anim speed control
             walkAnim.SetBool("IsWalking", true);
+       
+
 
         }
         else
@@ -348,8 +355,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimer -= Time.deltaTime;
             if(coyoteTimer <= 0)
             {
-                isGrounded = false;
-               
+                isGrounded = false; 
 
             }
         }
