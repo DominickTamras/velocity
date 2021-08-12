@@ -80,33 +80,42 @@ public class EnemyTracking : MonoBehaviour
       float seperation = Vector3.Distance(this.transform.position, target.transform.position);
 
 
-        if (seperation <= aggroThreshold)
+        if (target.gameObject.activeSelf != false)
         {
-            shootAnim.SetFloat("ShootSpeed", startShoot.timeBetweenShots);
-            shootAnim.SetBool("Shooting", true);
-
-            startShoot.enabled = true;
-
-            if (currentSpeedz.currentSpeed < speedThreshold && dist > thresholdCompare)
+            if (seperation <= aggroThreshold)
             {
-                LookAt2();
+                shootAnim.SetFloat("ShootSpeed", startShoot.timeBetweenShots);
+                shootAnim.SetBool("Shooting", true);
+
+                startShoot.enabled = true;
+
+                if (currentSpeedz.currentSpeed < speedThreshold && dist > thresholdCompare)
+                {
+                    LookAt2();
+                }
+
+                else
+                {
+                    StartCoroutine(LookAtCor());
+                    StartCoroutine(LookAtCor2());
+                }
+
             }
 
-            else
+            if (seperation >= aggroThreshold)
             {
-                StartCoroutine(LookAtCor());
-                StartCoroutine(LookAtCor2());
+                shootAnim.SetBool("Shooting", false);
+                startShoot.enabled = false;
+                ReturnPos();
             }
-
         }
 
-        if(seperation >= aggroThreshold)
+        else 
         {
             shootAnim.SetBool("Shooting", false);
             startShoot.enabled = false;
             ReturnPos();
         }
-
 
 
     }
