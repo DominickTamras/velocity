@@ -29,6 +29,8 @@ public class EnemyDeath : MonoBehaviour
    
     private bool dead;
 
+    public bool reverseDeath;
+    
     private bool explode;
 
     private void Awake()
@@ -40,7 +42,17 @@ public class EnemyDeath : MonoBehaviour
 
     public void Die()
     {
-        FindObjectOfType<AudioManager2>().PlaySound("Enemy_Death");
+        if(reverseDeath == true)
+        {
+
+            FindObjectOfType<AudioManager2>().PlaySound("Gravity_Switch");
+
+        }
+        else
+        {
+            FindObjectOfType<AudioManager2>().PlaySound("Enemy_Death");
+        }
+       
         deathExplosion.Play();
         Destroy(gameObject,10.5f);
         enemyCount--;
@@ -75,9 +87,13 @@ public class EnemyDeath : MonoBehaviour
             }
 
             this.gameObject.GetComponent<BoxCollider>().enabled = false;
-            trackerDisabled.enabled = false;
-            trackerDisabled.shootAnim.enabled = false;
-            trackerDisabled.startShoot.enabled = false;
+            if(trackerDisabled != null)
+            {
+                trackerDisabled.enabled = false;
+                trackerDisabled.shootAnim.enabled = false;
+                trackerDisabled.startShoot.enabled = false;
+            }
+       
             
         }
     }

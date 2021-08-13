@@ -592,7 +592,7 @@ Transform:
   m_GameObject: {fileID: 3565938288315731418}
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.1233336, y: 2.3399997, z: 4.9500017}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children: []
   m_Father: {fileID: 7827424941292686032}
   m_RootOrder: 3
@@ -1081,6 +1081,7 @@ MonoBehaviour:
   - {fileID: 6753422591597662145}
   deathObj: {fileID: 6349218298933460040}
   trackerDisabled: {fileID: 8562569020997827453}
+  reverseDeath: 0
 --- !u!95 &2579280776267944390
 Animator:
   serializedVersion: 3
@@ -1314,7 +1315,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.516
       inSlope: 0
       outSlope: 0
       tangentMode: 0

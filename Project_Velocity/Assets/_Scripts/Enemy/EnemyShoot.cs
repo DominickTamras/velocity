@@ -23,6 +23,8 @@ public class EnemyShoot : MonoBehaviour
     private VisualEffect explodeEffectStart;
 
     public AudioSource firedShot;
+
+    public AudioSource exploded;
     void Awake()
     {
         firedShot.Play();
@@ -52,6 +54,7 @@ public class EnemyShoot : MonoBehaviour
         if(!other.CompareTag("Enemy") && !other.CompareTag("IgnoreBullet"))
         {
             DestroyShot();
+            exploded.Play();
         }
     }
 

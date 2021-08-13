@@ -118,6 +118,7 @@ public class ObstacleSetter : MonoBehaviour
                     this.gameObject.SetActive(false);
                     this.gameObject.GetComponent<Renderer>().enabled = false;
                     this.gameObject.GetComponent<Collider>().enabled = false;
+                    this.gameObject.GetComponent<AudioSource>().Play();
 
                     //transform.localPosition = Vector3.Lerp(transform.localPosition, endPosOfLocked, 4 * Time.deltaTime);
                 }
