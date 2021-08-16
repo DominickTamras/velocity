@@ -12,6 +12,8 @@ public class EnemyShoot : MonoBehaviour
 
     public bool isLockedOn;
 
+    private bool playedOnce = false;
+
     private Vector3 target;
 
     public GameObject enemyBulletEffect;
@@ -45,8 +47,9 @@ public class EnemyShoot : MonoBehaviour
 
         }
 
+            
         StartCoroutine(JustDie());
-        
+      
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,9 +64,10 @@ public class EnemyShoot : MonoBehaviour
     public void DestroyShot()
 
     {
+        speed = 0;
         this.gameObject.GetComponent<Collider>().enabled = false;
         this.gameObject.GetComponent<MeshRenderer>().enabled = false;
-        explodeEffectStart.Stop(); // Initial particle
+        explodeEffectStart.enabled = false; // Initial particle
         explodeEffect.Play(); //Explode on death
         Destroy(gameObject, 1f);
     }
@@ -72,10 +76,11 @@ public class EnemyShoot : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        if (isLockedOn == false)
+        if (isLockedOn == false && !playedOnce)
 
         {
-            DestroyShot();
+             DestroyShot();
+            playedOnce = true;
         }
     }
         

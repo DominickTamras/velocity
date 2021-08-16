@@ -25,7 +25,7 @@ public class PlayerGoByeBye : MonoBehaviour
 
             FindObjectOfType<AudioManager>().PlaySound("Player_Death1");
             FindObjectOfType<AudioManager>().PlaySound("Player_Death2");
-            FindObjectOfType<AudioManager>().StopSound("Walk");
+            
 
             PlayerHolderTurnOff();
             OverlayTurnOff();
@@ -39,7 +39,6 @@ public class PlayerGoByeBye : MonoBehaviour
 
     public void PlayerHolderTurnOff()
     {
-
         playerHolder.SetActive(false);
     }
 

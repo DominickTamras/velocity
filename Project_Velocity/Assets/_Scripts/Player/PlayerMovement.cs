@@ -175,7 +175,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
           
-
         }
 
         //Populates slopeMoveDirection with ProjectOnPlane which projects moveDirection onto a surface (in this case: slopeHit).
@@ -346,16 +345,15 @@ public class PlayerMovement : MonoBehaviour
      
             walkAnim.SetFloat("WalkAnimSpeed", currentSpeed);  // anim speed control
             walkAnim.SetBool("IsWalking", true);
-       
-
 
         }
         else
         {
+            FindObjectOfType<AudioManager>().PlaySound("Player_Airtime");
             coyoteTimer -= Time.deltaTime;
             if(coyoteTimer <= 0)
             {
-                isGrounded = false; 
+                isGrounded = false;
 
             }
         }
