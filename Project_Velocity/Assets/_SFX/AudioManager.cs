@@ -183,8 +183,10 @@ public class AudioManager : MonoBehaviour
             yield return null;
         }
 
-        s.source.Pause();
-        s.source.volume = startVolume;
+        s.source.Stop(); //Change back to Pause() if janky
+        startVolume = s.source.volume;
+        
+      
     }
 
     public IEnumerator FadeIn(string name, float FadeTime)

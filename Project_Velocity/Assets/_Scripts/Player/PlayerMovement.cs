@@ -47,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
     bool isMoving;
     public Animator walkAnim;
     private float walkAnimSpeed;
+    private bool runOnce = false;
+    private bool runOnce2 = false;
 
     float horizontalMovement;
     float verticalMovement;
@@ -241,6 +243,7 @@ public class PlayerMovement : MonoBehaviour
             //On ground or wall running and not on slope
             if (isGrounded && !OnSlope() && !isWallRunning)
             {
+               
                 if (isCrouching)
                 {
                     rb.AddForce(moveDirection.normalized * crouchSpeed * movementMultiplier, ForceMode.Acceleration);
@@ -287,6 +290,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
                 walkAnim.SetBool("IsWalking", false);
+
+                if(runOnce == false)
+                {
+                    StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("Player_Airtime", 0.45f));
+
+                    runOnce = true;
+                    
+                }
 
 
             }
@@ -341,15 +352,20 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = true;
             coyoteTimer = coyoteTime;
+            runOnce = false;
 
-     
+            
+             FindObjectOfType<AudioManager>().StopSound("Player_Airtime");
+
+            
             walkAnim.SetFloat("WalkAnimSpeed", currentSpeed);  // anim speed control
             walkAnim.SetBool("IsWalking", true);
+           
 
         }
         else
         {
-            FindObjectOfType<AudioManager>().PlaySound("Player_Airtime");
+            
             coyoteTimer -= Time.deltaTime;
             if(coyoteTimer <= 0)
             {
@@ -358,6 +374,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+      
+     
 
     void Accelerate()
     {
