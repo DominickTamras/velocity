@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     [Header("Pause")]
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public MeleeAttack meleePauseDisable;
 
     [Header("Terminal")]
     public GameObject terminalUI;
@@ -95,7 +96,7 @@ public class MenuManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
+        meleePauseDisable.enabled = false;
         GameIsPaused = true;
         Time.timeScale = 0f;
     }
@@ -104,7 +105,7 @@ public class MenuManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
+        meleePauseDisable.enabled = true;
         GameIsPaused = false;
         Time.timeScale = 1f;
     }

@@ -12,6 +12,8 @@ public class PlayerGoByeBye : MonoBehaviour
     public GameObject playerHolder;
 
     public GameObject main_Camera;
+
+    public MeleeAttack meleeDisable;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("DamagePlayer"))
@@ -25,6 +27,7 @@ public class PlayerGoByeBye : MonoBehaviour
 
             FindObjectOfType<AudioManager>().PlaySound("Player_Death1");
             FindObjectOfType<AudioManager>().PlaySound("Player_Death2");
+            meleeDisable.enabled = false;
             
 
             PlayerHolderTurnOff();
