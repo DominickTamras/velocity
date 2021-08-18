@@ -11,6 +11,8 @@ public class PlayerGoByeBye : MonoBehaviour
 
     public GameObject playerHolder;
 
+    public GameObject arm;
+
     public GameObject main_Camera;
 
     public MeleeAttack meleeDisable;
@@ -35,7 +37,10 @@ public class PlayerGoByeBye : MonoBehaviour
 
             deathScreenStart.DeathScreen();
 
-            StartCoroutine(ActivateDeathScreen());
+          
+            //StartCoroutine(ActivateDeathScreen());
+            
+           
         }
     }
 
@@ -43,6 +48,8 @@ public class PlayerGoByeBye : MonoBehaviour
     public void PlayerHolderTurnOff()
     {
         playerHolder.SetActive(false);
+        arm.SetActive(false);
+        
     }
 
     public void OverlayTurnOff()

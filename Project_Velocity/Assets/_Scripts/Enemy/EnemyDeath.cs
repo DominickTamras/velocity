@@ -77,7 +77,11 @@ public class EnemyDeath : MonoBehaviour
 
             foreach(GameObject vfx in disableVFX)
             {
-                vfx.GetComponent<VisualEffect>().enabled = false;
+                
+                if (disableVFX != null)
+                {
+                    vfx.GetComponent<VisualEffect>().enabled = false;
+                }
             }
 
             if(explode == true)

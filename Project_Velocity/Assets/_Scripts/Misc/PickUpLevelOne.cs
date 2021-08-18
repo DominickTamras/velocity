@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PickUpLevelOne : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Disable Shooting and Right arm in level 1
+    public GameObject enableArm;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.tag == "Player")
+        {
+
+            enableArm.SetActive(true);
+            other.GetComponent<Shooting>().enabled = true;
+            this.gameObject.SetActive(false);
+            FindObjectOfType<AudioManager>().PlaySound("Equip");
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

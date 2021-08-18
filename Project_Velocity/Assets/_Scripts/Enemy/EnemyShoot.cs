@@ -81,6 +81,7 @@ public class EnemyShoot : MonoBehaviour
         {
              DestroyShot();
             playedOnce = true;
+            exploded.Play();
         }
     }
         

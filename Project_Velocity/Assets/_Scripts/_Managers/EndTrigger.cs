@@ -12,6 +12,12 @@ public class EndTrigger : MonoBehaviour
 
     public GameObject scoreScreen;
 
+    public GameObject playerStop;
+
+    public MeleeAttack meleeDisableEnd;
+
+    public Animator playAnim2;
+
     public TextMeshProUGUI kills;
 
     public TextMeshProUGUI mins;
@@ -36,6 +42,12 @@ public class EndTrigger : MonoBehaviour
         if(player != null)
         {
             scoreScreen.SetActive(true);
+            FindObjectOfType<AudioManager>().PlaySound("Player_Endlevel1");
+            FindObjectOfType<AudioManager>().PlaySound("Player_Endlevel2");
+            FindObjectOfType<PlayerGoByeBye>().main_Camera.SetActive(false);
+            playAnim2.Play("GlitchEffect");
+            playerStop.SetActive(false);
+            meleeDisableEnd.enabled = false;
             dataRecorder.dataRecorder();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
