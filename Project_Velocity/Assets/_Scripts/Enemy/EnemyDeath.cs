@@ -11,6 +11,8 @@ public class EnemyDeath : MonoBehaviour
 
     public float power;
 
+    public bool endingKill;
+
     public Transform explosionForce;
 
 
@@ -33,6 +35,7 @@ public class EnemyDeath : MonoBehaviour
     
     private bool explode;
 
+
     private void Awake()
     {
         enemyCount++;
@@ -53,11 +56,24 @@ public class EnemyDeath : MonoBehaviour
             FindObjectOfType<AudioManager2>().PlaySound("Enemy_Death");
         }
        
-        deathExplosion.Play();
-        Destroy(gameObject,10.5f);
-        enemyCount--;
-        dead = true;
-        explode = true;
+        if(endingKill == false)
+        {
+            deathExplosion.Play();
+            Destroy(gameObject, 10.5f);
+            enemyCount--;
+            dead = true;
+            explode = true;
+        }
+
+        if (endingKill == true)
+        {
+            deathExplosion.Play();
+            Destroy(gameObject);
+            enemyCount--;
+            dead = true;
+            explode = true;
+        }
+
     }
 
     public void Update()

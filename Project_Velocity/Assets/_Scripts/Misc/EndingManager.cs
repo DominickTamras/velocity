@@ -63,7 +63,7 @@ public class EndingManager : MonoBehaviour
            
             lightIncrease.intensity = Mathf.Lerp(lightIncrease.intensity, 10000000, Time.deltaTime / 10000000 * increasedTime );
 
-            sun.transform.localScale = Vector3.Lerp(sun.transform.localScale, sun.transform.localScale * 10, Time.deltaTime / 90000 * increasedTime);
+            sun.transform.localScale = Vector3.Lerp(sun.transform.localScale, sun.transform.localScale * 10, Time.deltaTime / 90000000 * increasedTime);
             
             yield return new WaitForSeconds(7);
 
