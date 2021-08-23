@@ -58,8 +58,9 @@ public class EnemyDeath : MonoBehaviour
        
         if(endingKill == false)
         {
+            
             deathExplosion.Play();
-            Destroy(gameObject, 10.5f);
+            Destroy(gameObject, 5.5f);
             enemyCount--;
             dead = true;
             explode = true;

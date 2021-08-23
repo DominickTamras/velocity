@@ -73,6 +73,9 @@ public class EndingManager : MonoBehaviour
 
             player.Play("GlitchEffect");
 
+            FindObjectOfType<AudioManager>().PlaySound("Player_Death1");
+            FindObjectOfType<AudioManager>().PlaySound("Player_Death2");
+
             yield return new WaitForSeconds(3);
 
             SceneManager.LoadScene("Credits");

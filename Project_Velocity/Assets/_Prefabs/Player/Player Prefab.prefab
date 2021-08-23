@@ -2809,6 +2809,13 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     spatialBlend: 1
+  - name: Mount
+    clip: {fileID: 8300000, guid: 0e2a3efefb26ea3468411fb4388aa805, type: 3}
+    volume: 0.291
+    pitch: 1.66
+    source: {fileID: 0}
+    loop: 0
+    spatialBlend: 1
   playlist: []
 --- !u!1 &2098104953
 GameObject:
@@ -3041,7 +3048,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -5357,7 +5364,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b8e4a12bbf7c5124bb848ffa953dd0c4, type: 2}
+  - {fileID: 2100000, guid: f27fd1f1d40524a4a90fb70420c56ab9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

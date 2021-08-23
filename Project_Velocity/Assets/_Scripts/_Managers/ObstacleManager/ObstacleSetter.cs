@@ -44,6 +44,8 @@ public class ObstacleSetter : MonoBehaviour
 
     public bool breakPod;
 
+    private bool explodeOnce = false;
+
 
 
     void Start()
@@ -115,10 +117,17 @@ public class ObstacleSetter : MonoBehaviour
                 if(enemyInArea.Count == 0)
                 {
 
-                    this.gameObject.SetActive(false);
+                    StartCoroutine(CleanUp());
                     this.gameObject.GetComponent<Renderer>().enabled = false;
                     this.gameObject.GetComponent<Collider>().enabled = false;
-                    this.gameObject.GetComponent<AudioSource>().Play();
+                  
+                    if (explodeOnce == false) // Plays sound once
+                    {
+                        this.gameObject.GetComponent<AudioSource>().Play();
+
+                        explodeOnce = true;
+
+                    }
 
                     //transform.localPosition = Vector3.Lerp(transform.localPosition, endPosOfLocked, 4 * Time.deltaTime);
                 }
@@ -181,5 +190,11 @@ public class ObstacleSetter : MonoBehaviour
         Debug.Log("Working");
 
         yield return new WaitForSeconds(0);
+    }
+
+    public IEnumerator CleanUp()
+    {
+        yield return new WaitForSeconds(2);
+        this.gameObject.SetActive(false);
     }
 }

@@ -19,6 +19,7 @@ public class Mantling : MonoBehaviour
     private float t_mantle;
 
     bool canMantle = false;
+    bool mountOnce = false;
     public bool isWallRunning;
 
     private void Start()
@@ -66,11 +67,20 @@ public class Mantling : MonoBehaviour
             wr.isMantling = true;
             transform.position = Vector3.Lerp(startPos, endPos, t_mantle);
 
-            if(t_mantle >= 1f)
+            if (mountOnce == false) // Plays sound once
+            {
+                FindObjectOfType<AudioManager>().PlaySound("Mount");
+
+                mountOnce = true;
+
+            }
+
+            if (t_mantle >= 1f)
             {
                 mantleNow = false;
                 t_mantle = 0f;
                 wr.isMantling = false;
+                mountOnce = false;
                 //rb.isKinematic = false;
             }
         }

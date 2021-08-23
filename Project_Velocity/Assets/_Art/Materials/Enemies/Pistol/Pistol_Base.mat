@@ -23,8 +23,8 @@ Material:
   m_Name: Pistol_Base
   m_Shader: {fileID: 4800000, guid: 6c046203321edf34fb092959a05e5b4a, type: 3}
   m_ShaderKeywords: _MK_ARTISTIC_ANIMATION_STUTTER _MK_ENVIRONMENT_REFLECTIONS_AMBIENT
-    _MK_IRIDESCENCE_DEFAULT _MK_LIGHT_BANDED _MK_RECEIVE_SHADOWS _MK_SPECULAR_ISOTROPIC
-    _MK_WRAPPED_DIFFUSE _RECEIVESHADOWS_ON _WRAPPEDLIGHTING_ON
+    _MK_IRIDESCENCE_DEFAULT _MK_LIGHT_BANDED _MK_OUTLINE_NOISE _MK_RECEIVE_SHADOWS
+    _MK_SPECULAR_ISOTROPIC _MK_WRAPPED_DIFFUSE _RECEIVESHADOWS_ON _WRAPPEDLIGHTING_ON
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -215,8 +215,8 @@ Material:
     - _OutlineData: 0
     - _OutlineFadeMax: 2
     - _OutlineFadeMin: 0.25
-    - _OutlineNoise: 0
-    - _OutlineSize: 0
+    - _OutlineNoise: 1
+    - _OutlineSize: 20
     - _OutlineTab: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
