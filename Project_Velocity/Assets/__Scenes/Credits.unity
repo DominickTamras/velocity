@@ -786,6 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 0}
+  meleePauseDisable: {fileID: 0}
   terminalUI: {fileID: 1309507293}
   logTitle: {fileID: 136535915}
   logBody: {fileID: 719878052}
@@ -1115,7 +1116,9 @@ MonoBehaviour:
   playAnim: {fileID: 1469888794}
   deathScreenStart: {fileID: 742086177}
   playerHolder: {fileID: 5441492535440005356}
+  arm: {fileID: 0}
   main_Camera: {fileID: 1541789676}
+  meleeDisable: {fileID: 0}
 --- !u!23 &1039088648
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1880,6 +1883,10 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 742086177}
+    - target: {fileID: 4039794697927812980, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: enteredLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: f022fd0e364f61b4faa0dfbab93cf1d4, type: 2}
     - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8889,6 +8896,8 @@ MonoBehaviour:
   gunEffectCircle: {fileID: 1535943074703334069}
   gunImpactEffect: {fileID: 7058365965502166854, guid: 0882e8e007cbe9c4fbd8ac55293619bd, type: 3}
   gunBurstAmmoEffect: {fileID: 1903994296411895108}
+  gunKickBackAnim: {fileID: 0}
+  railgunShoot: {fileID: 0}
 --- !u!114 &5441492533739972912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9519,6 +9528,7 @@ MonoBehaviour:
   wallDrag: 5
   slideDrag: 2
   airDrag: 1
+  walkAnim: {fileID: 0}
   jumpForce: 16
   coyoteTime: 0.2
   slideThreshold: 2

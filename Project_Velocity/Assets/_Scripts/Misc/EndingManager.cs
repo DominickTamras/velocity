@@ -10,6 +10,10 @@ public class EndingManager : MonoBehaviour
 
     public Animator player;
 
+    public AudioSource endAll;
+
+    public AudioSource stopMusic;
+
     public Light lightIncrease;
 
     public GameObject core;
@@ -21,6 +25,8 @@ public class EndingManager : MonoBehaviour
     public GameObject sun;
 
     public MMFeedbacks feedbackStart;
+
+    private bool runOnceEnd;
 
 
 
@@ -56,7 +62,16 @@ public class EndingManager : MonoBehaviour
 
         if (core == null)
         {
-      
+            if (runOnceEnd == false)
+            {
+                endAll.Play();
+                stopMusic.Stop();
+
+                runOnceEnd = true;
+
+            }
+
+         
             feedbackStart.PlayFeedbacks();
 
             theMadam.SetTrigger("StartDeathTrigger");
@@ -75,6 +90,8 @@ public class EndingManager : MonoBehaviour
 
             FindObjectOfType<AudioManager>().PlaySound("Player_Death1");
             FindObjectOfType<AudioManager>().PlaySound("Player_Death2");
+           
+
 
             yield return new WaitForSeconds(3);
 

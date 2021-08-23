@@ -134,22 +134,27 @@ public class MenuManager : MonoBehaviour
 
     public void Resume()
     {
+        FindObjectOfType<AudioManager>().PlaySound("U.IPress");
         pauseMenuUI.SetActive(false);
         terminalUI.SetActive(false);
         EndPause();
+        
     }
 
     public void Restart()
     {
+        FindObjectOfType<AudioManager>().PlaySound("U.IPress");
         EndPause();
         EnemyDeath.enemyCount = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       
     }
 
   
     public void Quit()
     {
         Application.Quit();
+        FindObjectOfType<AudioManager>().PlaySound("U.IPress");
     }
 
     public void OpenTerminal(TerminalLog log)
@@ -157,6 +162,7 @@ public class MenuManager : MonoBehaviour
         //Game paused
         terminalUI.SetActive(true);
         Pause();
+        FindObjectOfType<AudioManager>().PlaySound("U.IPress");
 
         //Open termal menu
         logTitle.text = log.title;
