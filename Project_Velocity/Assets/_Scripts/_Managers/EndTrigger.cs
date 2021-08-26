@@ -14,6 +14,8 @@ public class EndTrigger : MonoBehaviour
 
     public GameObject playerStop;
 
+    public Animator footStepStop;
+
     public MeleeAttack meleeDisableEnd;
 
     public Animator playAnim2;
@@ -23,6 +25,8 @@ public class EndTrigger : MonoBehaviour
     public TextMeshProUGUI mins;
 
     public TextMeshProUGUI secs;
+    
+    private bool endReached;
 
 
 
@@ -33,6 +37,12 @@ public class EndTrigger : MonoBehaviour
         mins.text = dataRecorder.currMinutes.ToString();
 
         secs.text = dataRecorder.currSeconds.ToString();
+
+        if(endReached == true)
+        {
+            FindObjectOfType<AudioManager>().StopSound("Slide");
+            footStepStop.enabled = false;
+        }
     }
 
 
@@ -51,6 +61,10 @@ public class EndTrigger : MonoBehaviour
             dataRecorder.dataRecorder();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            endReached = true;
+            
+
+          
         }
     }
 }

@@ -2335,6 +2335,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5441492534853457000, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
   m_PrefabInstance: {fileID: 272639011}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &272639019 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1108423079, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 272639011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &281794624
 GameObject:
   m_ObjectHideFlags: 0
@@ -6760,6 +6765,10 @@ PrefabInstance:
       propertyPath: dataRecorder
       value: 
       objectReference: {fileID: 1325121659}
+    - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
+      propertyPath: footStepStop
+      value: 
+      objectReference: {fileID: 272639019}
     - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
       propertyPath: meleeDisableEnd
       value: 
@@ -12791,7 +12800,7 @@ Transform:
   m_LocalScale: {x: 18.33237, y: 225.56444, z: 18.71881}
   m_Children: []
   m_Father: {fileID: 2018374305}
-  m_RootOrder: 115
+  m_RootOrder: 114
   m_LocalEulerAnglesHint: {x: 0, y: -37.059, z: 0}
 --- !u!65 &1381804287
 BoxCollider:
@@ -17274,8 +17283,8 @@ Transform:
   - {fileID: 1490584231}
   - {fileID: 376341107}
   - {fileID: 1091111872}
-  - {fileID: 996477204}
   - {fileID: 1381804286}
+  - {fileID: 996477204}
   - {fileID: 883906126}
   - {fileID: 2040368974}
   - {fileID: 1468803471}
