@@ -360,6 +360,7 @@ public class PlayerMovement : MonoBehaviour
             
             walkAnim.SetFloat("WalkAnimSpeed", currentSpeed);  // anim speed control
             walkAnim.SetBool("IsWalking", true);
+            
            
 
         }
