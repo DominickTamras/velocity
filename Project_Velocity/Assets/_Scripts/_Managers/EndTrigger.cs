@@ -14,7 +14,7 @@ public class EndTrigger : MonoBehaviour
 
     public GameObject playerStop;
 
-    public Animator footStepStop;
+    public GameObject footStepStop;
 
     public MeleeAttack meleeDisableEnd;
 
@@ -41,7 +41,7 @@ public class EndTrigger : MonoBehaviour
         if(endReached == true)
         {
             FindObjectOfType<AudioManager>().StopSound("Slide");
-            footStepStop.enabled = false;
+          
         }
     }
 
@@ -54,9 +54,11 @@ public class EndTrigger : MonoBehaviour
             scoreScreen.SetActive(true);
             FindObjectOfType<AudioManager>().PlaySound("Player_Endlevel1");
             FindObjectOfType<AudioManager>().PlaySound("Player_Endlevel2");
+            FindObjectOfType<AudioManager>().PlaySound("Slide");
             FindObjectOfType<PlayerGoByeBye>().main_Camera.SetActive(false);
             playAnim2.Play("GlitchEffect");
             playerStop.SetActive(false);
+            footStepStop.SetActive(false);
             meleeDisableEnd.enabled = false;
             dataRecorder.dataRecorder();
             Cursor.lockState = CursorLockMode.None;
