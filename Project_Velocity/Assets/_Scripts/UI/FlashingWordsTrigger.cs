@@ -6,6 +6,8 @@ public class FlashingWordsTrigger : MonoBehaviour
 {
     public FlashingWordsInstance flashingWordsScriptable;
     public MenuManager menuManager;
+    public AudioSource instruction;
+
     bool activateFlash;
 
 
@@ -42,13 +44,14 @@ public class FlashingWordsTrigger : MonoBehaviour
             activateFlash = true;
             FlashingWordsStart();
             gameObject.GetComponent<Collider>().enabled = false;
+            instruction.Play();
             
         }
     }
 
     IEnumerator CleanseIt()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2.5f);
         menuManager.flashingWordText.text = "";
         gameObject.SetActive(false);
         menuManager.wordsCount = 0;

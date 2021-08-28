@@ -177,6 +177,7 @@ public class MenuManager : MonoBehaviour
     public void StartChat(ChatLog chatLog)
     {
         chatUI.SetActive(true);
+        meleePauseDisable.enabled = false;
         //Pause();
         //chatBody.text = chatLog.chatLog;
     }
@@ -184,7 +185,7 @@ public class MenuManager : MonoBehaviour
     public void EndChat()
     {
         chatUI.SetActive(false);
-        
+        meleePauseDisable.enabled = true;
 
     }
 

@@ -18,11 +18,15 @@ public class ObstacleSetter : MonoBehaviour
 
     public Vector3 endPong;
 
+    public float doorOpenY;
+
     public bool spinOfDeath;
 
     public float spinSpeed;
 
     public bool doorOpen;
+
+    public bool doorLocked;
 
     private bool updateConstantly = false;
 
@@ -50,7 +54,7 @@ public class ObstacleSetter : MonoBehaviour
 
     void Start()
     {
-        endPos = new Vector3(transform.position.x, 3, transform.position.z);
+        endPos = new Vector3(transform.position.x, doorOpenY, transform.position.z);
         ogPos = transform.position;
         ObstacleManager.current.onObstacleTriggerEnter += OnObstacleActivate; // register event
         ObstacleManager.current.onObstacleTriggerExit += OnObstacleEnd;                                                                   
@@ -140,7 +144,7 @@ public class ObstacleSetter : MonoBehaviour
     {
      if(id == this.id)
      {
-            if (doorOpen == true)
+            if (doorOpen == true && doorLocked == false)
             {
                 doorActivate = true;
         
@@ -158,13 +162,16 @@ public class ObstacleSetter : MonoBehaviour
 
     IEnumerator OpenDoor()
     {
-
-        for (int i = 0; i < 50; i++)
+        if(doorLocked == false)
         {
-            transform.position = Vector3.Lerp(transform.position, endPos, 4 * Time.deltaTime);
+            for (int i = 0; i < 50; i++)
+            {
+                transform.position = Vector3.Lerp(transform.position, endPos, 4 * Time.deltaTime);
 
-            yield return null;
+                yield return null;
+            }
         }
+       
 
        
     }

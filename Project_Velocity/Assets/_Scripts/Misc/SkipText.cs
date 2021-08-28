@@ -8,11 +8,15 @@ public class SkipText : MonoBehaviour
 
     public GameObject player;
 
+    public MenuManager enableArm;
+
     public void  OnClickSkip()
     {
         skipText.SetActive(false);
 
         player.SetActive(true);
+
+        enableArm.meleePauseDisable.enabled = true;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
