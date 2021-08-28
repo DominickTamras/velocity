@@ -42,11 +42,7 @@ public class AudioManager2 : MonoBehaviour
         {     // if the instance var is null this is first AudioManager
             instance = this;        //save this AudioManager in instance 
         }
-        else
-        {
-            Destroy(gameObject);    // this isnt the first so destroy it
-            return;                 // since this isn't the first return so no other code is run
-        }
+       
 
         DontDestroyOnLoad(gameObject); // do not destroy me when a new scene loads
 

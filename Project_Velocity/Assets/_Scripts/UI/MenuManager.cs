@@ -11,6 +11,9 @@ public class MenuManager : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public MeleeAttack meleePauseDisable;
+    public GameObject crosshairDisable_PAUSE;
+    [HideInInspector]
+    public bool endState = false;
 
     [Header("Terminal")]
     public GameObject terminalUI;
@@ -75,7 +78,7 @@ public class MenuManager : MonoBehaviour
         //FlashingWordsManager();
 
         //Pause
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && endState == false)
         { if (playerDead != true)
             {
                 if (GameIsPaused)
@@ -99,6 +102,7 @@ public class MenuManager : MonoBehaviour
         meleePauseDisable.enabled = false;
         GameIsPaused = true;
         Time.timeScale = 0f;
+        crosshairDisable_PAUSE.SetActive(false);
     }
 
     public void EndPause()
@@ -108,6 +112,7 @@ public class MenuManager : MonoBehaviour
         meleePauseDisable.enabled = true;
         GameIsPaused = false;
         Time.timeScale = 1f;
+        crosshairDisable_PAUSE.SetActive(true);
     }
 
     void OpenPauseMenu()
