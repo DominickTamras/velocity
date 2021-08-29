@@ -35,6 +35,9 @@ public class MenuManager : MonoBehaviour
     [Header("Death menu")]
     public GameObject deathMenu;
 
+    Scene sceneMANAGER;
+
+
     /*    [Header("Talking Log")]
         public GameObject talkinglog;*/
 
@@ -57,6 +60,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         //checkEnd = FindObjectOfType<TypeWriterEffect>();
+        sceneMANAGER = SceneManager.GetActiveScene();
 
         //Disables cursor
         pauseMenuUI.SetActive(false);
@@ -189,7 +193,22 @@ public class MenuManager : MonoBehaviour
     {
         chatUI.SetActive(false);
         meleePauseDisable.enabled = true;
-        StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("BG_MUSIC_LEVEL1", 0.2f));
+
+
+        if (sceneMANAGER.name == "Level_1" || sceneMANAGER.name == "Level_2" || sceneMANAGER.name == "Level_3")
+        {
+            FindObjectOfType<AudioManager>().PlaySound("BG_MUSIC_LEVEL1");
+        }
+
+        if (sceneMANAGER.name == "Level_3" || sceneMANAGER.name == "Level_4" || sceneMANAGER.name == "Level_5")
+        {
+            FindObjectOfType<AudioManager>().PlaySound("BG_MUSIC_CHAPTER2");
+        }
+
+        if (sceneMANAGER.name == "Level_6" || sceneMANAGER.name == "Level_7" || sceneMANAGER.name == "Level_9")
+        {
+            FindObjectOfType<AudioManager>().PlaySound("BG_MUSIC_CHAPTER3");
+        }
 
     }
 

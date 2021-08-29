@@ -28,6 +28,7 @@ public class LogTrigger: MonoBehaviour
         {
             enteredLevel.isCompleted = true;
             StartChat();
+            FindObjectOfType<AudioManager>().PlaySound("StartUp");
             gameObject.GetComponent<Collider>().enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

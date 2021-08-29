@@ -6,6 +6,10 @@ public class TypeWriterEffect : MonoBehaviour {
 
 	public float delay;
 
+	public AudioClip[] type;
+	
+	public AudioSource randomType;
+
 	private string currentText = "";
 	
 	public float timeChange;
@@ -15,6 +19,8 @@ public class TypeWriterEffect : MonoBehaviour {
 	public MenuManager pause;
 
 	public ChatLog currentText2;
+
+	int randomClip;
 	
 	[HideInInspector]
 	public bool isEnded;
@@ -27,16 +33,17 @@ public class TypeWriterEffect : MonoBehaviour {
 		isEnded = true;
 		StartCoroutine(ShowText());
 
+
 		//fullText = currentText2.chatLog;
 	}
 
     private void Update()
     {
 
-
+	
 	}
 
-    IEnumerator ShowText()
+	IEnumerator ShowText()
 	{
 			
 
@@ -44,9 +51,11 @@ public class TypeWriterEffect : MonoBehaviour {
 			{
 				currentText = currentText2.chatLog.Substring(0, i);
 				this.GetComponent<TextMeshProUGUI>().text = currentText;
+				randomType.clip = type[0];
 				yield return new WaitForSeconds(delay);
+				randomType.Play();
 
-			}
+		}
 
 		yield return new WaitForSeconds(timeChange);
 

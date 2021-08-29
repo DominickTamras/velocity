@@ -8583,6 +8583,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4020910497172431955, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: currentText2
+      value: 
+      objectReference: {fileID: 11400000, guid: 54a0d0a334c23644dbb3138088bb6d17, type: 2}
     - target: {fileID: 5165719636238124966, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -8733,6 +8737,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4600264582169252217, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
   m_PrefabInstance: {fileID: 880792265}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &880792274 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 151870117, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 880792265}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe460943dd346204cb5b870d8cdaa212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &882021799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13290,6 +13305,75 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4656199353233520101, guid: 94feba02d57541547ae07a92c947816c, type: 3}
+--- !u!1001 &1349934882
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4039794697927812980, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: chatLog
+      value: 
+      objectReference: {fileID: 11400000, guid: 54a0d0a334c23644dbb3138088bb6d17, type: 2}
+    - target: {fileID: 4039794697927812980, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 880792274}
+    - target: {fileID: 4039794697927812980, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: enteredLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: 918c794fe4dce08408f7434c7bfedec7, type: 2}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 301.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -122.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 261.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812981, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039794697927812986, guid: 6f973304231620847bc65d2055a3e466, type: 3}
+      propertyPath: m_Name
+      value: ChatLogTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f973304231620847bc65d2055a3e466, type: 3}
 --- !u!4 &1352548366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6777333862881511389, guid: d61e1592000bd884a89b4806a0e94fc6, type: 3}
