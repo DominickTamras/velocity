@@ -103,6 +103,7 @@ public class MenuManager : MonoBehaviour
         GameIsPaused = true;
         Time.timeScale = 0f;
         crosshairDisable_PAUSE.SetActive(false);
+
     }
 
     public void EndPause()
@@ -113,6 +114,7 @@ public class MenuManager : MonoBehaviour
         GameIsPaused = false;
         Time.timeScale = 1f;
         crosshairDisable_PAUSE.SetActive(true);
+      
     }
 
     void OpenPauseMenu()
@@ -135,6 +137,7 @@ public class MenuManager : MonoBehaviour
         Cursor.visible = true;
         deathMenu.SetActive(true);
         playerDead = true;
+ 
     }
 
     public void Resume()
@@ -186,6 +189,7 @@ public class MenuManager : MonoBehaviour
     {
         chatUI.SetActive(false);
         meleePauseDisable.enabled = true;
+        StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("BG_MUSIC_LEVEL1", 0.2f));
 
     }
 

@@ -18,6 +18,8 @@ public class SkipText : MonoBehaviour
 
         enableArm.meleePauseDisable.enabled = true;
 
+        //StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("BG_MUSIC_LEVEL1", 0.2f));
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

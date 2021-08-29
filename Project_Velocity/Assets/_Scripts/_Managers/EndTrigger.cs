@@ -33,7 +33,6 @@ public class EndTrigger : MonoBehaviour
     private bool endReached;
 
 
-
     public void Update()
     {
         kills.text = dataRecorder.enemiesKilled.ToString();
@@ -60,7 +59,6 @@ public class EndTrigger : MonoBehaviour
             FindObjectOfType<AudioManager>().PlaySound("Player_Endlevel2");
             FindObjectOfType<AudioManager>().StopSound("Slide");
             FindObjectOfType<PlayerGoByeBye>().main_Camera.SetActive(false);
-            menuManagerAccess.DeathScreen();
             playerStop.SetActive(false);
             footStepStop.SetActive(false);
             meleeDisableEnd.enabled = false;
