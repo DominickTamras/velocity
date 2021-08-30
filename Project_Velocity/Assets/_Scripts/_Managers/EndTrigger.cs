@@ -18,6 +18,8 @@ public class EndTrigger : MonoBehaviour
 
     public GameObject crosshairDisable;
 
+    public GameObject mainCameraEND;
+
     public MenuManager menuManagerAccess;
 
     public MeleeAttack meleeDisableEnd;
@@ -58,7 +60,12 @@ public class EndTrigger : MonoBehaviour
             FindObjectOfType<AudioManager>().PlaySound("Player_Endlevel1");
             FindObjectOfType<AudioManager>().PlaySound("Player_Endlevel2");
             FindObjectOfType<AudioManager>().StopSound("Slide");
+<<<<<<< Updated upstream
             FindObjectOfType<PlayerGoByeBye>().main_Camera.SetActive(false);
+=======
+            mainCameraEND.SetActive(false);
+            menuManagerAccess.DeathScreen();
+>>>>>>> Stashed changes
             playerStop.SetActive(false);
             footStepStop.SetActive(false);
             meleeDisableEnd.enabled = false;
