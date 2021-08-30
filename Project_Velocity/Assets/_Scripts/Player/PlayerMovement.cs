@@ -326,7 +326,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump()
-    {
+    {   
 
         FindObjectOfType<AudioManager>().PlaySound("Jump");
         walkAnim.SetBool("IsWalking", false);
