@@ -35,6 +35,7 @@ public class EndTrigger : MonoBehaviour
     private bool endReached;
 
 
+
     public void Update()
     {
         kills.text = dataRecorder.enemiesKilled.ToString();
@@ -62,10 +63,14 @@ public class EndTrigger : MonoBehaviour
             FindObjectOfType<AudioManager>().StopSound("Slide");
 <<<<<<< Updated upstream
             FindObjectOfType<PlayerGoByeBye>().main_Camera.SetActive(false);
+<<<<<<< HEAD
 =======
             mainCameraEND.SetActive(false);
             menuManagerAccess.DeathScreen();
 >>>>>>> Stashed changes
+=======
+            menuManagerAccess.DeathScreen();
+>>>>>>> parent of 3b52185 (some bug fixes)
             playerStop.SetActive(false);
             footStepStop.SetActive(false);
             meleeDisableEnd.enabled = false;
