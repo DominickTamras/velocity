@@ -656,7 +656,7 @@ PrefabInstance:
     - target: {fileID: 151870117, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: imageBg
       value: 
-      objectReference: {fileID: 665234865}
+      objectReference: {fileID: 0}
     - target: {fileID: 151870117, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: fullText
       value: Test my asshole
@@ -691,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5441492533596226017, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5441492533596226017, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1942,9 +1942,11 @@ MonoBehaviour:
   moveSpeed: 0
   startPong: {x: 0, y: 0, z: 0}
   endPong: {x: 0, y: 0, z: 0}
+  doorOpenY: 0
   spinOfDeath: 1
   spinSpeed: 60
   doorOpen: 0
+  doorLocked: 0
   enemyInArea: []
   killEnemyToProceed: 0
   turnOnTrigger: 0
@@ -3284,7 +3286,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2132345077727700219, guid: fee6468cb128b624b9d4b7138b98737a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2132345077727700219, guid: fee6468cb128b624b9d4b7138b98737a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3955,11 +3957,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -585780205028041535, guid: 94feba02d57541547ae07a92c947816c, type: 3}
---- !u!1 &665234865 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7163765671337008493, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
-  m_PrefabInstance: {fileID: 106277959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &670783323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8139,7 +8136,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2123365541468402465, guid: 7e367e606fc7c9342a23d511ece0107f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9607,9 +9604,11 @@ MonoBehaviour:
   moveSpeed: 1
   startPong: {x: 579.9, y: 151.20006, z: 427.3}
   endPong: {x: 579.9, y: 151.20006, z: 400.5}
+  doorOpenY: 0
   spinOfDeath: 0
   spinSpeed: 0
   doorOpen: 0
+  doorLocked: 0
   enemyInArea: []
   killEnemyToProceed: 0
   turnOnTrigger: 0
@@ -11346,7 +11345,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0f5a48b8ac445b044a63afb9110c9a58, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f5a48b8ac445b044a63afb9110c9a58, type: 3}
       propertyPath: m_LocalScale.x
@@ -13943,7 +13942,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8603965473982263445, guid: e0b553bf28cb5644cbcda2666d0503b8, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8603965473982263445, guid: e0b553bf28cb5644cbcda2666d0503b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15050,7 +15049,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7788026177707222100, guid: f24634cdcf4490a49a1f86b48ad105ce, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7788026177707222100, guid: f24634cdcf4490a49a1f86b48ad105ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16983,23 +16982,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7640249338538737929, guid: 93fc55564ed2c9446bd294eb1fdb24ca, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.3125648
+      value: 13.900331
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640249338538737929, guid: 93fc55564ed2c9446bd294eb1fdb24ca, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.083131
       objectReference: {fileID: 0}
     - target: {fileID: 7640249338538737929, guid: 93fc55564ed2c9446bd294eb1fdb24ca, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.3125648
+      value: 6.7981787
       objectReference: {fileID: 0}
     - target: {fileID: 7640249338538737929, guid: 93fc55564ed2c9446bd294eb1fdb24ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.9
+      value: 45.262
       objectReference: {fileID: 0}
     - target: {fileID: 7640249338538737929, guid: 93fc55564ed2c9446bd294eb1fdb24ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8
+      value: 14.92
       objectReference: {fileID: 0}
     - target: {fileID: 7640249338538737929, guid: 93fc55564ed2c9446bd294eb1fdb24ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -44.5
+      value: -43.193
       objectReference: {fileID: 0}
     - target: {fileID: 7640249338538737929, guid: 93fc55564ed2c9446bd294eb1fdb24ca, type: 3}
       propertyPath: m_LocalRotation.w

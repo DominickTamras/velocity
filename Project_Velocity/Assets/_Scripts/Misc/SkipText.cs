@@ -21,6 +21,8 @@ public class SkipText : MonoBehaviour
     {
         skipText.SetActive(false);
 
+        FindObjectOfType<AudioManager>().StopSound("StartUp");
+
         player.SetActive(true);
 
         enableArm.meleePauseDisable.enabled = true;
