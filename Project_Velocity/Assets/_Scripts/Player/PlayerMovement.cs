@@ -49,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     private float walkAnimSpeed;
     private bool runOnce = false;
     private bool runOnce2 = false;
+    private bool runOnceLAND = true;
+    public AudioSource stopMOVING;
 
     float horizontalMovement;
     float verticalMovement;
@@ -290,8 +292,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(moveDirection.normalized * moveSpeed * movementMultiplier * airMultiplier, ForceMode.Acceleration);
                 walkAnim.SetBool("IsWalking", false);
-
-                if(runOnce == false)
+                runOnceLAND = false;
+                stopMOVING.enabled = false;
+                if (runOnce == false)
                 {
                     StartCoroutine(FindObjectOfType<AudioManager>().FadeIn("Player_Airtime", 0.45f));
 
@@ -357,9 +360,17 @@ public class PlayerMovement : MonoBehaviour
             
              FindObjectOfType<AudioManager>().StopSound("Player_Airtime");
 
-            
+            if (runOnceLAND == false)
+            {
+                FindObjectOfType<AudioManager>().PlaySound("Land");
+
+                runOnceLAND = true;
+
+            }
+
             walkAnim.SetFloat("WalkAnimSpeed", currentSpeed);  // anim speed control
             walkAnim.SetBool("IsWalking", true);
+            stopMOVING.enabled = true;
             
            
 

@@ -2823,19 +2823,19 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     spatialBlend: 1
-  - name: BG_MUSIC_LEVEL1
-    clip: {fileID: 8300000, guid: 1976612730465594899c8cfe822c3da6, type: 3}
-    volume: 0.25
-    pitch: 1
-    source: {fileID: 0}
-    loop: 1
-    spatialBlend: 1
   - name: StartUp
     clip: {fileID: 8300000, guid: 409a666157aa6b440820f580faa576c8, type: 3}
     volume: 0.609
     pitch: 1
     source: {fileID: 0}
     loop: 0
+    spatialBlend: 1
+  - name: BG_MUSIC_LEVEL1
+    clip: {fileID: 8300000, guid: 1976612730465594899c8cfe822c3da6, type: 3}
+    volume: 0.25
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
     spatialBlend: 1
   - name: BG_MUSIC_CHAPTER2
     clip: {fileID: 8300000, guid: 140042f1e5df7d5499ddea1257d4d339, type: 3}
@@ -2846,6 +2846,13 @@ MonoBehaviour:
     spatialBlend: 1
   - name: BG_MUSIC_CHAPTER3
     clip: {fileID: 8300000, guid: 75bf10e74794b904f901907bbd4ac1cb, type: 3}
+    volume: 0.609
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+    spatialBlend: 1
+  - name: Land
+    clip: {fileID: 8300000, guid: 58c5aadd9c031ba46856078a13d1b1bb, type: 3}
     volume: 0.609
     pitch: 1
     source: {fileID: 0}
@@ -6072,6 +6079,7 @@ MonoBehaviour:
   slideDrag: 2
   airDrag: 1
   walkAnim: {fileID: 1108423079}
+  stopMOVING: {fileID: 637534069}
   jumpForce: 16
   coyoteTime: 0.2
   slideThreshold: 2
@@ -6164,7 +6172,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5441492534853457000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45c7d079cf542f54597fb321336d6950, type: 3}
   m_Name: 
