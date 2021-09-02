@@ -264,6 +264,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 
                 walkAnim.SetBool("IsWalking", true);
+                stopMOVING.enabled = true;
                 walkAnim.SetFloat("WalkAnimSpeed", currentSpeed / 2);
 
                 rb.AddForce(wallMoveDirection.normalized * moveSpeed * movementMultiplier, ForceMode.Acceleration);
