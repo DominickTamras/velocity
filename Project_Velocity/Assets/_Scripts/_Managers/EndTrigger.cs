@@ -28,6 +28,8 @@ public class EndTrigger : MonoBehaviour
 
     public TextMeshProUGUI mins;
 
+    public GameObject turnOffCam;
+
     public TextMeshProUGUI secs;
     
     private bool endReached;
@@ -54,17 +56,17 @@ public class EndTrigger : MonoBehaviour
         PlayerMovement player = other.GetComponent<PlayerMovement>();
         if(player != null)
         {
-            scoreScreen.SetActive(true);
+            StartCoroutine(StartEndScreen());
             FindObjectOfType<AudioManager>().PlaySound("Player_Endlevel1");
             FindObjectOfType<AudioManager>().PlaySound("Player_Endlevel2");
             FindObjectOfType<AudioManager>().StopSound("Slide");
-            FindObjectOfType<PlayerGoByeBye>().main_Camera.SetActive(false);
+            FindObjectOfType<AudioManager2>().StopSound("Enemy_Shoot");
+            turnOffCam.SetActive(false);
             playerStop.SetActive(false);
             footStepStop.SetActive(false);
+            playAnim2.Play("GlitchEffect");
             meleeDisableEnd.enabled = false;
             dataRecorder.dataRecorder();
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             endReached = true;
             menuManagerAccess.endState = true;
             crosshairDisable.SetActive(false);
@@ -72,5 +74,15 @@ public class EndTrigger : MonoBehaviour
 
           
         }
+    }
+
+    IEnumerator StartEndScreen()
+    {
+        yield return new WaitForSeconds(0.6f);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        scoreScreen.SetActive(true);
+
+
     }
 }
