@@ -15,5 +15,8 @@ public class LevelDataSO : ScriptableObject
     public int totalEnemies;
     public int enemiesKilled;
 
+    //Level Restarted
+    public int deaths;
+
  
 }

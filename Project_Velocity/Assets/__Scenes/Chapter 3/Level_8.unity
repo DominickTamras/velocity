@@ -1137,6 +1137,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5441492534853457000, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
   m_PrefabInstance: {fileID: 106277959}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &106277970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6767084977912786903, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 106277959}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &106277971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2127813480, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 106277959}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &109256855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,6 +2043,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 106277964}
     - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
+      propertyPath: deaths
+      value: 
+      objectReference: {fileID: 106277970}
+    - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
       propertyPath: playAnim2
       value: 
       objectReference: {fileID: 106277968}
@@ -2034,6 +2054,10 @@ PrefabInstance:
       propertyPath: playerStop
       value: 
       objectReference: {fileID: 106277969}
+    - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
+      propertyPath: turnOffCam
+      value: 
+      objectReference: {fileID: 106277971}
     - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
       propertyPath: scoreScreen
       value: 

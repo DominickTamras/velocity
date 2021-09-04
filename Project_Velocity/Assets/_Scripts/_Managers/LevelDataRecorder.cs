@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelDataRecorder : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class LevelDataRecorder : MonoBehaviour
 
     public float currMinutes;
     public float currSeconds;
-
+    public int currDeaths;
     //Enemy Score
     public int enemiesKilled = 0;
     public int totalEnemies = 0;
@@ -27,11 +28,16 @@ public class LevelDataRecorder : MonoBehaviour
     {
         totalEnemies = EnemyDeath.enemyCount;
         levelData.totalEnemies = totalEnemies;
+        levelData.deaths = currDeaths;
+
     }
 
     void Update()
     {
         timerCounter();
+        levelData.deaths = PlayerGoByeBye.deathsSTATIC;
+        currDeaths = levelData.deaths;
+
     }
 
     //Still need to add functionality for level 1 where at the very start, the timer doesn't start until cutscene is over.
@@ -42,6 +48,7 @@ public class LevelDataRecorder : MonoBehaviour
             timer = Time.time;
             minutes = ((int)timer / 60);
             seconds = (timer % 60);
+           // Mathf.RoundToInt(seconds * 1000); Figure out how to round and get rid of last 3 numbers in calc
         }
     }
 
@@ -50,7 +57,7 @@ public class LevelDataRecorder : MonoBehaviour
         //Local data
         currMinutes = minutes;
         currSeconds = seconds;
-        enemiesKilled = totalEnemies - EnemyDeath.enemyCount;
+        enemiesKilled = totalEnemies - EnemyDeath.enemyCount; 
 
         runCounter = false;
 

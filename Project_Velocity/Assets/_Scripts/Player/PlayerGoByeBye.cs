@@ -7,6 +7,10 @@ public class PlayerGoByeBye : MonoBehaviour
 {
     public Animator playAnim;
 
+    public LevelDataRecorder deathAdd;
+
+    public static int deathsSTATIC;
+
     public MenuManager deathScreenStart;
 
     public GameObject playerHolder;
@@ -25,6 +29,11 @@ public class PlayerGoByeBye : MonoBehaviour
             
 
             EnemyDeath.enemyCount = 0;
+
+            //deathAdd.currDeaths += 1;
+
+            deathsSTATIC += 1;
+
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
             playAnim.Play("GlitchEffect");

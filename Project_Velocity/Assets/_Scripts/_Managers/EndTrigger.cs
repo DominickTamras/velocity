@@ -28,11 +28,15 @@ public class EndTrigger : MonoBehaviour
 
     public TextMeshProUGUI mins;
 
+    public TextMeshProUGUI deaths;
+
     public GameObject turnOffCam;
 
     public TextMeshProUGUI secs;
     
     private bool endReached;
+
+    
 
 
     public void Update()
@@ -42,6 +46,8 @@ public class EndTrigger : MonoBehaviour
         mins.text = dataRecorder.currMinutes.ToString();
 
         secs.text = dataRecorder.currSeconds.ToString();
+
+        deaths.text = dataRecorder.currDeaths.ToString();
 
         if(endReached == true)
         {
