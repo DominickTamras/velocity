@@ -16,6 +16,8 @@ public class DataGatherMainMenu : MonoBehaviour
 
     public TextMeshProUGUI timeSec;
 
+    public TextMeshProUGUI deaths;
+
 
 
     public void Update()
@@ -36,6 +38,7 @@ public class DataGatherMainMenu : MonoBehaviour
 
         timeSec.text = check.seconds.ToString();
 
+        deaths.text = check.deaths.ToString();
 
     }
 
