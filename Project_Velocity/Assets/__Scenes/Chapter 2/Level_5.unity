@@ -8760,6 +8760,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe460943dd346204cb5b870d8cdaa212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &880792275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2127813480, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 880792265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &880792276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6046535264506900670, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 880792265}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &880792281 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 637534069, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
@@ -15272,6 +15282,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 880792271}
     - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
+      propertyPath: turnOffCam
+      value: 
+      objectReference: {fileID: 880792275}
+    - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
       propertyPath: scoreScreen
       value: 
       objectReference: {fileID: 880792272}
@@ -15287,6 +15301,14 @@ PrefabInstance:
       propertyPath: meleeDisableEnd
       value: 
       objectReference: {fileID: 880792270}
+    - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
+      propertyPath: crosshairDisable
+      value: 
+      objectReference: {fileID: 880792276}
+    - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
+      propertyPath: menuManagerAccess
+      value: 
+      objectReference: {fileID: 880792274}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
 --- !u!4 &1539478359 stripped

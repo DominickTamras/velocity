@@ -2472,7 +2472,7 @@ PrefabInstance:
     - target: {fileID: 151870117, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: imageBg
       value: 
-      objectReference: {fileID: 665234865}
+      objectReference: {fileID: 0}
     - target: {fileID: 151870117, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: fullText
       value: Test my asshole
@@ -2686,6 +2686,27 @@ GameObject:
 --- !u!1 &106277968 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6512558103949619736, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 106277959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &106277969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2127813480, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 106277959}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &106277970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 151870117, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+  m_PrefabInstance: {fileID: 106277959}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe460943dd346204cb5b870d8cdaa212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &106277971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6046535264506900670, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
   m_PrefabInstance: {fileID: 106277959}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &109256855
@@ -12693,11 +12714,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6777333862881511389, guid: d61e1592000bd884a89b4806a0e94fc6, type: 3}
   m_PrefabInstance: {fileID: 664524666}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &665234865 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7163765671337008493, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
-  m_PrefabInstance: {fileID: 106277959}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &668104011 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2713264932400553203, guid: d61e1592000bd884a89b4806a0e94fc6, type: 3}
@@ -18244,6 +18260,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 106277967}
     - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
+      propertyPath: turnOffCam
+      value: 
+      objectReference: {fileID: 106277969}
+    - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
       propertyPath: scoreScreen
       value: 
       objectReference: {fileID: 106277968}
@@ -18259,6 +18279,14 @@ PrefabInstance:
       propertyPath: meleeDisableEnd
       value: 
       objectReference: {fileID: 106277965}
+    - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
+      propertyPath: crosshairDisable
+      value: 
+      objectReference: {fileID: 106277971}
+    - target: {fileID: 7249579594190937358, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
+      propertyPath: menuManagerAccess
+      value: 
+      objectReference: {fileID: 106277970}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ba6e0582c6111440a8f7a8f0a5d72e7, type: 3}
 --- !u!1 &969881033 stripped
