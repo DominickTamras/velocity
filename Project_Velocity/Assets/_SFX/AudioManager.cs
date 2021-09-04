@@ -79,7 +79,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogError("Unable to play sound " + name);
+            //Debug.LogError("Unable to play sound " + name);
             return;
         }
         //s.source.pitch = UnityEngine.Random.Range(0.7f, 1.1f);
@@ -203,7 +203,7 @@ public class AudioManager : MonoBehaviour
 
         while (s.source.volume < startVolume)
         {
-            Debug.Log("Fade in volume: " + s.source.name + s.source.volume);
+            //Debug.Log("Fade in volume: " + s.source.name + s.source.volume);
             s.source.volume += startVolume * Time.deltaTime / FadeTime;
 
             yield return null;

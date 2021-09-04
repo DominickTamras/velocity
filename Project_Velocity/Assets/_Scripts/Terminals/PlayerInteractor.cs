@@ -6,9 +6,11 @@ public class PlayerInteractor : MonoBehaviour
 {
     [SerializeField] Camera cam;
     [SerializeField] float interactRange;
+    public GameObject interactScreen;
+    private bool pressedOpen;
     void Update()
     {
-        if(!MenuManager.GameIsPaused)
+        if (!MenuManager.GameIsPaused)
         {
             InteractFinder();
         }
@@ -22,15 +24,31 @@ public class PlayerInteractor : MonoBehaviour
         {
             //If a terminal is found
             TerminalObject termObj = hit.transform.GetComponent<TerminalObject>();
-            if(termObj != null)
+            if (termObj != null)
             {
                 //Show interact key popup
+                interactScreen.SetActive(true);
                 //Allow interact with terminal
                 //If interact, use the menumanager to open terminal menu
-                if(Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    termObj.OpenTerminal();
+                
+                        termObj.OpenTerminal();
+                        interactScreen.SetActive(false);
+                    
+
                 }
+            }
+
+            else
+            {
+                interactScreen.SetActive(false);
+            }
+
+            IEnumerator closeTerminalTrue()
+            {
+                yield return new WaitForSeconds(0.1f);
+                pressedOpen = true;
             }
         }
     }

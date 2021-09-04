@@ -6,6 +6,7 @@ public class TerminalObject : MonoBehaviour
 {
     public TerminalLog log;
     public MenuManager menuManager;
+   
 
     public void OpenTerminal()
     {
@@ -17,6 +18,14 @@ public class TerminalObject : MonoBehaviour
         else
         {
             Debug.LogError("This terminal is missing a log scriptable object!");
+        }
+    }
+
+    public void CloseTerminal()
+    {
+        if (log != null)
+        {
+            menuManager.CloseTerminal();
         }
     }
 }

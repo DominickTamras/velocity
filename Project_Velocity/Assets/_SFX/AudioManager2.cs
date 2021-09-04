@@ -26,7 +26,7 @@ public class AudioManager2 : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name != "Menu" && SceneManager.GetActiveScene().name != "Credits")
         {
-            Debug.Log("BG music Playing");
+            //Debug.Log("BG music Playing");
             PlaySound("BG");
 
         }
@@ -75,7 +75,7 @@ public class AudioManager2 : MonoBehaviour
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
-            Debug.LogError("Unable to play sound " + name);
+            //Debug.LogError("Unable to play sound " + name);
             return;
         }
         //s.source.pitch = UnityEngine.Random.Range(0.7f, 1.1f);

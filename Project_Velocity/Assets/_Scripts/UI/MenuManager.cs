@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("Terminal")]
     public GameObject terminalUI;
+    public GameObject interactUI;
     public TextMeshProUGUI logTitle;
     public TextMeshProUGUI logBody;
 
@@ -124,6 +125,8 @@ public class MenuManager : MonoBehaviour
     void OpenPauseMenu()
     {
         pauseMenuUI.SetActive(true);
+        interactUI.SetActive(false);
+        
     }
 
     public void DeathScreen()
@@ -173,12 +176,24 @@ public class MenuManager : MonoBehaviour
     {
         //Game paused
         terminalUI.SetActive(true);
+       
         Pause();
         FindObjectOfType<AudioManager>().PlaySound("U.IPress");
 
         //Open termal menu
         logTitle.text = log.title;
         logBody.text = log.log;
+    }
+
+    public void CloseTerminal()
+    {
+        
+        terminalUI.SetActive(false);
+
+        Resume();
+        FindObjectOfType<AudioManager>().PlaySound("U.IPress");
+
+       
     }
 
     public void StartChat(ChatLog chatLog)
