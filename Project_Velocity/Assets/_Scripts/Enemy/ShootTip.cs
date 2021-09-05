@@ -23,6 +23,7 @@ public class ShootTip : MonoBehaviour
     private Transform enemyTransform;
     [HideInInspector]
     public float timeBetweenShots;
+
     void Start()
     {
         enemyMuzzle = enemyMuzzle_go.GetComponent<VisualEffect>();
@@ -33,6 +34,7 @@ public class ShootTip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         if (timeBetweenShots <= 0)
         {
             enemyMuzzle.initialEventName = "OnPlay";

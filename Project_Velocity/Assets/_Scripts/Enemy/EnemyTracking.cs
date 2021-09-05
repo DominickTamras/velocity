@@ -50,7 +50,8 @@ public class EnemyTracking : MonoBehaviour
     private Vector3 predictPosition;
 
     private Quaternion ogRotation;
-
+    
+    RaycastHit checkHit;
 
 
 
