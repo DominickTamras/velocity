@@ -6,6 +6,7 @@ public class FlashingWordsTrigger : MonoBehaviour
 {
     public FlashingWordsInstance flashingWordsScriptable;
     public MenuManager menuManager;
+    public Animator playMinorGlitch;
     public AudioSource instruction;
 
     bool activateFlash;
@@ -45,7 +46,10 @@ public class FlashingWordsTrigger : MonoBehaviour
             FlashingWordsStart();
             gameObject.GetComponent<Collider>().enabled = false;
             instruction.Play();
-            
+            playMinorGlitch.Play("MinorGlitch", -1 , 0f);
+
+
+
         }
     }
 
