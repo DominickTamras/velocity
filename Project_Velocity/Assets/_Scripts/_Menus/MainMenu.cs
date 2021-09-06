@@ -9,14 +9,17 @@ public class MainMenu : MonoBehaviour
     public GameObject mainmenu;
     public GameObject levelSelect;
     public GameObject options;
+    public AudioSource playUi;
     public void OnClickStartGame()
     {
         SceneManager.LoadScene(1);
-    }
+        playUi.Play();    
+     }
 
     public void OnclickExit()
     {
-
+        Application.Quit();
+        playUi.Play();
     }
 
 
@@ -24,23 +27,27 @@ public class MainMenu : MonoBehaviour
     {
         mainmenu.SetActive(false);
         levelSelect.SetActive(true);
+        playUi.Play();
     }
 
     public void OnClickOptions()
     {
         mainmenu.SetActive(false);
         options.SetActive(true);
+        playUi.Play();
     }
 
     public void OnClickReturnOptions()
     {
         options.SetActive(false);
         mainmenu.SetActive(true);
+        playUi.Play();
     }
 
     public void OnClickReturnLevelSelect()
     {
         levelSelect.SetActive(false);
         mainmenu.SetActive(true);
+        playUi.Play();
     }
 }
