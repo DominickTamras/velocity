@@ -34,7 +34,11 @@ public class PlayerInteractor : MonoBehaviour
                 {
                 
                         termObj.OpenTerminal();
+                    if(interactScreen != null)
+                    {
                         interactScreen.SetActive(false);
+                    }
+                  
                     
 
                 }
@@ -42,7 +46,11 @@ public class PlayerInteractor : MonoBehaviour
 
             else
             {
-                interactScreen.SetActive(false);
+                if(interactScreen != null)
+                {
+                    interactScreen.SetActive(false);
+                }
+           
             }
 
             IEnumerator closeTerminalTrue()

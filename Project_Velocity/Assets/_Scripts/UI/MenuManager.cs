@@ -172,6 +172,13 @@ public class MenuManager : MonoBehaviour
         FindObjectOfType<AudioManager>().PlaySound("U.IPress");
     }
 
+    public void MainMenuReturn()
+    {
+        SceneManager.LoadScene("MainMenu");
+
+        FindObjectOfType<AudioManager>().PlaySound("U.IPress");
+    }
+
     public void OpenTerminal(TerminalLog log)
     {
         //Game paused
