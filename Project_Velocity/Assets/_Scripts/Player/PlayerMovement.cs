@@ -161,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
     {
         StandUpCheck();
         currentSpeed = rb.velocity.magnitude;
-        WorldBoundaries();
+        //WorldBoundaries();
         CrouchAndSlideManager();
         Crouching();
         Sliding();
