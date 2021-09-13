@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class CameraLook : MonoBehaviour
 {
+    public PlayerCameraSens camVal;
+
     [Header("References")]
     [SerializeField] WallRunning wr;
     Shooting s;
@@ -47,15 +49,24 @@ public class CameraLook : MonoBehaviour
 
         if(s.reverseGravity)
         {
-            yRotation += -mouseX * sensX * multiplier * Time.fixedDeltaTime;
-            xRotation -= -mouseY * sensY * multiplier * Time.fixedDeltaTime;
+            yRotation += -mouseX * camVal.camsensX * multiplier * Time.fixedDeltaTime;
+            xRotation -= -mouseY * camVal.camsensY * multiplier * Time.fixedDeltaTime;
         }
         else if(!s.reverseGravity)
         {
-            yRotation += mouseX * sensX * multiplier * Time.fixedDeltaTime;
-            xRotation -= mouseY * sensY * multiplier * Time.fixedDeltaTime;
+            yRotation += mouseX * camVal.camsensX * multiplier * Time.fixedDeltaTime;
+            xRotation -= mouseY * camVal.camsensY * multiplier * Time.fixedDeltaTime;
         }
 
+
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+    }
+
+    public void SensChange(float newSens)
+    {
+        camVal.camsensX = newSens;
+
+        camVal.camsensY = newSens;
+
     }
 }

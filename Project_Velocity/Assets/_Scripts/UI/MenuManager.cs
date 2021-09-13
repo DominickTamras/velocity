@@ -175,8 +175,10 @@ public class MenuManager : MonoBehaviour
     public void MainMenuReturn()
     {
         SceneManager.LoadScene("MainMenu");
-
+        Resume();
         FindObjectOfType<AudioManager>().PlaySound("U.IPress");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void OpenTerminal(TerminalLog log)
