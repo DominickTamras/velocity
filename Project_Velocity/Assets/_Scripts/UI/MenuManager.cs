@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
     public GameObject crosshairDisable_PAUSE;
     [HideInInspector]
     public bool endState = false;
+    public GameObject levelDataSaved;
 
     [Header("Terminal")]
     public GameObject terminalUI;
@@ -169,6 +170,7 @@ public class MenuManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+        levelDataSaved.GetComponent<SaveSystem>().LevelSavedData();
         FindObjectOfType<AudioManager>().PlaySound("U.IPress");
     }
 
@@ -177,6 +179,7 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         Resume();
         FindObjectOfType<AudioManager>().PlaySound("U.IPress");
+        levelDataSaved.GetComponent<SaveSystem>().LevelSavedData();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

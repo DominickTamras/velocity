@@ -20,6 +20,7 @@ public class LevelDataRecorder : MonoBehaviour
     public float currMinutes;
     public float currSeconds;
     public int currDeaths;
+    public bool currComplete;
     //Enemy Score
     public int enemiesKilled = 0;
     public int totalEnemies = 0;
@@ -29,6 +30,7 @@ public class LevelDataRecorder : MonoBehaviour
         totalEnemies = EnemyDeath.enemyCount;
         levelData.totalEnemies = totalEnemies;
         levelData.deaths = currDeaths;
+        currComplete = levelData.isCompleted;
 
     }
 
@@ -72,5 +74,6 @@ public class LevelDataRecorder : MonoBehaviour
             }
         }
         levelData.isCompleted = true;
+        //currComplete = true;
     }
 }
