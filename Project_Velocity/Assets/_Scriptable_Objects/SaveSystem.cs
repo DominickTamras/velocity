@@ -2,23 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
-public class SaveSystem 
+public class SaveSystem : MonoBehaviour
 {
     public LevelDataRecorder dataRecord;
 
-    private static readonly string SAVE_FOLDER = Application.dataPath + "/LevelSavedDataRecorded/";
-
-
     void Awake()
     {
-        if(!Directory.Exists(SAVE_FOLDER))
+        SaveManager.InIt();
+       
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.S))
         {
-            Directory.CreateDirectory(SAVE_FOLDER);
+            LevelSavedData();
+        }
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            LevelLoadData();
         }
     }
-    public void LevelSavedData()
+
+    public void LevelSavedData() // THIS RECORDS THE DATA FROM THE SCRIPTABLE INNTO SAVE
     {
         int savedDeaths = dataRecord.currDeaths;
 
@@ -30,25 +37,26 @@ public class SaveSystem
 
         int savedEnemyKill = dataRecord.enemiesKilled;
 
-        LevelDataRecorder savedData = new LevelDataRecorder
+        LevelDataRecorder savedData = new LevelDataRecorder // ASSIGNS THE DATA HERE
         {
             currDeaths = savedDeaths, currMinutes = savedMinutes, currSeconds = savedSeconds, enemiesKilled = savedEnemyKill, currComplete = savedCompleted
         };
 
         string jsonSave = JsonUtility.ToJson(savedData);
 
-        File.WriteAllText(SAVE_FOLDER + "/LevelSaveData/Level.txt", jsonSave);
+        SaveManager.Saving(jsonSave); // SAVES TO JSON IN OTHER SCRIPT
     }
 
     public void LevelLoadData()
     {
-        if(File.Exists(SAVE_FOLDER + "/LevelSaveData/Level.txt"))
+        string saveString = SaveManager.Loading();
+        if(saveString != null) //CHECKS IF FILE EXISTS
         {
-            string saveString = File.ReadAllText(SAVE_FOLDER + "/LevelSaveData/Level.txt");
 
             LevelDataRecorder SavedData = JsonUtility.FromJson<LevelDataRecorder>(saveString);
 
             dataRecord.currDeaths = SavedData.currDeaths;
+            //load other stuff when done testing
 
             //https://www.youtube.com/watch?v=6uMFEM-napE&t=64s Go to 6:00 Min, make multiple files per scriptable saved object
 
