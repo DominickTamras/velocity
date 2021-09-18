@@ -7,6 +7,7 @@ public class LevelDataSO : ScriptableObject
 {
     public bool isCompleted;
 
+    public string iD;
     //Time Score
     public float minutes;
     public float seconds;
