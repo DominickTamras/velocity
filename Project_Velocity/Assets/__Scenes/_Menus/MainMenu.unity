@@ -17724,6 +17724,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9159902023224802471}
   - component: {fileID: 8382697503388231198}
+  - component: {fileID: 8382697503388231199}
+  - component: {fileID: 8382697503388231201}
+  - component: {fileID: 8382697503388231200}
   m_Layer: 0
   m_Name: LoreTerminal
   m_TagString: Untagged
@@ -17750,6 +17753,53 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8382697503388231199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8382697503388231197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c454910ef8f4d14488f240aa24c7b904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8382697503388231200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8382697503388231197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590feb292f139e541854fb819c91762c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelDatas:
+  - {fileID: 11400000, guid: 06bbcc103a87d2c43b6aa7148564046c, type: 2}
+  - {fileID: 11400000, guid: 2b2be41899e84134094868fc905a4fb2, type: 2}
+  - {fileID: 11400000, guid: 252e5805b7cf72042988c45f0ee770af, type: 2}
+  - {fileID: 11400000, guid: 59b3cfec47492d04b8da704900bc0c43, type: 2}
+  - {fileID: 11400000, guid: 918c794fe4dce08408f7434c7bfedec7, type: 2}
+  - {fileID: 11400000, guid: b33a13948acd98f4db4f88723def9730, type: 2}
+  - {fileID: 11400000, guid: 4bf1751dcdc24fe42a40cfc1540499d0, type: 2}
+  - {fileID: 11400000, guid: b50078b3748b8a44689f88f2acd1a683, type: 2}
+  - {fileID: 11400000, guid: 98ca2c1ba65e2374f992119e48db657e, type: 2}
+--- !u!114 &8382697503388231201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8382697503388231197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc9949ddb71d51419039314e721bce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataRecord: {fileID: 0}
 --- !u!4 &8571175702462881064
 Transform:
   m_ObjectHideFlags: 0

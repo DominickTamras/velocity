@@ -19,10 +19,11 @@ public class SaveSystem : MonoBehaviour
         {
             LevelSavedData();
         }
-        if(Input.GetKeyDown(KeyCode.L))
+
+        /*if (Input.GetKeyDown(KeyCode.L))
         {
             LevelLoadData();
-        }
+        }*/
     }
 
     public void LevelSavedData() // THIS RECORDS THE DATA FROM THE SCRIPTABLE INNTO SAVE
@@ -37,31 +38,38 @@ public class SaveSystem : MonoBehaviour
 
         int savedEnemyKill = dataRecord.enemiesKilled;
 
+        string idCheck = dataRecord.levelData.iD;
+
         LevelDataRecorder savedData = new LevelDataRecorder // ASSIGNS THE DATA HERE
         {
             currDeaths = savedDeaths, currMinutes = savedMinutes, currSeconds = savedSeconds, enemiesKilled = savedEnemyKill, currComplete = savedCompleted
+           
         };
 
         string jsonSave = JsonUtility.ToJson(savedData);
 
+        Debug.Log("Saved");
+
         SaveManager.Saving(jsonSave); // SAVES TO JSON IN OTHER SCRIPT
     }
 
-    public void LevelLoadData()
+    /*public void LevelLoadData()
     {
         string saveString = SaveManager.Loading();
-        if(saveString != null) //CHECKS IF FILE EXISTS
+        if (saveString != null) //CHECKS IF FILE EXISTS
         {
 
             LevelDataRecorder SavedData = JsonUtility.FromJson<LevelDataRecorder>(saveString);
 
             dataRecord.currDeaths = SavedData.currDeaths;
+
+
             //load other stuff when done testing
 
             //https://www.youtube.com/watch?v=6uMFEM-napE&t=64s Go to 6:00 Min, make multiple files per scriptable saved object
 
         }
-    }
+    }*/
 
 
 
