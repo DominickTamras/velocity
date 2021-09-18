@@ -25,6 +25,8 @@ public class EnemyDeath : MonoBehaviour
 
     public GameObject deathObj;
 
+    public GameObject ignorePlayer;
+
     public EnemyTracking trackerDisabled;
 
     private VisualEffect deathExplosion;
@@ -88,6 +90,8 @@ public class EnemyDeath : MonoBehaviour
                 go.GetComponent<Rigidbody>().isKinematic = false;
 
                 go.GetComponent<Collider>().enabled = true;
+
+                Physics.IgnoreCollision(ignorePlayer.GetComponent<Collider>(), go.GetComponent<Collider>());
                 
 
             }
