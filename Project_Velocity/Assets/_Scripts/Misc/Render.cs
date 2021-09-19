@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Render : MonoBehaviour
 {
-    Transform mainCamTransform; // Stores the FPS camera transform
+     public Transform mainCamTransform; // Stores the FPS camera transform
     private bool visible = true;
     public float distanceToAppear;
     Renderer[] objRenderer;
     MeshCollider[] obCollider;
+    public GameObject[] renderAmount;
+   
     private void Start()
     {
-        mainCamTransform = Camera.main.transform;//Get camera transform reference
+        //Get camera transform reference
         objRenderer = gameObject.GetComponentsInChildren<Renderer>(); //Get render reference
         obCollider = gameObject.GetComponentsInChildren<MeshCollider>();
+        
     }
     private void Update()
     {
@@ -33,17 +36,25 @@ public class Render : MonoBehaviour
                 {
                     turnOff.enabled = true;
                 }
-/*
+
+                foreach(GameObject turnOffObj in renderAmount)
+                {
+                    turnOffObj.SetActive(true);
+                }
+                /*              
                 foreach (Renderer turnOffRend in objRenderer)
                 {
                     turnOffRend.enabled = true;
                 }*/
                 visible = true;
+
+              
                 //Debug.Log("Visible");
             }
         }
         else if (visible)
         {
+         
             //objRenderer.enabled = false; // Hide Object
             visible = false;
             foreach(MeshCollider turnOff in obCollider)
@@ -51,10 +62,15 @@ public class Render : MonoBehaviour
                 turnOff.enabled = false;
             }
 
-          /*  foreach (Renderer turnOffRend in objRenderer)
+            foreach (GameObject turnOffObj in renderAmount)
             {
-                turnOffRend.enabled = false;
-            }*/
+                turnOffObj.SetActive(false);
+            }
+
+            /*  foreach (Renderer turnOffRend in objRenderer)
+              {
+                  turnOffRend.enabled = false;
+              }*/
 
             //Debug.Log("InVisible");
         }

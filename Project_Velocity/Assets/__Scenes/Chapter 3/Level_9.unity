@@ -1892,7 +1892,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a01057e0cf7bf44aaef4ea72accc9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamTransform: {fileID: 0}
   distanceToAppear: 5000
+  renderAmount: []
 --- !u!64 &83398743
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10869,6 +10871,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4020910497172431955, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: currentText2
+      value: 
+      objectReference: {fileID: 11400000, guid: d68abcf250e1d5d419fdf006f42cb71a, type: 2}
     - target: {fileID: 5165719636238124966, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
