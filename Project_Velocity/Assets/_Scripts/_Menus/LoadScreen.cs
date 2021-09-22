@@ -8,10 +8,9 @@ public class LoadScreen : MonoBehaviour
 {
     public GameObject loadscreenBG;
     public Image loadscreenFill;
-    public Slider slide;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
     }
 
     public void LoadLevel (int sceneIndex)
@@ -31,7 +30,6 @@ public class LoadScreen : MonoBehaviour
          
             float progress = Mathf.Clamp01(operation.progress / .9f);
             loadscreenFill.color = Color.Lerp(Color.black, Color.white, progress);
-            slide.value = progress;
             Debug.Log(progress);
             yield return null;
         }
