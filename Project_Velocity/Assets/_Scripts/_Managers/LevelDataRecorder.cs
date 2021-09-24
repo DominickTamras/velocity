@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
+[Serializable]
 public class LevelDataRecorder : MonoBehaviour
 {
     //CREATE A SCRIPTABLE OBJECT FOR EACH LEVEL
