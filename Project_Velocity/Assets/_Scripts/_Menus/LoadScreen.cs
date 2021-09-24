@@ -8,6 +8,7 @@ public class LoadScreen : MonoBehaviour
 {
     public GameObject loadscreenBG;
     public Image loadscreenFill;
+    [SerializeField] SaveSystem saveMePls;
     private void Awake()
     {
        // DontDestroyOnLoad(gameObject);
@@ -15,12 +16,16 @@ public class LoadScreen : MonoBehaviour
 
     public void LoadLevel (int sceneIndex)
     {
+        if (saveMePls != null)
+        {
+            saveMePls.LevelSavedData();
+        }
         StartCoroutine(LoadAsynch(sceneIndex));
     }
 
     IEnumerator LoadAsynch(int sceneIndex)
     {
- 
+        
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
 
         loadscreenBG.SetActive(true);

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7788026177707222100}
   - component: {fileID: 7788026177707222101}
+  - component: {fileID: 2814847357727412440}
   m_Layer: 0
   m_Name: LevelDataRecorder
   m_TagString: Untagged
@@ -46,5 +47,20 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 06bbcc103a87d2c43b6aa7148564046c, type: 2}
   currMinutes: 0
   currSeconds: 0
+  currDeaths: 0
+  currComplete: 0
   enemiesKilled: 0
   totalEnemies: 0
+--- !u!114 &2814847357727412440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7788026177707222106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc9949ddb71d51419039314e721bce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataRecord: {fileID: 7788026177707222101}

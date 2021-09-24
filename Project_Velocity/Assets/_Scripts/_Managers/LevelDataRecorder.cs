@@ -30,8 +30,8 @@ public class LevelDataRecorder : MonoBehaviour
     private void Start()
     {
         totalEnemies = EnemyDeath.enemyCount;
-        levelData.totalEnemies = totalEnemies;
-        levelData.deaths = currDeaths;
+        currDeaths = levelData.deaths;
+        totalEnemies = levelData.totalEnemies;
         currComplete = levelData.isCompleted;
 
     }
@@ -39,8 +39,8 @@ public class LevelDataRecorder : MonoBehaviour
     void Update()
     {
         timerCounter();
-        levelData.deaths = PlayerGoByeBye.deathsSTATIC;
-        currDeaths = levelData.deaths;
+        //levelData.deaths = PlayerGoByeBye.deathsSTATIC;
+        levelData.deaths = currDeaths;
 
     }
 

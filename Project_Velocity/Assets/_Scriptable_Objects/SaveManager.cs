@@ -20,13 +20,7 @@ public class SaveManager
     {
         
 
-        int saveNumber = 1;
-
-        while(File.Exists("levelData_" + saveNumber + ".txt"))
-       {
-            saveNumber++;
-       }
-
+        int saveNumber = int.Parse(saveString.Substring(26, 1));
         File.WriteAllText(SAVE_FOLDER + "/LevelDataSave" + saveNumber + ".txt", saveString);
 
     }

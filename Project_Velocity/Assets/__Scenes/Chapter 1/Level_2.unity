@@ -2452,6 +2452,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 411832792, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: deathAdd
+      value: 
+      objectReference: {fileID: 924325783}
     - target: {fileID: 514633152, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2460,6 +2464,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 449.9967
       objectReference: {fileID: 0}
+    - target: {fileID: 1253794509, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: savedInLevel
+      value: 
+      objectReference: {fileID: 859156137}
     - target: {fileID: 1310075866, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -36.45099
@@ -2684,6 +2692,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6667667276533679316, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
+      propertyPath: saveMePls
+      value: 
+      objectReference: {fileID: 859156137}
     - target: {fileID: 7435194087932657130, guid: 0e1eb91fd192a0448aa3e63d535a2345, type: 3}
       propertyPath: weight
       value: 0
@@ -33041,6 +33053,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858584754}
   m_Mesh: {fileID: -20970253929912854, guid: 21255e05dc2949440b801ac30694222a, type: 3}
+--- !u!114 &859156137 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2814847357727412440, guid: f24634cdcf4490a49a1f86b48ad105ce, type: 3}
+  m_PrefabInstance: {fileID: 720759902}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc9949ddb71d51419039314e721bce4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &859406367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5261226116645746665, guid: 8aa92d1a82604854f812e9ba455835d9, type: 3}

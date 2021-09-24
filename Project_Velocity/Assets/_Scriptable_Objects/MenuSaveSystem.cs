@@ -6,12 +6,11 @@ public class MenuSaveSystem : MonoBehaviour
 {
     public LevelDataSO[] levelDatas = new LevelDataSO[9]; //Level 1 will be stored in 0, do +1
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
+        
             LevelLoadData();
-        }
+        
     }
 
     public void LevelLoadData()
