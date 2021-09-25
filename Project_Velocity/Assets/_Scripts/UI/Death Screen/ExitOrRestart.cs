@@ -10,7 +10,7 @@ public class ExitOrRestart : MonoBehaviour
     public void OnClickRestart()
     {
         savedInLevel.LevelSavedData();
-        Debug.Log("Cum");
+      
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
