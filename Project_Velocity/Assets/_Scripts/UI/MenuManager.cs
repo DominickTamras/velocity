@@ -227,12 +227,12 @@ public class MenuManager : MonoBehaviour
             FindObjectOfType<AudioManager>().PlaySound("BG_MUSIC_LEVEL1");
         }
 
-        if (sceneMANAGER.name == "Level_3" || sceneMANAGER.name == "Level_4" || sceneMANAGER.name == "Level_5")
+        if (sceneMANAGER.name == "Level_4" || sceneMANAGER.name == "Level_5" || sceneMANAGER.name == "Level_6")
         {
             FindObjectOfType<AudioManager>().PlaySound("BG_MUSIC_CHAPTER2");
         }
 
-        if (sceneMANAGER.name == "Level_6" || sceneMANAGER.name == "Level_7" || sceneMANAGER.name == "Level_9")
+        if (sceneMANAGER.name == "Level_7" || sceneMANAGER.name == "Level_8" || sceneMANAGER.name == "Level_9")
         {
             FindObjectOfType<AudioManager>().PlaySound("BG_MUSIC_CHAPTER3");
         }
