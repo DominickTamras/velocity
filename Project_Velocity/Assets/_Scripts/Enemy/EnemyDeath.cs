@@ -91,7 +91,10 @@ public class EnemyDeath : MonoBehaviour
 
                 go.GetComponent<Collider>().enabled = true;
 
-                Physics.IgnoreCollision(ignorePlayer.GetComponent<Collider>(), go.GetComponent<Collider>());
+                if (ignorePlayer != null)
+                {
+                    Physics.IgnoreCollision(ignorePlayer.GetComponent<Collider>(), go.GetComponent<Collider>());
+                }
                 
 
             }
