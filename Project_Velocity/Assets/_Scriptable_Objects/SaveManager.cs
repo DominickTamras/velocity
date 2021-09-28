@@ -20,13 +20,7 @@ public class SaveManager
     {
         
 
-        int saveNumber = 1;
-
-        while(File.Exists("levelData_" + saveNumber + ".txt"))
-       {
-            saveNumber++;
-       }
-
+        int saveNumber = int.Parse(saveString.Substring(26, 1));
         File.WriteAllText(SAVE_FOLDER + "/LevelDataSave" + saveNumber + ".txt", saveString);
 
     }
@@ -34,13 +28,13 @@ public class SaveManager
     public static string Loading(string SOIndex)
     {
         DirectoryInfo directoryInfo = new DirectoryInfo(SAVE_FOLDER); // Adds directory info and creates a folder
-        FileInfo[] saveFiles = directoryInfo.GetFiles(".txt"); // GRABS SAVED FILES AND PUTS INTO ARRAY
+        FileInfo[] saveFiles = directoryInfo.GetFiles("*.txt"); // GRABS SAVED FILES AND PUTS INTO ARRAY //Was .txt
         FileInfo recentFile = null;
-        foreach(FileInfo fileInfo in saveFiles) //FIX THIS
+        foreach(FileInfo fileInfo in saveFiles)
         {
-            Debug.Log(fileInfo.Name.Substring(13, 1));
+            /*Debug.Log(fileInfo.Name.Substring(13, 1));
             Debug.Log(SOIndex + "\n\n");
-            Debug.Log("Work");
+            Debug.Log("Work");*/
             if(SOIndex.Equals(fileInfo.Name.Substring(13, 1)))
             {
                 recentFile = fileInfo;

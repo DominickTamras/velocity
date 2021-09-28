@@ -30,7 +30,7 @@ public class PlayerGoByeBye : MonoBehaviour
 
             EnemyDeath.enemyCount = 0;
 
-            //deathAdd.currDeaths += 1;
+            deathAdd.currDeaths += 1;
 
             deathsSTATIC += 1;
 

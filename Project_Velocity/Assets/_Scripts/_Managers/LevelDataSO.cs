@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[Serializable]
 [CreateAssetMenu(menuName = "Scriptable Objects/Level_Data")]
 public class LevelDataSO : ScriptableObject
 {

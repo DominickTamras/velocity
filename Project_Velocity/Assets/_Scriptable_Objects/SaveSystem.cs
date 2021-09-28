@@ -28,7 +28,7 @@ public class SaveSystem : MonoBehaviour
 
     public void LevelSavedData() // THIS RECORDS THE DATA FROM THE SCRIPTABLE INNTO SAVE
     {
-        int savedDeaths = dataRecord.currDeaths;
+        /*int savedDeaths = dataRecord.currDeaths;
 
         bool savedCompleted = dataRecord.levelData.isCompleted;
 
@@ -42,12 +42,12 @@ public class SaveSystem : MonoBehaviour
 
         LevelDataRecorder savedData = new LevelDataRecorder // ASSIGNS THE DATA HERE
         {
-            currDeaths = savedDeaths, currMinutes = savedMinutes, currSeconds = savedSeconds, enemiesKilled = savedEnemyKill, currComplete = savedCompleted
+            levelData = dataRecord.levelData, currDeaths = savedDeaths, currMinutes = savedMinutes, currSeconds = savedSeconds, enemiesKilled = savedEnemyKill, currComplete = savedCompleted
            
         };
 
-        string jsonSave = JsonUtility.ToJson(savedData);
-
+        string jsonSave = JsonUtility.ToJson(savedData);*/
+        string jsonSave = JsonUtility.ToJson(dataRecord.levelData);
         Debug.Log("Saved");
 
         SaveManager.Saving(jsonSave); // SAVES TO JSON IN OTHER SCRIPT
