@@ -6346,6 +6346,9 @@ MonoBehaviour:
   gunImpactEffect: {fileID: 7058365965502166854, guid: 0882e8e007cbe9c4fbd8ac55293619bd, type: 3}
   gunBurstAmmoEffect: {fileID: 1903994296901974464}
   gunKickBackAnim: {fileID: 1108423079}
+  crossHairChange: {fileID: 4319967347115717413}
+  bulletTrail: {fileID: 8284328674719766285, guid: 0e661a8fd6ce30348b76fcba20648bf7, type: 3}
+  trailSpawnLocal: {fileID: 6842257610899105331}
   railgunShoot: {fileID: 6778403235583065839}
 --- !u!114 &5441492534682149981
 MonoBehaviour:
@@ -9054,6 +9057,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86776891e981ed4bbf49141caa3a68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6842257610899105331 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9004730025884206780, guid: 2e244ec874e74784d845b4df09bce3fa, type: 3}
+  m_PrefabInstance: {fileID: 2450995261372489871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3681135871136853032
 PrefabInstance:
   m_ObjectHideFlags: 0

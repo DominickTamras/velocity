@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.UI;
 using EZCameraShake;
 
 public class Shooting : MonoBehaviour
@@ -35,6 +36,9 @@ public class Shooting : MonoBehaviour
     public GameObject gunImpactEffect;
     public GameObject gunBurstAmmoEffect;
     public Animator gunKickBackAnim;
+    public Image crossHairChange;
+    public LineRenderer bulletTrail;
+    public GameObject trailSpawnLocal;
 
     private VisualEffect bulletCharge;
     private VisualEffect bulletFlash;
@@ -64,7 +68,27 @@ public class Shooting : MonoBehaviour
     }
 
     private void Update()
-    {
+    { 
+        RaycastHit crossChange;
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out crossChange, range))
+        {
+            if(crossChange.transform.tag == "Enemy")
+            {
+                crossHairChange.color = Color.red;
+            }
+
+            else
+            { 
+                crossHairChange.color = Color.white;
+            }
+
+        }
+
+        else
+        {
+            crossHairChange.color = Color.white;
+        }
+
         FlipView();
 
         if (!MenuManager.GameIsPaused)
@@ -96,12 +120,15 @@ public class Shooting : MonoBehaviour
         hasBullet = false;
 
         RaycastHit hit;
+
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
             
             //VFX
             GameObject impactVFX = Instantiate(gunImpactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactVFX, 1);
+
+           
 
             //Shooting Enemy
             EnemyDeath enemy = hit.transform.GetComponent<EnemyDeath>();
@@ -120,9 +147,22 @@ public class Shooting : MonoBehaviour
                 ReverseGravity();
                 hasBullet = true;
             }
+
+            
         }
+
+        TrailSpawn(hit.point);
     }
     
+     void TrailSpawn(Vector3 hitPoint)
+    {
+        GameObject bulletTrailEffect = Instantiate(bulletTrail.gameObject, trailSpawnLocal.transform.position, Quaternion.identity);
+
+        LineRenderer lineR = bulletTrailEffect.GetComponent<LineRenderer>();
+        lineR.SetPosition(0, trailSpawnLocal.transform.position);
+        lineR.SetPosition(1, hitPoint);
+        Destroy(bulletTrailEffect, 0.5f);
+    }
     void BulletIndicator()
     {
         if(hasBullet)
