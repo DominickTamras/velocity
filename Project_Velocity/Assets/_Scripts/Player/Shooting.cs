@@ -39,6 +39,7 @@ public class Shooting : MonoBehaviour
     public Image crossHairChange;
     public LineRenderer bulletTrail;
     public GameObject trailSpawnLocal;
+    public GameObject trailMissEnd;
 
     private VisualEffect bulletCharge;
     private VisualEffect bulletFlash;
@@ -141,6 +142,7 @@ public class Shooting : MonoBehaviour
                 CameraShaker.Instance.ShakeOnce(magnitude, roughness, fadeInTime, fadeOutTime);
             }
 
+
             //Reverse Gravity
             if(hit.collider.CompareTag("ReverseGravity"))
             {
@@ -148,10 +150,18 @@ public class Shooting : MonoBehaviour
                 hasBullet = true;
             }
 
-            
-        }
 
-        TrailSpawn(hit.point);
+            TrailSpawn(hit.point);
+        }
+       
+
+        else
+        {
+           
+            TrailSpawn(trailMissEnd.transform.position); //Not hitting anything
+        }
+         
+       
     }
     
      void TrailSpawn(Vector3 hitPoint)
@@ -161,7 +171,7 @@ public class Shooting : MonoBehaviour
         LineRenderer lineR = bulletTrailEffect.GetComponent<LineRenderer>();
         lineR.SetPosition(0, trailSpawnLocal.transform.position);
         lineR.SetPosition(1, hitPoint);
-        Destroy(bulletTrailEffect, 0.5f);
+        Destroy(bulletTrailEffect, 0.2f);
     }
     void BulletIndicator()
     {
