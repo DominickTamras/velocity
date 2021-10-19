@@ -72,6 +72,8 @@ public class MenuManager : MonoBehaviour
         //show flashing words
         timerShow = showWordsTime;
         //talkinglog.SetActive(false);
+
+        Resume();
     }
 
 
@@ -210,6 +212,9 @@ public class MenuManager : MonoBehaviour
 
     public void StartChat(ChatLog chatLog)
     {
+        Resume();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         chatUI.SetActive(true);
         meleePauseDisable.enabled = false;
         //Pause();
