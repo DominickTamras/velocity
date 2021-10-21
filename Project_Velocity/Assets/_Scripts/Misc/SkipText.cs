@@ -32,12 +32,12 @@ public class SkipText : MonoBehaviour
             FindObjectOfType<AudioManager>().PlaySound("BG_MUSIC_LEVEL1");
         }
 
-        if (scene.name == "Level_3" || scene.name == "Level_4" || scene.name == "Level_5")
+        if (scene.name == "Level_4" || scene.name == "Level_5" || scene.name == "Level_6")
         {
             FindObjectOfType<AudioManager>().PlaySound("BG_MUSIC_CHAPTER2");
         }
 
-        if (scene.name == "Level_6" || scene.name == "Level_7" || scene.name == "Level_9")
+        if (scene.name == "Level_7" || scene.name == "Level_8" || scene.name == "Level_9")
         {
             FindObjectOfType<AudioManager>().PlaySound("BG_MUSIC_CHAPTER3");
         }
