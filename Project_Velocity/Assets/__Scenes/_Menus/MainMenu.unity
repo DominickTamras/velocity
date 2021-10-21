@@ -4488,7 +4488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1594, y: -923}
+  m_AnchoredPosition: {x: 866, y: -426}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &556975421
@@ -18505,6 +18505,7 @@ GameObject:
   - component: {fileID: 6311392921787647461}
   - component: {fileID: 6311392921787647460}
   - component: {fileID: 6311392921787647459}
+  - component: {fileID: 6311392921787647462}
   m_Layer: 5
   m_Name: LevelButton (10)
   m_TagString: Untagged
@@ -18627,6 +18628,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6311392921787647457}
   m_CullTransparentMesh: 1
+--- !u!114 &6311392921787647462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6311392921787647457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e3bf1fbb81bfd44b9b8559f0724ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check: {fileID: 11400000, guid: 98ca2c1ba65e2374f992119e48db657e, type: 2}
+  button: {fileID: 6311392921787647459}
+  kills: {fileID: 0}
+  timeMin: {fileID: 0}
+  timeSec: {fileID: 0}
+  deaths: {fileID: 0}
 --- !u!1 &6311392922169085602
 GameObject:
   m_ObjectHideFlags: 0
