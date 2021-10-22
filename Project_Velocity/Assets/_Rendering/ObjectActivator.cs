@@ -49,30 +49,35 @@ public class ObjectActivator : MonoBehaviour
         {
             foreach (ActivatorItem item in activatorItems)
             {
-                if (Vector3.Distance(player.transform.position, item.item.transform.position) > distanceFromPlayer)
+                if (item.item != null)
                 {
-                    if (item.item == null)
-                    {
-                        removeList.Add(item);
-                    }
-                    else
-                    {
-                        item.item.SetActive(false);
-                    }
-                }
-                else
-                {
-                    if (item.item == null)
-                    {
-                        removeList.Add(item);
-                    }
-                    else
-                    {
-                        item.item.SetActive(true);
-                    }
-                }
 
-                yield return new WaitForSeconds(0.01f);
+
+                    if (Vector3.Distance(player.transform.position, item.item.transform.position) > distanceFromPlayer)
+                    {
+                        if (item.item == null)
+                        {
+                            removeList.Add(item);
+                        }
+                        else
+                        {
+                            item.item.SetActive(false);
+                        }
+                    }
+                    else
+                    {
+                        if (item.item == null)
+                        {
+                            removeList.Add(item);
+                        }
+                        else
+                        {
+                            item.item.SetActive(true);
+                        }
+                    }
+
+                    yield return new WaitForSeconds(0.01f);
+                }
             }
         }
 
