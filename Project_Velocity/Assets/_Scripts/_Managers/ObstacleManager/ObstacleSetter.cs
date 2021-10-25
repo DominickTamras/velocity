@@ -57,7 +57,22 @@ public class ObstacleSetter : MonoBehaviour
         endPos = new Vector3(transform.position.x, doorOpenY, transform.position.z);
         ogPos = transform.position;
         ObstacleManager.current.onObstacleTriggerEnter += OnObstacleActivate; // register event
-        ObstacleManager.current.onObstacleTriggerExit += OnObstacleEnd;                                                                   
+        ObstacleManager.current.onObstacleTriggerExit += OnObstacleEnd;
+
+        if (killEnemyToProceed == true)
+        {
+            foreach (GameObject disable in enemyInArea)
+            {
+
+                if (disable != null)
+                {
+                    disable.gameObject.SetActive(false);
+                }
+
+
+
+            }
+        }
     }
 
     private void Update()
@@ -118,7 +133,9 @@ public class ObstacleSetter : MonoBehaviour
                     }
                 }
 
-                if(enemyInArea.Count == 0)
+
+
+                if (enemyInArea.Count == 0)
                 {
 
                     StartCoroutine(CleanUp());
@@ -193,6 +210,13 @@ public class ObstacleSetter : MonoBehaviour
     {
         this.gameObject.GetComponent<MeshRenderer>().enabled = true;
         this.gameObject.GetComponent<Collider>().enabled = true;
+
+        foreach (GameObject spawn in enemyInArea)
+        {
+           
+                spawn.gameObject.SetActive(true);
+            
+        }
 
         Debug.Log("Working");
 
