@@ -6,6 +6,6 @@ using UnityEngine;
 public class TerminalLog : ScriptableObject
 {
     public string title;
-    [TextArea]
+    [TextArea(15,20)]
     public string log;
 }
