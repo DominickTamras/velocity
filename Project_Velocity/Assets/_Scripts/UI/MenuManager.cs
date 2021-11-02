@@ -72,6 +72,8 @@ public class MenuManager : MonoBehaviour
         //show flashing words
         timerShow = showWordsTime;
         //talkinglog.SetActive(false);
+
+        Resume();
     }
 
 
@@ -176,7 +178,6 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenuReturn()
     {
-        SceneManager.LoadScene("MainMenu");
         Resume();
         FindObjectOfType<AudioManager>().PlaySound("U.IPress");
         levelDataSaved.GetComponent<SaveSystem>().LevelSavedData();
