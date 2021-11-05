@@ -10,6 +10,12 @@ public class MainMenu : MonoBehaviour
     public GameObject levelSelect;
     public GameObject options;
     public AudioSource playUi;
+
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void OnClickStartGame()
     {
         SceneManager.LoadScene(1);
