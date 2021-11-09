@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class ObjectActivator : MonoBehaviour
 {
@@ -73,6 +74,7 @@ public class ObjectActivator : MonoBehaviour
                         else
                         {
                             item.item.SetActive(true);
+                            //item.item.GetComponent<VisualEffect>()
                         }
                     }
 
