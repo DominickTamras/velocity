@@ -14,6 +14,7 @@ public class ObjectActivator : MonoBehaviour
 
     public List<ActivatorItem> addList;
 
+    bool spawnEffect;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class ObjectActivator : MonoBehaviour
 
         StartCoroutine("CheckActivation");
     }
+
 
     IEnumerator CheckActivation()
     {
@@ -74,12 +76,26 @@ public class ObjectActivator : MonoBehaviour
                         else
                         {
                             item.item.SetActive(true);
-                            //item.item.GetComponent<VisualEffect>()
+                            removeList.Remove(item);
+
+                         
+                            item.item.transform.GetChild(0).GetComponent<VisualEffect>().Play();
+
                         }
+
                     }
 
                     yield return new WaitForSeconds(0.01f);
                 }
+            }
+
+            for (int i =  activatorItems.Count - 1; i >= 0; i-- ) // backwards into list to remove when spawns
+                {
+                    if(activatorItems[i].item.activeSelf)
+                {
+                    activatorItems.RemoveAt(i);
+                }
+                
             }
         }
 
@@ -92,6 +108,8 @@ public class ObjectActivator : MonoBehaviour
                 activatorItems.Remove(item);
             }
         }
+
+        
 
         yield return new WaitForSeconds(0.01f);
 
