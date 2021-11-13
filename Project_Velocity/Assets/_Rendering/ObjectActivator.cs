@@ -80,6 +80,7 @@ public class ObjectActivator : MonoBehaviour
 
                          
                             item.item.transform.GetChild(0).GetComponent<VisualEffect>().Play();
+                            item.item.transform.GetChild(0).GetComponent<AudioSource>().Play();
 
                         }
 
