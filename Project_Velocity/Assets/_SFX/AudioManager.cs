@@ -70,6 +70,7 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;   // set the pitch
             s.source.loop = s.loop;     // should it loop
             s.source.spatialBlend = s.spatialBlend; //should it be 2d or 3d
+            s.source.outputAudioMixerGroup = s.audioGroupAdd;
         }
     }
 

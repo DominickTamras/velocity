@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 
 [System.Serializable]
@@ -17,5 +18,6 @@ public class Sound
     public bool loop = false;// should this sound loop
     [Range(0f,1f)]
     public float spatialBlend; //should this sound be 2d or 3d
+    public AudioMixerGroup audioGroupAdd;
 
 }

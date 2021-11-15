@@ -8065,7 +8065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1258366730
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8075,8 +8075,8 @@ AudioSource:
   m_GameObject: {fileID: 1258366729}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b2698a3be15d5ca49aaed890bd697667, type: 3}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 01d0ff0269faaf9489734817a9e739ac, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 8e0c2812a3a3f8d45971301ac5696c2f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.139
   m_Pitch: 1
@@ -8960,6 +8960,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     spatialBlend: 0.78
+    audioGroupAdd: {fileID: 0}
   - name: Enemy_Shoot
     clip: {fileID: 8300000, guid: 970905712ff35cb46a06d048e93f2484, type: 3}
     volume: 1
@@ -8967,6 +8968,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     spatialBlend: 0.78
+    audioGroupAdd: {fileID: 0}
   playlist: []
 --- !u!1 &1421349000 stripped
 GameObject:
@@ -10029,6 +10031,7 @@ MonoBehaviour:
   activateRB: []
   disableVFX: []
   deathObj: {fileID: 527732086}
+  ignorePlayer: {fileID: 0}
   trackerDisabled: {fileID: 0}
   reverseDeath: 0
 --- !u!1 &1568602836 stripped

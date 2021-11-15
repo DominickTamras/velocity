@@ -172,6 +172,8 @@ public class MenuManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+        
+        
         levelDataSaved.GetComponent<SaveSystem>().LevelSavedData();
         FindObjectOfType<AudioManager>().PlaySound("U.IPress");
     }
