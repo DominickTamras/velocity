@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using MoreMountains.Feedbacks;
+using Steamworks;
 
 public class EndingManager : MonoBehaviour
 {
@@ -90,8 +91,9 @@ public class EndingManager : MonoBehaviour
 
             FindObjectOfType<AudioManager>().PlaySound("Player_Death1");
             FindObjectOfType<AudioManager>().PlaySound("Player_Death2");
-           
 
+            SteamUserStats.SetAchievement("BLOW_UP_THE_SUN");
+            SteamUserStats.StoreStats(); 
 
             yield return new WaitForSeconds(3);
 

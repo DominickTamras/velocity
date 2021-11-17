@@ -78,9 +78,12 @@ public class ObjectActivator : MonoBehaviour
                             item.item.SetActive(true);
                             removeList.Remove(item);
 
-                         
-                            item.item.transform.GetChild(0).GetComponent<VisualEffect>().Play();
-                            item.item.transform.GetChild(0).GetComponent<AudioSource>().Play();
+
+                            if (item.item != null)
+                            {
+                                item.item.transform.GetChild(0).GetComponent<VisualEffect>().Play();
+                                item.item.transform.GetChild(0).GetComponent<AudioSource>().Play();
+                            }
 
                         }
 
