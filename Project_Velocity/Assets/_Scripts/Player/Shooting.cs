@@ -56,6 +56,7 @@ public class Shooting : MonoBehaviour
 
     private void Start()
     {
+        
         cl = GetComponent<CameraLook>();
         pm = GetComponent<PlayerMovement>();
 
@@ -103,6 +104,7 @@ public class Shooting : MonoBehaviour
                     Shoot();
                     kickback.GunKickBack();
                     armKickBack.GunKickBack();
+                    FindObjectOfType<AudioManager>().PlaySound("Bullet Hum");
                 }
             }
         }
