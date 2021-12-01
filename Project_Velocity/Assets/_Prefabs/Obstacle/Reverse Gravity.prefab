@@ -535,6 +535,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     spatialBlend: 0.78
+    audioGroupAdd: {fileID: 0}
   - name: Enemy_Shoot
     clip: {fileID: 8300000, guid: 970905712ff35cb46a06d048e93f2484, type: 3}
     volume: 1
@@ -542,6 +543,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     spatialBlend: 0.78
+    audioGroupAdd: {fileID: 0}
   - name: Gravity_Switch
     clip: {fileID: 8300000, guid: e00d3fe95e3937a44b1f36ca3a2f8e56, type: 3}
     volume: 1
@@ -549,6 +551,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
     spatialBlend: 0.78
+    audioGroupAdd: {fileID: 0}
   playlist: []
 --- !u!54 &8564035522363249456
 Rigidbody:
@@ -923,8 +926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb81bd7437ca8d4197d3dd780aa4f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0
-  power: 0
+  radius: 20
+  power: 500
   endingKill: 0
   explosionForce: {fileID: 3474998618176175480}
   activateRB:
@@ -970,6 +973,7 @@ MonoBehaviour:
   disableVFX:
   - {fileID: 8295189798609138021}
   deathObj: {fileID: 8295189798609138021}
+  ignorePlayer: {fileID: 0}
   trackerDisabled: {fileID: 0}
   reverseDeath: 1
 --- !u!54 &7542228872270801398

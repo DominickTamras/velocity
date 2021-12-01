@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 public class ObstacleSetter : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class ObstacleSetter : MonoBehaviour
 
     private bool doorActivate;
 
+    public GameObject shieldWalls;
 
     [Header("Enemy # Death")]
     public List<GameObject> enemyInArea = new List<GameObject>();
@@ -50,10 +52,13 @@ public class ObstacleSetter : MonoBehaviour
 
     private bool explodeOnce = false;
 
+    private bool startedFX;
+
 
 
     void Start()
     {
+        startedFX = true;
         endPos = new Vector3(transform.position.x, doorOpenY, transform.position.z);
         ogPos = transform.position;
         ObstacleManager.current.onObstacleTriggerEnter += OnObstacleActivate; // register event
@@ -139,8 +144,7 @@ public class ObstacleSetter : MonoBehaviour
                 {
 
                     StartCoroutine(CleanUp());
-                    this.gameObject.GetComponent<Renderer>().enabled = false;
-                    this.gameObject.GetComponent<Collider>().enabled = false;
+                    shieldWalls.SetActive(false);
                   
                     if (explodeOnce == false) // Plays sound once
                     {
@@ -208,13 +212,21 @@ public class ObstacleSetter : MonoBehaviour
 
     public IEnumerator SpawnShield()
     {
-        this.gameObject.GetComponent<MeshRenderer>().enabled = true;
-        this.gameObject.GetComponent<Collider>().enabled = true;
+        shieldWalls.SetActive(true);
 
         foreach (GameObject spawn in enemyInArea)
         {
-           
+
+            if (spawn != null)
+            {
                 spawn.gameObject.SetActive(true);
+                if (startedFX == true)
+                {
+                    spawn.gameObject.transform.GetChild(0).GetComponent<VisualEffect>().Play();
+                    spawn.gameObject.transform.GetChild(0).GetComponent<AudioSource>().Play();
+                    startedFX = false;
+                }
+            }
             
         }
 

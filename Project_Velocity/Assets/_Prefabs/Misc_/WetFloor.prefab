@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &3534864721122746072
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600875356433259330}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2573318, y: 2.845581, z: 1.1236019}
+  m_Center: {x: 0, y: 1.4907985, z: 0.31640598}
+--- !u!65 &4065569813882588816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4173820351022446783}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2573318, y: 2.845581, z: 1.1236019}
+  m_Center: {x: 0, y: 1.4907985, z: 0.31640598}
 --- !u!1 &6124818005734224517
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,6 +35,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 829384798614033742}
+  - component: {fileID: 4824979540627886936}
   m_Layer: 0
   m_Name: WetFloor
   m_TagString: Untagged
@@ -32,6 +59,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 76.794, z: 0}
+--- !u!65 &4824979540627886936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6124818005734224517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1007981599560044491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.35995483
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -110,6 +150,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
   m_PrefabInstance: {fileID: 1007981599560044491}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &600875356433259330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8814761495321275255, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
+  m_PrefabInstance: {fileID: 1007981599560044491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4343667284605709366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.35995483
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -143,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.10379028
+      value: 0.104
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -186,5 +231,10 @@ PrefabInstance:
 --- !u!4 &4309231384093117405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
+  m_PrefabInstance: {fileID: 4343667284605709366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4173820351022446783 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8814761495321275255, guid: 18f898b8858b9264fb857b62c331839f, type: 3}
   m_PrefabInstance: {fileID: 4343667284605709366}
   m_PrefabAsset: {fileID: 0}

@@ -219,6 +219,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             isMoving = true;
+            //walkAnim.enabled = true;
             //FindObjectOfType<AudioManager>().PlaySound("Walk");
 
             //walkAnim.SetTrigger("IsWalking");
@@ -228,6 +229,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isMoving = false;
             walkAnim.SetBool("IsWalking", false);
+            //walkAnim.enabled = false;
             //walkAnim.SetTrigger("IsNotWalking");
 
 

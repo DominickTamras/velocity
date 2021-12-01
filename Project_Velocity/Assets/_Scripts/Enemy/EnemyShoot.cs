@@ -34,6 +34,7 @@ public class EnemyShoot : MonoBehaviour
         explodeEffectStart = enemyBulletEffect.GetComponent<VisualEffect>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = new Vector3(player.position.x, player.position.y, player.position.z);
+        
     }
 
     // Update is called once per frame
@@ -54,11 +55,16 @@ public class EnemyShoot : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.CompareTag("Enemy") && !other.CompareTag("IgnoreBullet"))
+
+        if (!other.CompareTag("Enemy") && !other.CompareTag("IgnoreBullet") && !other.CompareTag("Dome"))
         {
             DestroyShot();
             exploded.Play();
         }
+
+
+
+        
     }
 
     public void DestroyShot()

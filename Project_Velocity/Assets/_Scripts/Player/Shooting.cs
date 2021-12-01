@@ -74,7 +74,7 @@ public class Shooting : MonoBehaviour
         RaycastHit crossChange;
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out crossChange, range))
         {
-            if(crossChange.transform.tag == "Enemy")
+            if(crossChange.transform.tag == "Enemy" || crossChange.transform.tag == "ReverseGravity")
             {
                 crossHairChange.color = Color.red;
             }
@@ -83,6 +83,7 @@ public class Shooting : MonoBehaviour
             { 
                 crossHairChange.color = Color.white;
             }
+
 
         }
 
