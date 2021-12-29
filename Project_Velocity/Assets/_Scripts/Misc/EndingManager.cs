@@ -92,8 +92,7 @@ public class EndingManager : MonoBehaviour
             FindObjectOfType<AudioManager>().PlaySound("Player_Death1");
             FindObjectOfType<AudioManager>().PlaySound("Player_Death2");
 
-            SteamUserStats.SetAchievement("BLOW_UP_THE_SUN");
-            SteamUserStats.StoreStats(); 
+            
 
             yield return new WaitForSeconds(3);
 
